@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{D8148148-C4AA-4B16-916E-4EEAC0EB5A45}</ProjectGuid>
+    <ProjectGuid>{CB097B5F-5902-486B-A4C6-E820D460CB69}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FORM</RootNamespace>
-    <AssemblyName>TMS_VJ3</AssemblyName>
+    <AssemblyName>TMS_VJ3_LT</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,19 +33,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AxInterop.FPSpreadADO, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MAIN\bin\Debug\AxInterop.FPSpreadADO.dll</HintPath>
-    </Reference>
-    <Reference Include="AxInterop.FPUSpreadADO, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MAIN\bin\Debug\AxInterop.FPUSpreadADO.dll</HintPath>
-    </Reference>
     <Reference Include="COM, Version=1.0.6972.20751, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MAIN\bin\Debug\COM.dll</HintPath>
     </Reference>
-    <Reference Include="ComVar, Version=1.0.7614.17426, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ComVar, Version=1.0.6984.18247, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MAIN\bin\Debug\ComVar.dll</HintPath>
     </Reference>
@@ -105,14 +97,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MAIN\bin\Debug\DevExpress.XtraPrinting.v17.1.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.FPSpreadADO">
-      <HintPath>..\MAIN\bin\Debug\Interop.FPSpreadADO.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.FPUSpreadADO">
-      <HintPath>..\MAIN\bin\Debug\Interop.FPUSpreadADO.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MAIN\bin\Debug\Microsoft.VisualBasic.PowerPacks.Vs.dll</HintPath>
@@ -121,14 +105,6 @@
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>C:\Windows\assembly\GAC\MSDATASRC\7.0.3300.0__b03f5f7f11d50a3a\msdatasrc.dll</HintPath>
-    </Reference>
-    <Reference Include="netchartdir_cp, Version=5.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MAIN\bin\Debug\netchartdir_cp.dll</HintPath>
-    </Reference>
-    <Reference Include="ShapeControl, Version=1.0.6374.27716, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MAIN\bin\Debug\ShapeControl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -287,24 +263,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\car1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\VJ2.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\VJ.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\VJ3.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\vj3_b.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\VJ_b.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\vj2_b.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -40,12 +40,22 @@
             this.lblTitle = new DevExpress.XtraEditors.LabelControl();
             this.splMain = new System.Windows.Forms.SplitContainer();
             this.groupBoxEx5 = new FORM.GroupBoxEx();
+            this.lblVJ2trip5 = new System.Windows.Forms.Label();
+            this.lblVJ2trip4 = new System.Windows.Forms.Label();
             this.btnS_VJ3VJ2_Time = new System.Windows.Forms.Button();
+            this.lblVJ2trip3 = new System.Windows.Forms.Label();
+            this.lblVJ2trip2 = new System.Windows.Forms.Label();
+            this.lblVJ2trip1 = new System.Windows.Forms.Label();
             this.groupBoxEx3 = new FORM.GroupBoxEx();
             this.lblTP_LT_Ratio = new System.Windows.Forms.Label();
             this.lblDestimated2 = new System.Windows.Forms.Label();
             this.groupBoxEx1 = new FORM.GroupBoxEx();
+            this.lblVJ2_WSTrip5 = new System.Windows.Forms.Label();
+            this.lblVJ2_WSTrip4 = new System.Windows.Forms.Label();
             this.btnE_VJ3VJ2_Time = new System.Windows.Forms.Button();
+            this.lblVJ2_WSTrip1 = new System.Windows.Forms.Label();
+            this.lblVJ2_WSTrip3 = new System.Windows.Forms.Label();
+            this.lblVJ2_WSTrip2 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -77,11 +87,19 @@
             this.lblTP_VC_Ratio = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.grpVC = new FORM.GroupBoxEx();
+            this.label26 = new System.Windows.Forms.Label();
             this.btnE_VJ3VJ1_Time = new System.Windows.Forms.Button();
+            this.lblVJ3_WSTrip1 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.groupBoxEx2 = new FORM.GroupBoxEx();
+            this.lblVJ3trip4 = new System.Windows.Forms.Label();
+            this.lblVJ3trip3 = new System.Windows.Forms.Label();
+            this.lblVJ3trip2 = new System.Windows.Forms.Label();
+            this.lblVJ3trip1 = new System.Windows.Forms.Label();
             this.btnS_VJ3VJ1_Time = new System.Windows.Forms.Button();
             this.shapeContainer1 = new Microsoft.VisualBasic.PowerPacks.ShapeContainer();
             this.lineShape6 = new Microsoft.VisualBasic.PowerPacks.LineShape();
@@ -98,17 +116,9 @@
             this.Time_pass3 = new Microsoft.VisualBasic.PowerPacks.OvalShape();
             this.Time_pass2 = new Microsoft.VisualBasic.PowerPacks.OvalShape();
             this.lineShape1 = new Microsoft.VisualBasic.PowerPacks.LineShape();
-            this.tblGrid = new System.Windows.Forms.TableLayoutPanel();
-            this.pn_VJ3_WS_Grid = new System.Windows.Forms.Panel();
-            this.grdBase1 = new DevExpress.XtraGrid.GridControl();
-            this.gvwBase1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gridView3 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.lblTitleGrid2 = new DevExpress.XtraEditors.LabelControl();
-            this.pnVJ3_WS_Grid = new System.Windows.Forms.Panel();
             this.grdBase = new DevExpress.XtraGrid.GridControl();
             this.gvwBase = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.lblTitleGrid1 = new DevExpress.XtraEditors.LabelControl();
             this.tmrDate = new System.Windows.Forms.Timer(this.components);
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FORM.WaitForm1), true, true);
             this.tmrCar = new System.Windows.Forms.Timer(this.components);
@@ -127,12 +137,6 @@
             this.groupBoxEx4.SuspendLayout();
             this.grpVC.SuspendLayout();
             this.groupBoxEx2.SuspendLayout();
-            this.tblGrid.SuspendLayout();
-            this.pn_VJ3_WS_Grid.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.grdBase1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvwBase1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).BeginInit();
-            this.pnVJ3_WS_Grid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdBase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwBase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
@@ -306,7 +310,7 @@
             // splMain.Panel2
             // 
             this.splMain.Panel2.BackColor = System.Drawing.Color.White;
-            this.splMain.Panel2.Controls.Add(this.tblGrid);
+            this.splMain.Panel2.Controls.Add(this.grdBase);
             this.splMain.Size = new System.Drawing.Size(1916, 943);
             this.splMain.SplitterDistance = 370;
             this.splMain.TabIndex = 15;
@@ -314,7 +318,12 @@
             // groupBoxEx5
             // 
             this.groupBoxEx5.BackgroundPanelImage = null;
+            this.groupBoxEx5.Controls.Add(this.lblVJ2trip5);
+            this.groupBoxEx5.Controls.Add(this.lblVJ2trip4);
             this.groupBoxEx5.Controls.Add(this.btnS_VJ3VJ2_Time);
+            this.groupBoxEx5.Controls.Add(this.lblVJ2trip3);
+            this.groupBoxEx5.Controls.Add(this.lblVJ2trip2);
+            this.groupBoxEx5.Controls.Add(this.lblVJ2trip1);
             this.groupBoxEx5.DrawGroupBorder = true;
             this.groupBoxEx5.Font = new System.Drawing.Font("Times New Roman", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxEx5.ForeColor = System.Drawing.Color.White;
@@ -324,7 +333,7 @@
             this.groupBoxEx5.GroupPanelWith = 1F;
             this.groupBoxEx5.Location = new System.Drawing.Point(12, 177);
             this.groupBoxEx5.Name = "groupBoxEx5";
-            this.groupBoxEx5.Size = new System.Drawing.Size(323, 183);
+            this.groupBoxEx5.Size = new System.Drawing.Size(323, 190);
             this.groupBoxEx5.TabIndex = 172;
             this.groupBoxEx5.TabStop = false;
             this.groupBoxEx5.Text = "VJ2 DEPARTURE";
@@ -332,21 +341,87 @@
             this.groupBoxEx5.TextBorderColor = System.Drawing.SystemColors.MenuHighlight;
             this.groupBoxEx5.TextBorderWith = 1F;
             // 
+            // lblVJ2trip5
+            // 
+            this.lblVJ2trip5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblVJ2trip5.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblVJ2trip5.ForeColor = System.Drawing.Color.White;
+            this.lblVJ2trip5.Location = new System.Drawing.Point(161, 159);
+            this.lblVJ2trip5.Name = "lblVJ2trip5";
+            this.lblVJ2trip5.Size = new System.Drawing.Size(155, 25);
+            this.lblVJ2trip5.TabIndex = 201;
+            this.lblVJ2trip5.Tag = "5";
+            this.lblVJ2trip5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVJ2trip5.DoubleClick += new System.EventHandler(this.lblVJ2trip_DoubleClick);
+            // 
+            // lblVJ2trip4
+            // 
+            this.lblVJ2trip4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblVJ2trip4.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblVJ2trip4.ForeColor = System.Drawing.Color.White;
+            this.lblVJ2trip4.Location = new System.Drawing.Point(161, 131);
+            this.lblVJ2trip4.Name = "lblVJ2trip4";
+            this.lblVJ2trip4.Size = new System.Drawing.Size(155, 25);
+            this.lblVJ2trip4.TabIndex = 201;
+            this.lblVJ2trip4.Tag = "4";
+            this.lblVJ2trip4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVJ2trip4.DoubleClick += new System.EventHandler(this.lblVJ2trip_DoubleClick);
+            // 
             // btnS_VJ3VJ2_Time
             // 
             this.btnS_VJ3VJ2_Time.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnS_VJ3VJ2_Time.BackgroundImage = global::FORM.Properties.Resources.vj3_b;
+            this.btnS_VJ3VJ2_Time.BackgroundImage = global::FORM.Properties.Resources.VJ3;
             this.btnS_VJ3VJ2_Time.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnS_VJ3VJ2_Time.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnS_VJ3VJ2_Time.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnS_VJ3VJ2_Time.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnS_VJ3VJ2_Time.Font = new System.Drawing.Font("DS-Digital", 40F, System.Drawing.FontStyle.Bold);
             this.btnS_VJ3VJ2_Time.ForeColor = System.Drawing.Color.White;
-            this.btnS_VJ3VJ2_Time.Location = new System.Drawing.Point(9, 43);
+            this.btnS_VJ3VJ2_Time.Location = new System.Drawing.Point(9, 47);
             this.btnS_VJ3VJ2_Time.Name = "btnS_VJ3VJ2_Time";
-            this.btnS_VJ3VJ2_Time.Size = new System.Drawing.Size(308, 125);
+            this.btnS_VJ3VJ2_Time.Size = new System.Drawing.Size(147, 137);
             this.btnS_VJ3VJ2_Time.TabIndex = 197;
             this.btnS_VJ3VJ2_Time.UseVisualStyleBackColor = false;
+            this.btnS_VJ3VJ2_Time.Click += new System.EventHandler(this.btnS_VJ3VJ2_Time_Click);
+            // 
+            // lblVJ2trip3
+            // 
+            this.lblVJ2trip3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblVJ2trip3.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblVJ2trip3.ForeColor = System.Drawing.Color.White;
+            this.lblVJ2trip3.Location = new System.Drawing.Point(161, 103);
+            this.lblVJ2trip3.Name = "lblVJ2trip3";
+            this.lblVJ2trip3.Size = new System.Drawing.Size(155, 25);
+            this.lblVJ2trip3.TabIndex = 200;
+            this.lblVJ2trip3.Tag = "3";
+            this.lblVJ2trip3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVJ2trip3.DoubleClick += new System.EventHandler(this.lblVJ2trip_DoubleClick);
+            // 
+            // lblVJ2trip2
+            // 
+            this.lblVJ2trip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblVJ2trip2.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblVJ2trip2.ForeColor = System.Drawing.Color.White;
+            this.lblVJ2trip2.Location = new System.Drawing.Point(161, 75);
+            this.lblVJ2trip2.Name = "lblVJ2trip2";
+            this.lblVJ2trip2.Size = new System.Drawing.Size(155, 25);
+            this.lblVJ2trip2.TabIndex = 199;
+            this.lblVJ2trip2.Tag = "2";
+            this.lblVJ2trip2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVJ2trip2.DoubleClick += new System.EventHandler(this.lblVJ2trip_DoubleClick);
+            // 
+            // lblVJ2trip1
+            // 
+            this.lblVJ2trip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblVJ2trip1.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblVJ2trip1.ForeColor = System.Drawing.Color.White;
+            this.lblVJ2trip1.Location = new System.Drawing.Point(161, 47);
+            this.lblVJ2trip1.Name = "lblVJ2trip1";
+            this.lblVJ2trip1.Size = new System.Drawing.Size(155, 25);
+            this.lblVJ2trip1.TabIndex = 198;
+            this.lblVJ2trip1.Tag = "1";
+            this.lblVJ2trip1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVJ2trip1.DoubleClick += new System.EventHandler(this.lblVJ2trip_DoubleClick);
             // 
             // groupBoxEx3
             // 
@@ -362,7 +437,7 @@
             this.groupBoxEx3.GroupPanelWith = 1F;
             this.groupBoxEx3.Location = new System.Drawing.Point(1499, 177);
             this.groupBoxEx3.Name = "groupBoxEx3";
-            this.groupBoxEx3.Size = new System.Drawing.Size(417, 180);
+            this.groupBoxEx3.Size = new System.Drawing.Size(417, 163);
             this.groupBoxEx3.TabIndex = 3;
             this.groupBoxEx3.TabStop = false;
             this.groupBoxEx3.Text = "VJ2 - PLANT N Set (%)";
@@ -375,9 +450,9 @@
             this.lblTP_LT_Ratio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.lblTP_LT_Ratio.Font = new System.Drawing.Font("Times New Roman", 36F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTP_LT_Ratio.ForeColor = System.Drawing.Color.Black;
-            this.lblTP_LT_Ratio.Location = new System.Drawing.Point(10, 112);
+            this.lblTP_LT_Ratio.Location = new System.Drawing.Point(10, 105);
             this.lblTP_LT_Ratio.Name = "lblTP_LT_Ratio";
-            this.lblTP_LT_Ratio.Size = new System.Drawing.Size(395, 63);
+            this.lblTP_LT_Ratio.Size = new System.Drawing.Size(395, 55);
             this.lblTP_LT_Ratio.TabIndex = 197;
             this.lblTP_LT_Ratio.Text = "RATIO: 0%";
             this.lblTP_LT_Ratio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -388,7 +463,7 @@
             this.lblDestimated2.BackColor = System.Drawing.Color.Black;
             this.lblDestimated2.Font = new System.Drawing.Font("Calibri", 33.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDestimated2.ForeColor = System.Drawing.Color.White;
-            this.lblDestimated2.Location = new System.Drawing.Point(10, 48);
+            this.lblDestimated2.Location = new System.Drawing.Point(10, 43);
             this.lblDestimated2.Name = "lblDestimated2";
             this.lblDestimated2.Size = new System.Drawing.Size(395, 61);
             this.lblDestimated2.TabIndex = 197;
@@ -397,7 +472,12 @@
             // groupBoxEx1
             // 
             this.groupBoxEx1.BackgroundPanelImage = null;
+            this.groupBoxEx1.Controls.Add(this.lblVJ2_WSTrip5);
+            this.groupBoxEx1.Controls.Add(this.lblVJ2_WSTrip4);
             this.groupBoxEx1.Controls.Add(this.btnE_VJ3VJ2_Time);
+            this.groupBoxEx1.Controls.Add(this.lblVJ2_WSTrip1);
+            this.groupBoxEx1.Controls.Add(this.lblVJ2_WSTrip3);
+            this.groupBoxEx1.Controls.Add(this.lblVJ2_WSTrip2);
             this.groupBoxEx1.DrawGroupBorder = true;
             this.groupBoxEx1.Font = new System.Drawing.Font("Times New Roman", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxEx1.ForeColor = System.Drawing.Color.White;
@@ -407,7 +487,7 @@
             this.groupBoxEx1.GroupPanelWith = 1F;
             this.groupBoxEx1.Location = new System.Drawing.Point(1165, 177);
             this.groupBoxEx1.Name = "groupBoxEx1";
-            this.groupBoxEx1.Size = new System.Drawing.Size(323, 183);
+            this.groupBoxEx1.Size = new System.Drawing.Size(323, 190);
             this.groupBoxEx1.TabIndex = 204;
             this.groupBoxEx1.TabStop = false;
             this.groupBoxEx1.Text = "PLANT N ARRIVAL";
@@ -415,21 +495,76 @@
             this.groupBoxEx1.TextBorderColor = System.Drawing.SystemColors.MenuHighlight;
             this.groupBoxEx1.TextBorderWith = 1F;
             // 
+            // lblVJ2_WSTrip5
+            // 
+            this.lblVJ2_WSTrip5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblVJ2_WSTrip5.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblVJ2_WSTrip5.ForeColor = System.Drawing.Color.White;
+            this.lblVJ2_WSTrip5.Location = new System.Drawing.Point(6, 159);
+            this.lblVJ2_WSTrip5.Name = "lblVJ2_WSTrip5";
+            this.lblVJ2_WSTrip5.Size = new System.Drawing.Size(155, 25);
+            this.lblVJ2_WSTrip5.TabIndex = 201;
+            this.lblVJ2_WSTrip5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblVJ2_WSTrip4
+            // 
+            this.lblVJ2_WSTrip4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblVJ2_WSTrip4.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblVJ2_WSTrip4.ForeColor = System.Drawing.Color.White;
+            this.lblVJ2_WSTrip4.Location = new System.Drawing.Point(6, 131);
+            this.lblVJ2_WSTrip4.Name = "lblVJ2_WSTrip4";
+            this.lblVJ2_WSTrip4.Size = new System.Drawing.Size(155, 25);
+            this.lblVJ2_WSTrip4.TabIndex = 201;
+            this.lblVJ2_WSTrip4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // btnE_VJ3VJ2_Time
             // 
             this.btnE_VJ3VJ2_Time.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnE_VJ3VJ2_Time.BackgroundImage = global::FORM.Properties.Resources.VJ_b;
+            this.btnE_VJ3VJ2_Time.BackgroundImage = global::FORM.Properties.Resources.VJ;
             this.btnE_VJ3VJ2_Time.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnE_VJ3VJ2_Time.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnE_VJ3VJ2_Time.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnE_VJ3VJ2_Time.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnE_VJ3VJ2_Time.Font = new System.Drawing.Font("DS-Digital", 40F, System.Drawing.FontStyle.Bold);
             this.btnE_VJ3VJ2_Time.ForeColor = System.Drawing.Color.Yellow;
-            this.btnE_VJ3VJ2_Time.Location = new System.Drawing.Point(9, 50);
+            this.btnE_VJ3VJ2_Time.Location = new System.Drawing.Point(167, 47);
             this.btnE_VJ3VJ2_Time.Name = "btnE_VJ3VJ2_Time";
-            this.btnE_VJ3VJ2_Time.Size = new System.Drawing.Size(308, 125);
+            this.btnE_VJ3VJ2_Time.Size = new System.Drawing.Size(150, 137);
             this.btnE_VJ3VJ2_Time.TabIndex = 197;
             this.btnE_VJ3VJ2_Time.UseVisualStyleBackColor = false;
+            // 
+            // lblVJ2_WSTrip1
+            // 
+            this.lblVJ2_WSTrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblVJ2_WSTrip1.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblVJ2_WSTrip1.ForeColor = System.Drawing.Color.White;
+            this.lblVJ2_WSTrip1.Location = new System.Drawing.Point(6, 47);
+            this.lblVJ2_WSTrip1.Name = "lblVJ2_WSTrip1";
+            this.lblVJ2_WSTrip1.Size = new System.Drawing.Size(155, 25);
+            this.lblVJ2_WSTrip1.TabIndex = 198;
+            this.lblVJ2_WSTrip1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblVJ2_WSTrip3
+            // 
+            this.lblVJ2_WSTrip3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblVJ2_WSTrip3.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblVJ2_WSTrip3.ForeColor = System.Drawing.Color.White;
+            this.lblVJ2_WSTrip3.Location = new System.Drawing.Point(6, 103);
+            this.lblVJ2_WSTrip3.Name = "lblVJ2_WSTrip3";
+            this.lblVJ2_WSTrip3.Size = new System.Drawing.Size(155, 25);
+            this.lblVJ2_WSTrip3.TabIndex = 200;
+            this.lblVJ2_WSTrip3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblVJ2_WSTrip2
+            // 
+            this.lblVJ2_WSTrip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblVJ2_WSTrip2.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblVJ2_WSTrip2.ForeColor = System.Drawing.Color.White;
+            this.lblVJ2_WSTrip2.Location = new System.Drawing.Point(6, 75);
+            this.lblVJ2_WSTrip2.Name = "lblVJ2_WSTrip2";
+            this.lblVJ2_WSTrip2.Size = new System.Drawing.Size(155, 25);
+            this.lblVJ2_WSTrip2.TabIndex = 199;
+            this.lblVJ2_WSTrip2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label24
             // 
@@ -800,7 +935,11 @@
             // grpVC
             // 
             this.grpVC.BackgroundPanelImage = null;
+            this.grpVC.Controls.Add(this.label26);
             this.grpVC.Controls.Add(this.btnE_VJ3VJ1_Time);
+            this.grpVC.Controls.Add(this.lblVJ3_WSTrip1);
+            this.grpVC.Controls.Add(this.label19);
+            this.grpVC.Controls.Add(this.label22);
             this.grpVC.DrawGroupBorder = true;
             this.grpVC.Font = new System.Drawing.Font("Times New Roman", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpVC.ForeColor = System.Drawing.Color.White;
@@ -818,21 +957,68 @@
             this.grpVC.TextBorderColor = System.Drawing.Color.MediumTurquoise;
             this.grpVC.TextBorderWith = 1F;
             // 
+            // label26
+            // 
+            this.label26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label26.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.label26.ForeColor = System.Drawing.Color.White;
+            this.label26.Location = new System.Drawing.Point(10, 134);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(155, 25);
+            this.label26.TabIndex = 201;
+            this.label26.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label26.Visible = false;
+            // 
             // btnE_VJ3VJ1_Time
             // 
             this.btnE_VJ3VJ1_Time.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnE_VJ3VJ1_Time.BackgroundImage = global::FORM.Properties.Resources.VJ_b;
+            this.btnE_VJ3VJ1_Time.BackgroundImage = global::FORM.Properties.Resources.VJ;
             this.btnE_VJ3VJ1_Time.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnE_VJ3VJ1_Time.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnE_VJ3VJ1_Time.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnE_VJ3VJ1_Time.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnE_VJ3VJ1_Time.Font = new System.Drawing.Font("DS-Digital", 40F, System.Drawing.FontStyle.Bold);
             this.btnE_VJ3VJ1_Time.ForeColor = System.Drawing.Color.Yellow;
-            this.btnE_VJ3VJ1_Time.Location = new System.Drawing.Point(9, 46);
+            this.btnE_VJ3VJ1_Time.Location = new System.Drawing.Point(167, 46);
             this.btnE_VJ3VJ1_Time.Name = "btnE_VJ3VJ1_Time";
-            this.btnE_VJ3VJ1_Time.Size = new System.Drawing.Size(308, 111);
+            this.btnE_VJ3VJ1_Time.Size = new System.Drawing.Size(150, 111);
             this.btnE_VJ3VJ1_Time.TabIndex = 197;
             this.btnE_VJ3VJ1_Time.UseVisualStyleBackColor = false;
+            // 
+            // lblVJ3_WSTrip1
+            // 
+            this.lblVJ3_WSTrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblVJ3_WSTrip1.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblVJ3_WSTrip1.ForeColor = System.Drawing.Color.White;
+            this.lblVJ3_WSTrip1.Location = new System.Drawing.Point(10, 49);
+            this.lblVJ3_WSTrip1.Name = "lblVJ3_WSTrip1";
+            this.lblVJ3_WSTrip1.Size = new System.Drawing.Size(155, 25);
+            this.lblVJ3_WSTrip1.TabIndex = 198;
+            this.lblVJ3_WSTrip1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label19
+            // 
+            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label19.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(10, 77);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(155, 25);
+            this.label19.TabIndex = 199;
+            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label19.Visible = false;
+            // 
+            // label22
+            // 
+            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.label22.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(10, 105);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(155, 25);
+            this.label22.TabIndex = 200;
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label22.Visible = false;
             // 
             // label3
             // 
@@ -870,6 +1056,10 @@
             // groupBoxEx2
             // 
             this.groupBoxEx2.BackgroundPanelImage = null;
+            this.groupBoxEx2.Controls.Add(this.lblVJ3trip4);
+            this.groupBoxEx2.Controls.Add(this.lblVJ3trip3);
+            this.groupBoxEx2.Controls.Add(this.lblVJ3trip2);
+            this.groupBoxEx2.Controls.Add(this.lblVJ3trip1);
             this.groupBoxEx2.Controls.Add(this.btnS_VJ3VJ1_Time);
             this.groupBoxEx2.DrawGroupBorder = true;
             this.groupBoxEx2.Font = new System.Drawing.Font("Times New Roman", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -888,10 +1078,63 @@
             this.groupBoxEx2.TextBorderColor = System.Drawing.Color.MediumTurquoise;
             this.groupBoxEx2.TextBorderWith = 1F;
             // 
+            // lblVJ3trip4
+            // 
+            this.lblVJ3trip4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblVJ3trip4.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblVJ3trip4.ForeColor = System.Drawing.Color.White;
+            this.lblVJ3trip4.Location = new System.Drawing.Point(161, 131);
+            this.lblVJ3trip4.Name = "lblVJ3trip4";
+            this.lblVJ3trip4.Size = new System.Drawing.Size(155, 25);
+            this.lblVJ3trip4.TabIndex = 201;
+            this.lblVJ3trip4.Tag = "4";
+            this.lblVJ3trip4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVJ3trip4.Visible = false;
+            // 
+            // lblVJ3trip3
+            // 
+            this.lblVJ3trip3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblVJ3trip3.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblVJ3trip3.ForeColor = System.Drawing.Color.White;
+            this.lblVJ3trip3.Location = new System.Drawing.Point(161, 102);
+            this.lblVJ3trip3.Name = "lblVJ3trip3";
+            this.lblVJ3trip3.Size = new System.Drawing.Size(155, 25);
+            this.lblVJ3trip3.TabIndex = 200;
+            this.lblVJ3trip3.Tag = "3";
+            this.lblVJ3trip3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVJ3trip3.Visible = false;
+            // 
+            // lblVJ3trip2
+            // 
+            this.lblVJ3trip2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblVJ3trip2.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblVJ3trip2.ForeColor = System.Drawing.Color.White;
+            this.lblVJ3trip2.Location = new System.Drawing.Point(161, 74);
+            this.lblVJ3trip2.Name = "lblVJ3trip2";
+            this.lblVJ3trip2.Size = new System.Drawing.Size(155, 25);
+            this.lblVJ3trip2.TabIndex = 199;
+            this.lblVJ3trip2.Tag = "2";
+            this.lblVJ3trip2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVJ3trip2.Visible = false;
+            // 
+            // lblVJ3trip1
+            // 
+            this.lblVJ3trip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.lblVJ3trip1.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
+            this.lblVJ3trip1.ForeColor = System.Drawing.Color.White;
+            this.lblVJ3trip1.Location = new System.Drawing.Point(161, 46);
+            this.lblVJ3trip1.Name = "lblVJ3trip1";
+            this.lblVJ3trip1.Size = new System.Drawing.Size(155, 25);
+            this.lblVJ3trip1.TabIndex = 198;
+            this.lblVJ3trip1.Tag = "1";
+            this.lblVJ3trip1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVJ3trip1.Click += new System.EventHandler(this.lblVJ3trip1_Click);
+            this.lblVJ3trip1.DoubleClick += new System.EventHandler(this.lblVJ3trip1_DoubleClick);
+            // 
             // btnS_VJ3VJ1_Time
             // 
             this.btnS_VJ3VJ1_Time.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnS_VJ3VJ1_Time.BackgroundImage = global::FORM.Properties.Resources.vj3_b;
+            this.btnS_VJ3VJ1_Time.BackgroundImage = global::FORM.Properties.Resources.VJ3;
             this.btnS_VJ3VJ1_Time.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnS_VJ3VJ1_Time.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
             this.btnS_VJ3VJ1_Time.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
@@ -900,9 +1143,10 @@
             this.btnS_VJ3VJ1_Time.ForeColor = System.Drawing.Color.Yellow;
             this.btnS_VJ3VJ1_Time.Location = new System.Drawing.Point(7, 46);
             this.btnS_VJ3VJ1_Time.Name = "btnS_VJ3VJ1_Time";
-            this.btnS_VJ3VJ1_Time.Size = new System.Drawing.Size(308, 111);
+            this.btnS_VJ3VJ1_Time.Size = new System.Drawing.Size(149, 111);
             this.btnS_VJ3VJ1_Time.TabIndex = 197;
             this.btnS_VJ3VJ1_Time.UseVisualStyleBackColor = false;
+            this.btnS_VJ3VJ1_Time.Click += new System.EventHandler(this.btnS_VJ3VJ1_Time_Click);
             // 
             // shapeContainer1
             // 
@@ -1076,108 +1320,14 @@
             this.lineShape1.Y1 = 125;
             this.lineShape1.Y2 = 125;
             // 
-            // tblGrid
-            // 
-            this.tblGrid.ColumnCount = 1;
-            this.tblGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblGrid.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblGrid.Controls.Add(this.pn_VJ3_WS_Grid, 0, 1);
-            this.tblGrid.Controls.Add(this.pnVJ3_WS_Grid, 0, 0);
-            this.tblGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblGrid.Location = new System.Drawing.Point(0, 0);
-            this.tblGrid.Name = "tblGrid";
-            this.tblGrid.RowCount = 2;
-            this.tblGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblGrid.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tblGrid.Size = new System.Drawing.Size(1916, 569);
-            this.tblGrid.TabIndex = 0;
-            // 
-            // pn_VJ3_WS_Grid
-            // 
-            this.pn_VJ3_WS_Grid.Controls.Add(this.grdBase1);
-            this.pn_VJ3_WS_Grid.Controls.Add(this.lblTitleGrid2);
-            this.pn_VJ3_WS_Grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pn_VJ3_WS_Grid.Location = new System.Drawing.Point(3, 287);
-            this.pn_VJ3_WS_Grid.Name = "pn_VJ3_WS_Grid";
-            this.pn_VJ3_WS_Grid.Size = new System.Drawing.Size(1910, 279);
-            this.pn_VJ3_WS_Grid.TabIndex = 1;
-            // 
-            // grdBase1
-            // 
-            this.grdBase1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdBase1.Location = new System.Drawing.Point(0, 33);
-            this.grdBase1.MainView = this.gvwBase1;
-            this.grdBase1.Name = "grdBase1";
-            this.grdBase1.Size = new System.Drawing.Size(1910, 246);
-            this.grdBase1.TabIndex = 185;
-            this.grdBase1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvwBase1,
-            this.gridView3});
-            // 
-            // gvwBase1
-            // 
-            this.gvwBase1.Appearance.HeaderPanel.Font = new System.Drawing.Font("Calibri", 20F, System.Drawing.FontStyle.Bold);
-            this.gvwBase1.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gvwBase1.Appearance.Row.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gvwBase1.Appearance.Row.Options.UseFont = true;
-            this.gvwBase1.ColumnPanelRowHeight = 40;
-            this.gvwBase1.GridControl = this.grdBase1;
-            this.gvwBase1.Name = "gvwBase1";
-            this.gvwBase1.OptionsBehavior.AllowSortAnimation = DevExpress.Utils.DefaultBoolean.True;
-            this.gvwBase1.OptionsBehavior.Editable = false;
-            this.gvwBase1.OptionsCustomization.AllowColumnMoving = false;
-            this.gvwBase1.OptionsCustomization.AllowFilter = false;
-            this.gvwBase1.OptionsCustomization.AllowGroup = false;
-            this.gvwBase1.OptionsCustomization.AllowSort = false;
-            this.gvwBase1.OptionsView.EnableAppearanceEvenRow = true;
-            this.gvwBase1.OptionsView.ShowGroupPanel = false;
-            this.gvwBase1.OptionsView.ShowIndicator = false;
-            this.gvwBase1.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
-            this.gvwBase1.PaintStyleName = "Flat";
-            this.gvwBase1.RowHeight = 35;
-            this.gvwBase1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gvwBase1_RowCellClick);
-            this.gvwBase1.CellMerge += new DevExpress.XtraGrid.Views.Grid.CellMergeEventHandler(this.gvwBase1_CellMerge);
-            this.gvwBase1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gvwBase1_RowCellStyle);
-            // 
-            // gridView3
-            // 
-            this.gridView3.GridControl = this.grdBase1;
-            this.gridView3.Name = "gridView3";
-            // 
-            // lblTitleGrid2
-            // 
-            this.lblTitleGrid2.Appearance.BackColor = System.Drawing.Color.Gray;
-            this.lblTitleGrid2.Appearance.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitleGrid2.Appearance.ForeColor = System.Drawing.Color.Yellow;
-            this.lblTitleGrid2.Appearance.Options.UseBackColor = true;
-            this.lblTitleGrid2.Appearance.Options.UseFont = true;
-            this.lblTitleGrid2.Appearance.Options.UseForeColor = true;
-            this.lblTitleGrid2.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblTitleGrid2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTitleGrid2.Location = new System.Drawing.Point(0, 0);
-            this.lblTitleGrid2.Name = "lblTitleGrid2";
-            this.lblTitleGrid2.Size = new System.Drawing.Size(1910, 33);
-            this.lblTitleGrid2.TabIndex = 0;
-            this.lblTitleGrid2.Text = "VJ2 Departure -> Plant N Arriaval";
-            // 
-            // pnVJ3_WS_Grid
-            // 
-            this.pnVJ3_WS_Grid.Controls.Add(this.grdBase);
-            this.pnVJ3_WS_Grid.Controls.Add(this.lblTitleGrid1);
-            this.pnVJ3_WS_Grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnVJ3_WS_Grid.Location = new System.Drawing.Point(3, 3);
-            this.pnVJ3_WS_Grid.Name = "pnVJ3_WS_Grid";
-            this.pnVJ3_WS_Grid.Size = new System.Drawing.Size(1910, 278);
-            this.pnVJ3_WS_Grid.TabIndex = 0;
-            // 
             // grdBase
             // 
             this.grdBase.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdBase.Location = new System.Drawing.Point(0, 33);
+            this.grdBase.Location = new System.Drawing.Point(0, 0);
             this.grdBase.MainView = this.gvwBase;
             this.grdBase.Name = "grdBase";
-            this.grdBase.Size = new System.Drawing.Size(1910, 245);
-            this.grdBase.TabIndex = 185;
+            this.grdBase.Size = new System.Drawing.Size(1916, 569);
+            this.grdBase.TabIndex = 186;
             this.grdBase.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvwBase,
             this.gridView1});
@@ -1203,30 +1353,14 @@
             this.gvwBase.OptionsView.WaitAnimationOptions = DevExpress.XtraEditors.WaitAnimationOptions.Indicator;
             this.gvwBase.PaintStyleName = "Flat";
             this.gvwBase.RowHeight = 35;
-            this.gvwBase.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gvwBase_RowCellClick_1);
-            this.gvwBase.CellMerge += new DevExpress.XtraGrid.Views.Grid.CellMergeEventHandler(this.gvwBase_CellMerge_1);
+            this.gvwBase.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gvwBase_RowCellClick);
+            this.gvwBase.CellMerge += new DevExpress.XtraGrid.Views.Grid.CellMergeEventHandler(this.gvwBase_CellMerge);
             this.gvwBase.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gvwBase_RowCellStyle);
             // 
             // gridView1
             // 
             this.gridView1.GridControl = this.grdBase;
             this.gridView1.Name = "gridView1";
-            // 
-            // lblTitleGrid1
-            // 
-            this.lblTitleGrid1.Appearance.BackColor = System.Drawing.Color.Gray;
-            this.lblTitleGrid1.Appearance.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitleGrid1.Appearance.ForeColor = System.Drawing.Color.Yellow;
-            this.lblTitleGrid1.Appearance.Options.UseBackColor = true;
-            this.lblTitleGrid1.Appearance.Options.UseFont = true;
-            this.lblTitleGrid1.Appearance.Options.UseForeColor = true;
-            this.lblTitleGrid1.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.None;
-            this.lblTitleGrid1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblTitleGrid1.Location = new System.Drawing.Point(0, 0);
-            this.lblTitleGrid1.Name = "lblTitleGrid1";
-            this.lblTitleGrid1.Size = new System.Drawing.Size(1910, 33);
-            this.lblTitleGrid1.TabIndex = 0;
-            this.lblTitleGrid1.Text = "VJ3 Departure -> Plant N Arriaval";
             // 
             // tmrDate
             // 
@@ -1294,12 +1428,6 @@
             this.groupBoxEx4.ResumeLayout(false);
             this.grpVC.ResumeLayout(false);
             this.groupBoxEx2.ResumeLayout(false);
-            this.tblGrid.ResumeLayout(false);
-            this.pn_VJ3_WS_Grid.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.grdBase1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvwBase1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView3)).EndInit();
-            this.pnVJ3_WS_Grid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdBase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwBase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
@@ -1385,16 +1513,26 @@
         private System.Windows.Forms.Button btnS_VJ3VJ1_Time;
         private System.Windows.Forms.Button btnS_VJ3VJ2_Time;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TableLayoutPanel tblGrid;
-        private System.Windows.Forms.Panel pn_VJ3_WS_Grid;
-        private DevExpress.XtraEditors.LabelControl lblTitleGrid2;
-        private DevExpress.XtraGrid.GridControl grdBase1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvwBase1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gridView3;
-        private System.Windows.Forms.Panel pnVJ3_WS_Grid;
-        private DevExpress.XtraEditors.LabelControl lblTitleGrid1;
+        private System.Windows.Forms.Label lblVJ3trip4;
+        private System.Windows.Forms.Label lblVJ3trip3;
+        private System.Windows.Forms.Label lblVJ3trip2;
+        private System.Windows.Forms.Label lblVJ3trip1;
+        private System.Windows.Forms.Label lblVJ2trip4;
+        private System.Windows.Forms.Label lblVJ2trip3;
+        private System.Windows.Forms.Label lblVJ2trip2;
+        private System.Windows.Forms.Label lblVJ2trip1;
+        private System.Windows.Forms.Label lblVJ2_WSTrip4;
+        private System.Windows.Forms.Label lblVJ2_WSTrip1;
+        private System.Windows.Forms.Label lblVJ2_WSTrip3;
+        private System.Windows.Forms.Label lblVJ2_WSTrip2;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label lblVJ3_WSTrip1;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label22;
         private DevExpress.XtraGrid.GridControl grdBase;
         private DevExpress.XtraGrid.Views.Grid.GridView gvwBase;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private System.Windows.Forms.Label lblVJ2trip5;
+        private System.Windows.Forms.Label lblVJ2_WSTrip5;
     }
 }

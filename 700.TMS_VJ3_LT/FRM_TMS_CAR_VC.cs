@@ -17,9 +17,9 @@ using System.Reflection;
 
 namespace FORM
 {
-    public partial class FRM_TMS_CAR : Form
+    public partial class FRM_TMS_CAR_VC : Form
     {
-        public FRM_TMS_CAR()
+        public FRM_TMS_CAR_VC()
         {
             InitializeComponent();
         }
@@ -530,6 +530,50 @@ namespace FORM
             {}
         }
 
+        private void Load_Data_Grid()
+        {
+            try
+            {
+                DataTable dt = _dtData.Select("OUT_QTY IS NOT NULL", "TRIP, MATERIAL_NAME").CopyToDataTable();
+                axGrid.MaxRows = 1;
+                axGrid.MaxRows = 100;
+                int iRow = 2;
+                for (int i = 0; i < dt.Rows.Count; i++)
+                {
+                    axGrid.SetText((int)gridColum.Trip, iRow, dt.Rows[i]["TRIP"].ToString());
+                    axGrid.SetText((int)gridColum.Start, iRow, dt.Rows[i]["LEAVE_LAMI"].ToString());
+                    axGrid.SetText((int)gridColum.Arrival, iRow, dt.Rows[i]["ARIVAL_TIME"].ToString());
+                    axGrid.SetText((int)gridColum.Line, iRow, dt.Rows[i]["LINE_NM"].ToString());
+                    axGrid.SetText((int)gridColum.Style_Cd, iRow, dt.Rows[i]["STYLE_CD"].ToString());
+                    axGrid.SetText((int)gridColum.Mat, iRow, dt.Rows[i]["MATERIAL_NAME"].ToString());
+                    axGrid.SetText((int)gridColum.Qty, iRow, dt.Rows[i]["OUT_QTY"].ToString());
+
+                    axGrid.Row = iRow;
+                    axGrid.Col = (int)gridColum.Status;
+                    axGrid.TypePictPicture = axGrid.LoadPicture(Application.StartupPath + "\\img" + "\\GreenStatus.jpg", FPUSpreadADO.PictureTypeConstants.PictureTypeJPEG);
+
+                    iRow++;
+                    //if (!_dtnTrip.ContainsKey(dt.Rows[i]["TRIP"].ToString()))
+                    //{
+                    //    _dtnTrip.Add(dt.Rows[i]["TRIP"].ToString(), "ORD" + dt.Rows[i]["TRIP"].ToString());
+                    //}
+                }
+                axGrid.MaxRows = iRow - 1;
+                //for (int i = 1; i <= 4; i++)
+                //{
+                //    axGrid.Col = i;
+                //    axGrid.ColMerge = FPUSpreadADO.MergeConstants.MergeAlways;
+                //}
+             //   axGrid.SetCellBorder((int)gridColum.Trip, 2, (int)gridColum.Trip, axGrid.MaxRows, FPUSpreadADO.CellBorderIndexConstants.CellBorderIndexLeft, 0, FPUSpreadADO.CellBorderStyleConstants.CellBorderStyleSolid);
+                
+                _maxRow = iRow - 1;
+            }
+            catch (Exception)
+            {
+            }
+            
+        }
+
         #endregion
 
         #region runTextModel
@@ -557,13 +601,6 @@ namespace FORM
         }
 
         #endregion runTextModel
-
-        private void lblTitle_Click(object sender, EventArgs e)
-        {
-
-        }
-
-    
 
         #endregion Function
 

@@ -45,7 +45,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MAIN\bin\Debug\COM.dll</HintPath>
     </Reference>
-    <Reference Include="ComVar, Version=1.0.6984.18247, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="ComVar, Version=1.0.7614.17426, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MAIN\bin\Debug\ComVar.dll</HintPath>
     </Reference>
@@ -165,6 +165,12 @@
     <Compile Include="FRM_TMS_DASH_V4.Designer.cs">
       <DependentUpon>FRM_TMS_DASH_V4.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRM_TMS_TRIP_LT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_TMS_TRIP_LT.designer.cs">
+      <DependentUpon>FRM_TMS_TRIP_LT.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRM_TMS_VJ3VJ2_WS.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -219,6 +225,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_TMS_DASH_V4.resx">
       <DependentUpon>FRM_TMS_DASH_V4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_TMS_TRIP_LT.resx">
+      <DependentUpon>FRM_TMS_TRIP_LT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_TMS_VJ3VJ2_WS.resx">
       <DependentUpon>FRM_TMS_VJ3VJ2_WS.cs</DependentUpon>
