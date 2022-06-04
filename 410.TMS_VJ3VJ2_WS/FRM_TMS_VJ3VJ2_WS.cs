@@ -721,12 +721,18 @@ namespace FORM
                 DataTable data_ratio = Select_Ora_Grid_Ratio(ARG_PLANT, "", ARG_PLANT);
                 lblTP_VC_Ratio.Text = "RATIO: 0%";
                 lblTP_LT_Ratio.Text = "RATIO: 0%";
-                if (data_ratio.Rows.Count > 1 && dt != null)
+                if (data_ratio.Rows.Count > 0 && dt != null)
                 {
-                    DataTable dt1 = data_ratio.Select("DIV = 'VJ3_WS'").CopyToDataTable();
-                    lblTP_VC_Ratio.Text = string.Concat("RATIO: ", dt1.Rows[0][1], "%");
-                    DataTable dt2 = data_ratio.Select("DIV = 'VJ2_WS'").CopyToDataTable();
-                    lblTP_LT_Ratio.Text = string.Concat("RATIO: ", dt2.Rows[0][1], "%");
+                    if (data_ratio.Select("DIV = 'VJ3_WS'").Count() > 0)
+                    {
+                        DataTable dt1 = data_ratio.Select("DIV = 'VJ3_WS'").CopyToDataTable();
+                        lblTP_VC_Ratio.Text = string.Concat("RATIO: ", dt1.Rows[0][1], "%");
+                    }
+                    if (data_ratio.Select("DIV = 'VJ2_WS'").Count() > 0)
+                    {
+                        DataTable dt2 = data_ratio.Select("DIV = 'VJ2_WS'").CopyToDataTable();
+                        lblTP_LT_Ratio.Text = string.Concat("RATIO: ", dt2.Rows[0][1], "%");
+                    }
                 }
                 splashScreenManager1.CloseWaitForm();
             }
