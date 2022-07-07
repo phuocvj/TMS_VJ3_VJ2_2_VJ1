@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Data.OracleClient;
+using System.Diagnostics;
+using System.Threading;
+using System.Runtime.InteropServices;
 
 namespace FORM
 {
@@ -18,6 +21,68 @@ namespace FORM
             tmrBanner.Stop();
             tmrBanner2.Stop();
         }
+
+        const short SWP_NOZORDER = 0X4;
+        const int SWP_SHOWWINDOW = 0x0040;
+        public struct WINDOWPLACEMENT
+        {
+
+            [Flags]
+            public enum Flags : uint
+            {
+                WPF_ASYNCWINDOWPLACEMENT = 0x0004,
+                WPF_RESTORETOMAXIMIZED = 0x0002,
+                WPF_SETMINPOSITION = 0x0001
+            }
+
+
+            /// <summary>
+            /// The length of the structure, in bytes. Before calling the GetWindowPlacement or SetWindowPlacement functions, set this member to sizeof(WINDOWPLACEMENT).
+            /// </summary>
+            public uint length;
+            /// <summary>
+            /// The flags that control the position of the minimized window and the method by which the window is restored. This member can be one or more of the following values.
+            /// </summary>
+            /// 
+            public Flags flags;//uint flags;
+            /// <summary>
+            /// The current show state of the window. This member can be one of the following values.
+            /// </summary>
+            public uint showCmd;
+            /// <summary>
+            /// The coordinates of the window's upper-left corner when the window is minimized.
+            /// </summary>
+            public POINT ptMinPosition;
+            /// <summary>
+            /// The coordinates of the window's upper-left corner when the window is maximized.
+            /// </summary>
+            public POINT ptMaxPosition;
+            /// <summary>
+            /// The window's coordinates when the window is in the restored position.
+            /// </summary>
+            public RECT rcNormalPosition;
+        }
+        public struct POINT
+        {
+            public int x;
+            public int y;
+        }
+        public struct RECT
+        {
+            public int Left;        // x position of upper-left corner
+            public int Top;         // y position of upper-left corner
+            public int Right;       // x position of lower-right corner
+            public int Bottom;      // y position of lower-right corner
+        }
+        [DllImport("user32.dll")]
+        public static extern IntPtr SetWindowPos(IntPtr hWnd, int hWndInsertAfter, int x, int Y, int cx, int cy, int wFlags);
+        [DllImport("user32.dll", EntryPoint = "FindWindow", SetLastError = true)]
+        static extern IntPtr FindWindow(IntPtr ZeroOnly, string lpWindowName);
+        [DllImport("user32.dll")]
+        public static extern bool GetWindowPlacement(IntPtr hWnd, out WINDOWPLACEMENT lpwndpl);
+
+        [DllImport("user32.dll")]
+        public static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
         #region Variable
         DataTable _dtXML = new DataTable();
         int cCount = 0;
@@ -479,12 +544,12 @@ namespace FORM
                         VJ2Trip = dtTripTime2.Rows[0]["ORD_TRIP"].ToString();
 
                         //format label trip (Current trip doi mau khac)
-                        lblVJ2trip1.BackColor = lblVJ2trip2.BackColor= lblVJ2trip3.BackColor= lblVJ2trip4.BackColor= lblVJ2trip5.BackColor= Color.FromArgb(128, 128, 255);
+                        lblVJ2trip1.BackColor = lblVJ2trip2.BackColor = lblVJ2trip3.BackColor = lblVJ2trip4.BackColor = lblVJ2trip5.BackColor = Color.FromArgb(128, 128, 255);
                         lblVJ2trip1.ForeColor = lblVJ2trip2.ForeColor = lblVJ2trip3.ForeColor = lblVJ2trip4.ForeColor = lblVJ2trip5.ForeColor = Color.White;
 
                         lblVJ2_WSTrip1.BackColor = lblVJ2_WSTrip2.BackColor = lblVJ2_WSTrip3.BackColor = lblVJ2_WSTrip4.BackColor = lblVJ2_WSTrip5.BackColor = Color.FromArgb(128, 128, 255);
                         lblVJ2_WSTrip1.ForeColor = lblVJ2_WSTrip2.ForeColor = lblVJ2_WSTrip3.ForeColor = lblVJ2_WSTrip4.ForeColor = lblVJ2_WSTrip5.ForeColor = Color.White;
-                        
+
 
                         switch (VJ2Trip)
                         {
@@ -539,7 +604,7 @@ namespace FORM
                     {
                         DataTable dt1 = dt.Select("DIV = 'VJ3_WS'").CopyToDataTable();
                         if (!string.IsNullOrEmpty(S_TIME))
-                            lblVJ3trip1.Text = string.Concat(S_TIME.Substring(0,5), "(", string.Format("{0:n0}", dt1.Rows[0]["TOTAL"]).Replace("PRS",""),")");
+                            lblVJ3trip1.Text = string.Concat(S_TIME.Substring(0, 5), "(", string.Format("{0:n0}", dt1.Rows[0]["TOTAL"]).Replace("PRS", ""), ")");
                         lb_total.Text = btnCar.Text = string.Format("{0:n0}", dt1.Rows[0]["TOTAL"]);
                         lb_DD.Text = dt1.Rows[0]["QTY_DD"].ToString();
                         lb_D1.Text = dt1.Rows[0]["QTY_D1"].ToString();
@@ -573,7 +638,7 @@ namespace FORM
                 btn.ForeColor = Color.Yellow;
             }
         }
-        private void BindingData2GridByDiv(string ARG_DATE, string ARG_PLANT,string DIV)
+        private void BindingData2GridByDiv(string ARG_DATE, string ARG_PLANT, string DIV)
         {
             try
             {
@@ -585,31 +650,31 @@ namespace FORM
 
                 if (dt != null && dt.Rows.Count > 0)
                 {
-                    if (dt.Select("DIV = '"+ DIV+"'").Count()>0)
+                    if (dt.Select("DIV = '" + DIV + "'").Count() > 0)
                     {
                         DataTable dtTemp = dt.Select("DIV = '" + DIV + "'").CopyToDataTable();
-                    grdBase.DataSource = dtTemp;
-                    gvwBase.Columns[0].AppearanceHeader.BackColor = Color.FromArgb(128, 128, 128);
-                    gvwBase.Columns[0].AppearanceHeader.BackColor2 = Color.FromArgb(128, 128, 128);
-                    gvwBase.Columns[0].AppearanceHeader.ForeColor = Color.White;
-                    gvwBase.Columns[3].AppearanceHeader.BackColor = Color.FromArgb(128, 128, 128);
-                    gvwBase.Columns[3].AppearanceHeader.BackColor2 = Color.FromArgb(128, 128, 128);
-                    gvwBase.Columns[3].AppearanceHeader.ForeColor = Color.White;
-                    gvwBase.Columns[4].AppearanceHeader.BackColor = Color.FromArgb(128, 128, 128);
-                    gvwBase.Columns[4].AppearanceHeader.BackColor2 = Color.FromArgb(128, 128, 128);
-                    gvwBase.Columns[4].AppearanceHeader.ForeColor = Color.White;
-                    gvwBase.Columns[5].AppearanceHeader.BackColor = Color.FromArgb(128, 128, 128);
-                    gvwBase.Columns[5].AppearanceHeader.BackColor2 = Color.FromArgb(128, 128, 128);
-                    gvwBase.Columns[5].AppearanceHeader.ForeColor = Color.White;
-                    gvwBase.Columns[6].AppearanceHeader.BackColor = Color.FromArgb(128, 128, 128);
-                    gvwBase.Columns[6].AppearanceHeader.BackColor2 = Color.FromArgb(128, 128, 128);
-                    gvwBase.Columns[6].AppearanceHeader.ForeColor = Color.White;
-                    gvwBase.Columns[7].AppearanceHeader.BackColor = Color.FromArgb(57, 190, 29);
-                    gvwBase.Columns[7].AppearanceHeader.BackColor2 = Color.FromArgb(57, 190, 29);
-                    gvwBase.Columns[7].AppearanceHeader.ForeColor = Color.White;
-                    gvwBase.Columns[8].AppearanceHeader.BackColor = Color.FromArgb(255, 127, 0);
-                    gvwBase.Columns[8].AppearanceHeader.BackColor2 = Color.FromArgb(255, 127, 0);
-                    gvwBase.Columns[8].AppearanceHeader.ForeColor = Color.White;
+                        grdBase.DataSource = dtTemp;
+                        gvwBase.Columns[0].AppearanceHeader.BackColor = Color.FromArgb(128, 128, 128);
+                        gvwBase.Columns[0].AppearanceHeader.BackColor2 = Color.FromArgb(128, 128, 128);
+                        gvwBase.Columns[0].AppearanceHeader.ForeColor = Color.White;
+                        gvwBase.Columns[3].AppearanceHeader.BackColor = Color.FromArgb(128, 128, 128);
+                        gvwBase.Columns[3].AppearanceHeader.BackColor2 = Color.FromArgb(128, 128, 128);
+                        gvwBase.Columns[3].AppearanceHeader.ForeColor = Color.White;
+                        gvwBase.Columns[4].AppearanceHeader.BackColor = Color.FromArgb(128, 128, 128);
+                        gvwBase.Columns[4].AppearanceHeader.BackColor2 = Color.FromArgb(128, 128, 128);
+                        gvwBase.Columns[4].AppearanceHeader.ForeColor = Color.White;
+                        gvwBase.Columns[5].AppearanceHeader.BackColor = Color.FromArgb(128, 128, 128);
+                        gvwBase.Columns[5].AppearanceHeader.BackColor2 = Color.FromArgb(128, 128, 128);
+                        gvwBase.Columns[5].AppearanceHeader.ForeColor = Color.White;
+                        gvwBase.Columns[6].AppearanceHeader.BackColor = Color.FromArgb(128, 128, 128);
+                        gvwBase.Columns[6].AppearanceHeader.BackColor2 = Color.FromArgb(128, 128, 128);
+                        gvwBase.Columns[6].AppearanceHeader.ForeColor = Color.White;
+                        gvwBase.Columns[7].AppearanceHeader.BackColor = Color.FromArgb(57, 190, 29);
+                        gvwBase.Columns[7].AppearanceHeader.BackColor2 = Color.FromArgb(57, 190, 29);
+                        gvwBase.Columns[7].AppearanceHeader.ForeColor = Color.White;
+                        gvwBase.Columns[8].AppearanceHeader.BackColor = Color.FromArgb(255, 127, 0);
+                        gvwBase.Columns[8].AppearanceHeader.BackColor2 = Color.FromArgb(255, 127, 0);
+                        gvwBase.Columns[8].AppearanceHeader.ForeColor = Color.White;
                         for (int i = 0; i < gvwBase.Columns.Count; i++)
                         {
                             gvwBase.Columns[i].AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -945,7 +1010,7 @@ namespace FORM
 
         private void gvwBase_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
-            
+
             if (e.Clicks < 2 || e.Column.FieldName != "SET")
                 return;
             FRM_TMS_CAR_LT_POP pop = new FRM_TMS_CAR_LT_POP();
@@ -1288,13 +1353,13 @@ namespace FORM
             this.Cursor = Cursors.WaitCursor;
             Label lblTrip = (Label)sender;
 
-                FRM_TMS_TRIP_LT pop = new FRM_TMS_TRIP_LT();
-                pop.v_date = DateTime.Now.ToString("yyyyMMdd");
-                pop.v_Trip = lblTrip.Tag.ToString();
+            FRM_TMS_TRIP_LT pop = new FRM_TMS_TRIP_LT();
+            pop.v_date = DateTime.Now.ToString("yyyyMMdd");
+            pop.v_Trip = lblTrip.Tag.ToString();
             pop.LINE = "099";
-                pop.v_p_location = "099";
-                pop.ShowDialog();
-                this.Cursor = Cursors.Default;
+            pop.v_p_location = "099";
+            pop.ShowDialog();
+            this.Cursor = Cursors.Default;
             this.Cursor = Cursors.Default;
         }
 
@@ -1305,7 +1370,7 @@ namespace FORM
 
             FRM_TMS_TRIP_LT pop = new FRM_TMS_TRIP_LT();
             pop.v_date = DateTime.Now.ToString("yyyyMMdd");
-            pop.v_Trip = lblTrip.Tag.ToString() ;
+            pop.v_Trip = lblTrip.Tag.ToString();
             pop.LINE = "099";
             pop.v_p_location = "VJ3_099";
             pop.ShowDialog();
@@ -1336,13 +1401,35 @@ namespace FORM
         {
 
         }
+        const int SW_MAXIMIZE = 1;
+        const int SW_RESTORE = 9;
+
+        public static void UnMinimize(IntPtr handle)
+        {
+            WINDOWPLACEMENT WinPlacement = new WINDOWPLACEMENT();
+            GetWindowPlacement(handle, out WinPlacement);
+            if (WinPlacement.flags.HasFlag(WINDOWPLACEMENT.Flags.WPF_RESTORETOMAXIMIZED))
+            {
+                ShowWindow(handle, SW_MAXIMIZE);
+            }
+            else
+            {
+                ShowWindow(handle, (int)SW_RESTORE);
+            }
+        }
 
         private void btnCar2_Click(object sender, EventArgs e)
-        {
-            DataTable dt = Select_Total_Trip().Tables[0];
-            FRM_WS_OUT_BY_TRIP frm = new FORM.FRM_WS_OUT_BY_TRIP();
-            frm.BindingData(dt);
-            frm.ShowDialog();
+        {//https://www.tracksolid.com/mainFrame
+            string site = "https://hk.tracksolidpro.com/consoleNew";
+            //DataTable dt = Select_Total_Trip().Tables[0];
+            //FRM_WS_OUT_BY_TRIP frm = new FORM.FRM_WS_OUT_BY_TRIP();
+            //frm.BindingData(dt);
+            //frm.ShowDialog();
+            Process a = Process.Start(site);
+
+            Thread.Sleep(5000);
+            UnMinimize(FindWindow(IntPtr.Zero, @"https://hk.tracksolidpro.com/consoleNew - Google Chrome"));
+            SetWindowPos(FindWindow(IntPtr.Zero, @"https://hk.tracksolidpro.com/consoleNew - Google Chrome"), 0, 500, 120, 1000, 800, int.Parse((SWP_NOZORDER | SWP_SHOWWINDOW).ToString()));
         }
 
         private void tmrBanner2_Tick(object sender, EventArgs e)
@@ -1364,7 +1451,7 @@ namespace FORM
         private void lblTP_LT_Ratio_Click(object sender, EventArgs e)
         {
             this.Cursor = Cursors.WaitCursor;
-           
+
             ComVar.Var._Value = "phuocxechay";
             ComVar.Var.callForm = "701";
             this.Cursor = Cursors.Default;
