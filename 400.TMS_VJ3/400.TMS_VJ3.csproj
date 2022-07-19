@@ -105,14 +105,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MAIN\bin\Debug\DevExpress.XtraPrinting.v17.1.dll</HintPath>
     </Reference>
-    <Reference Include="Interop.FPSpreadADO">
-      <HintPath>..\MAIN\bin\Debug\Interop.FPSpreadADO.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="Interop.FPUSpreadADO">
-      <HintPath>..\MAIN\bin\Debug\Interop.FPUSpreadADO.dll</HintPath>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MAIN\bin\Debug\Microsoft.VisualBasic.PowerPacks.Vs.dll</HintPath>
@@ -121,14 +113,6 @@
       <SpecificVersion>False</SpecificVersion>
       <EmbedInteropTypes>True</EmbedInteropTypes>
       <HintPath>C:\Windows\assembly\GAC\MSDATASRC\7.0.3300.0__b03f5f7f11d50a3a\msdatasrc.dll</HintPath>
-    </Reference>
-    <Reference Include="netchartdir_cp, Version=5.1.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MAIN\bin\Debug\netchartdir_cp.dll</HintPath>
-    </Reference>
-    <Reference Include="ShapeControl, Version=1.0.6374.27716, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MAIN\bin\Debug\ShapeControl.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -181,6 +165,12 @@
     <Compile Include="FRM_TMS_DASH_V4.Designer.cs">
       <DependentUpon>FRM_TMS_DASH_V4.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRM_TMS_VJ3_old_20220719.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_TMS_VJ3_old_20220719.Designer.cs">
+      <DependentUpon>FRM_TMS_VJ3_old_20220719.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRM_TMS_VJ3.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,6 +219,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_TMS_DASH_V4.resx">
       <DependentUpon>FRM_TMS_DASH_V4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_TMS_VJ3_old_20220719.resx">
+      <DependentUpon>FRM_TMS_VJ3_old_20220719.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_TMS_VJ3.resx">
       <DependentUpon>FRM_TMS_VJ3.cs</DependentUpon>
@@ -305,6 +298,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\vj2_b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\car2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
