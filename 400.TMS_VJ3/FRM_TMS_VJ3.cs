@@ -225,7 +225,7 @@ namespace FORM
                         else
                         {
                             lblTimeLapseVJ3_VJ1.Text = "Arrival Already!";
-                            btnCar.Location = new Point(Car2_XEnd, Car2_Yoriginal);
+                            btnCar.Location = new Point(Car1_XEnd, Car1_Yoriginal);
                             lblBT_Current_Qty.Text = "";
                         }
                     }
@@ -334,6 +334,24 @@ namespace FORM
             lb_D2_2.Text = "";
             lb_D3_2.Text = "";
         }
+
+        private void gvwUpperFS_Set_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
+        {
+            try
+            {
+                string ItemClassVal = gvwUpperFS_Set.GetRowCellValue(e.RowHandle, gvwUpperFS_Set.Columns["ITEM_CLASS"]).ToString();
+                if (e.Column.FieldName.Equals("ITEM_CLASS") && ItemClassVal.Equals("Upper Inventory"))
+                {
+                    e.Appearance.BackColor = Color.FromArgb(15, 238, 242);
+                    e.Appearance.ForeColor = Color.Black;
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
         private void BindingUpperOutgoingGrid()
         {
             try

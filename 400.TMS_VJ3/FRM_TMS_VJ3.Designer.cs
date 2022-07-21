@@ -1872,6 +1872,7 @@ namespace FORM
             this.gvwUpperFS_Set.OptionsView.ShowGroupPanel = false;
             this.gvwUpperFS_Set.OptionsView.ShowIndicator = false;
             this.gvwUpperFS_Set.RowHeight = 30;
+            this.gvwUpperFS_Set.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gvwUpperFS_Set_RowCellStyle);
             // 
             // gridColumn21
             // 

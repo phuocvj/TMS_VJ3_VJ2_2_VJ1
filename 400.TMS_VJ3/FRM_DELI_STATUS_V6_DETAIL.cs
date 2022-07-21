@@ -264,7 +264,7 @@ namespace FORM
                             planQty += Convert.ToInt32(dr["PLAN_QTY"]);
                         }
                         lblShortage_Total.Text = string.Format("{0:n0}", shrQty);
-                        lblPlan_Total.Text = string.Format("{0:n0}", ds.Tables[3].Rows[0]["TOTAL_QTY"]);
+                        lblPlan_Total.Text = string.Format("{0:n0}", ds.Tables[2].Rows[0]["TOTAL_QTY"]);
                     }
                     chartShortage.DataSource = dt;
                     chartShortage.Series[0].ArgumentDataMember = "LABEL_YMD";
