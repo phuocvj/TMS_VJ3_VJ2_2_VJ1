@@ -386,6 +386,15 @@ namespace FORM
         {
             if (this.Visible)
             {
+                switch (ComVar.Var._strValue1)
+                {
+                    case "2110":
+                        lblTitle.Text = "Upper VJ3 (Tân Phú) - VJ1 (Vĩnh Cửu) Delivery Detail";
+                        break;
+                    case "2120":
+                        lblTitle.Text = "Upper VJ3 (Tân Phú) - VJ2 (Long Thành) Delivery Detail";
+                        break;
+                }
                 lblDate.Text = string.Format(DateTime.Now.ToString("yyyy-MM-dd\nHH:mm:ss")); //Gán dữ liệu giờ cho label ngày giờ
                 cCount = 60;
                 tmrDate.Start();

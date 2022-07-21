@@ -31,6 +31,8 @@ namespace FORM
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_TMS_VJ3));
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             this.tblMain = new System.Windows.Forms.TableLayoutPanel();
             this.pnHeader = new System.Windows.Forms.Panel();
             this.lblVersion = new System.Windows.Forms.Label();
@@ -137,7 +139,20 @@ namespace FORM
             this.ITEMS = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SET_RATIO = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.tmrCarRun = new System.Windows.Forms.Timer(this.components);
+            this.flyoutPanel1 = new DevExpress.Utils.FlyoutPanel();
+            this.flyoutPanelControl1 = new DevExpress.Utils.FlyoutPanelControl();
+            this.grdUpperFS_Set = new DevExpress.XtraGrid.GridControl();
+            this.gvwUpperFS_Set = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn21 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn22 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn23 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn24 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn25 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn26 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn27 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn28 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tblMain.SuspendLayout();
             this.pnHeader.SuspendLayout();
             this.pnInfomation.SuspendLayout();
@@ -166,6 +181,13 @@ namespace FORM
             this.tabNavigationPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdUpperFS_VJ1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwUpperFSVJ1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flyoutPanel1)).BeginInit();
+            this.flyoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelControl1)).BeginInit();
+            this.flyoutPanelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdUpperFS_Set)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvwUpperFS_Set)).BeginInit();
             this.SuspendLayout();
             // 
             // tblMain
@@ -856,6 +878,7 @@ namespace FORM
             this.btnVJ3VJ2Set.TabIndex = 201;
             this.btnVJ3VJ2Set.Text = "Set: 0%";
             this.btnVJ3VJ2Set.UseVisualStyleBackColor = false;
+            this.btnVJ3VJ2Set.Click += new System.EventHandler(this.btnVJ3VJ2Set_Click);
             // 
             // label20
             // 
@@ -961,6 +984,7 @@ namespace FORM
             this.btnVJ3VJ1Set.TabIndex = 200;
             this.btnVJ3VJ1Set.Text = "Set: 0%";
             this.btnVJ3VJ1Set.UseVisualStyleBackColor = false;
+            this.btnVJ3VJ1Set.Click += new System.EventHandler(this.btnVJ3VJ1Set_Click);
             // 
             // lblVJ3_VJ1_ARR_Trip1
             // 
@@ -1208,7 +1232,8 @@ namespace FORM
             this.tabNavigationPage5.Caption = "Upper & Finish Sole Set";
             this.tabNavigationPage5.Controls.Add(this.grdUpperFSVJ2);
             this.tabNavigationPage5.Name = "tabNavigationPage5";
-            this.tabNavigationPage5.Size = new System.Drawing.Size(933, 636);
+            this.tabNavigationPage5.PageVisible = false;
+            this.tabNavigationPage5.Size = new System.Drawing.Size(951, 696);
             // 
             // grdUpperFSVJ2
             // 
@@ -1217,7 +1242,7 @@ namespace FORM
             this.grdUpperFSVJ2.Location = new System.Drawing.Point(0, 0);
             this.grdUpperFSVJ2.MainView = this.gvwUpperFSVJ2;
             this.grdUpperFSVJ2.Name = "grdUpperFSVJ2";
-            this.grdUpperFSVJ2.Size = new System.Drawing.Size(933, 636);
+            this.grdUpperFSVJ2.Size = new System.Drawing.Size(951, 696);
             this.grdUpperFSVJ2.TabIndex = 2;
             this.grdUpperFSVJ2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvwUpperFSVJ2});
@@ -1564,7 +1589,8 @@ namespace FORM
             this.tabNavigationPage2.Caption = "Upper & Finish Sole Set";
             this.tabNavigationPage2.Controls.Add(this.grdUpperFS_VJ1);
             this.tabNavigationPage2.Name = "tabNavigationPage2";
-            this.tabNavigationPage2.Size = new System.Drawing.Size(933, 636);
+            this.tabNavigationPage2.PageVisible = false;
+            this.tabNavigationPage2.Size = new System.Drawing.Size(951, 696);
             // 
             // grdUpperFS_VJ1
             // 
@@ -1573,10 +1599,11 @@ namespace FORM
             this.grdUpperFS_VJ1.Location = new System.Drawing.Point(0, 0);
             this.grdUpperFS_VJ1.MainView = this.gvwUpperFSVJ1;
             this.grdUpperFS_VJ1.Name = "grdUpperFS_VJ1";
-            this.grdUpperFS_VJ1.Size = new System.Drawing.Size(933, 636);
+            this.grdUpperFS_VJ1.Size = new System.Drawing.Size(951, 696);
             this.grdUpperFS_VJ1.TabIndex = 1;
             this.grdUpperFS_VJ1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvwUpperFSVJ1});
+            this.gvwUpperFSVJ1,
+            this.gridView1});
             // 
             // gvwUpperFSVJ1
             // 
@@ -1735,18 +1762,246 @@ namespace FORM
             this.SET_RATIO.VisibleIndex = 5;
             this.SET_RATIO.Width = 103;
             // 
+            // gridView1
+            // 
+            this.gridView1.GridControl = this.grdUpperFS_VJ1;
+            this.gridView1.Name = "gridView1";
+            // 
             // tmrCarRun
             // 
             this.tmrCarRun.Enabled = true;
             this.tmrCarRun.Interval = 1000;
             this.tmrCarRun.Tick += new System.EventHandler(this.tmrCarRun_Tick);
             // 
+            // flyoutPanel1
+            // 
+            this.flyoutPanel1.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.flyoutPanel1.Appearance.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flyoutPanel1.Appearance.Options.UseBackColor = true;
+            this.flyoutPanel1.Appearance.Options.UseFont = true;
+            this.flyoutPanel1.Controls.Add(this.flyoutPanelControl1);
+            this.flyoutPanel1.Location = new System.Drawing.Point(345, 276);
+            this.flyoutPanel1.LookAndFeel.SkinName = "Office 2013";
+            this.flyoutPanel1.Name = "flyoutPanel1";
+            this.flyoutPanel1.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.Manual;
+            this.flyoutPanel1.Options.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Fade;
+            this.flyoutPanel1.Options.CloseOnOuterClick = true;
+            this.flyoutPanel1.Options.Location = new System.Drawing.Point(300, 200);
+            this.flyoutPanel1.OptionsBeakPanel.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Slide;
+            this.flyoutPanel1.OptionsBeakPanel.BackColor = System.Drawing.SystemColors.Highlight;
+            this.flyoutPanel1.OptionsBeakPanel.BeakLocation = DevExpress.Utils.BeakPanelBeakLocation.Bottom;
+            this.flyoutPanel1.OptionsBeakPanel.BorderColor = System.Drawing.Color.Blue;
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Hovered.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Hovered.Options.UseFont = true;
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Hovered.Options.UseForeColor = true;
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Normal.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Normal.ForeColor = System.Drawing.Color.White;
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Normal.Options.UseFont = true;
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Normal.Options.UseForeColor = true;
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Pressed.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Pressed.ForeColor = System.Drawing.Color.Blue;
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
+            this.flyoutPanel1.OptionsButtonPanel.ButtonPanelContentAlignment = System.Drawing.ContentAlignment.BottomRight;
+            this.flyoutPanel1.OptionsButtonPanel.ButtonPanelHeight = 40;
+            this.flyoutPanel1.OptionsButtonPanel.ButtonPanelLocation = DevExpress.Utils.FlyoutPanelButtonPanelLocation.Top;
+            buttonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions1.Image")));
+            this.flyoutPanel1.OptionsButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
+            new DevExpress.Utils.PeekFormButton("Close", true, buttonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, "close", -1, false),
+            new DevExpress.Utils.PeekFormButton("Label", true, buttonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, "--", -1, true)});
+            this.flyoutPanel1.OptionsButtonPanel.ShowButtonPanel = true;
+            this.flyoutPanel1.OwnerControl = this;
+            this.flyoutPanel1.Padding = new System.Windows.Forms.Padding(0, 40, 0, 0);
+            this.flyoutPanel1.Size = new System.Drawing.Size(1230, 529);
+            this.flyoutPanel1.TabIndex = 231;
+            this.flyoutPanel1.ButtonClick += new DevExpress.Utils.FlyoutPanelButtonClickEventHandler(this.flyoutPanel1_ButtonClick);
+            // 
+            // flyoutPanelControl1
+            // 
+            this.flyoutPanelControl1.Controls.Add(this.grdUpperFS_Set);
+            this.flyoutPanelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flyoutPanelControl1.FlyoutPanel = this.flyoutPanel1;
+            this.flyoutPanelControl1.Location = new System.Drawing.Point(0, 40);
+            this.flyoutPanelControl1.Name = "flyoutPanelControl1";
+            this.flyoutPanelControl1.Size = new System.Drawing.Size(1230, 489);
+            this.flyoutPanelControl1.TabIndex = 0;
+            // 
+            // grdUpperFS_Set
+            // 
+            this.grdUpperFS_Set.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grdUpperFS_Set.Font = new System.Drawing.Font("Calibri", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdUpperFS_Set.Location = new System.Drawing.Point(2, 2);
+            this.grdUpperFS_Set.MainView = this.gvwUpperFS_Set;
+            this.grdUpperFS_Set.Name = "grdUpperFS_Set";
+            this.grdUpperFS_Set.Size = new System.Drawing.Size(1226, 485);
+            this.grdUpperFS_Set.TabIndex = 2;
+            this.grdUpperFS_Set.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvwUpperFS_Set});
+            // 
+            // gvwUpperFS_Set
+            // 
+            this.gvwUpperFS_Set.Appearance.FooterPanel.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
+            this.gvwUpperFS_Set.Appearance.FooterPanel.ForeColor = System.Drawing.Color.Blue;
+            this.gvwUpperFS_Set.Appearance.FooterPanel.Options.UseFont = true;
+            this.gvwUpperFS_Set.Appearance.FooterPanel.Options.UseForeColor = true;
+            this.gvwUpperFS_Set.Appearance.Row.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gvwUpperFS_Set.Appearance.Row.Options.UseFont = true;
+            this.gvwUpperFS_Set.ColumnPanelRowHeight = 35;
+            this.gvwUpperFS_Set.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn21,
+            this.gridColumn22,
+            this.gridColumn23,
+            this.gridColumn24,
+            this.gridColumn25,
+            this.gridColumn26,
+            this.gridColumn27,
+            this.gridColumn28});
+            this.gvwUpperFS_Set.GridControl = this.grdUpperFS_Set;
+            this.gvwUpperFS_Set.Name = "gvwUpperFS_Set";
+            this.gvwUpperFS_Set.OptionsBehavior.AllowPixelScrolling = DevExpress.Utils.DefaultBoolean.True;
+            this.gvwUpperFS_Set.OptionsBehavior.AllowSortAnimation = DevExpress.Utils.DefaultBoolean.True;
+            this.gvwUpperFS_Set.OptionsBehavior.Editable = false;
+            this.gvwUpperFS_Set.OptionsBehavior.ReadOnly = true;
+            this.gvwUpperFS_Set.OptionsCustomization.AllowColumnMoving = false;
+            this.gvwUpperFS_Set.OptionsCustomization.AllowFilter = false;
+            this.gvwUpperFS_Set.OptionsCustomization.AllowGroup = false;
+            this.gvwUpperFS_Set.OptionsCustomization.AllowSort = false;
+            this.gvwUpperFS_Set.OptionsDetail.EnableMasterViewMode = false;
+            this.gvwUpperFS_Set.OptionsView.AllowCellMerge = true;
+            this.gvwUpperFS_Set.OptionsView.ShowGroupPanel = false;
+            this.gvwUpperFS_Set.OptionsView.ShowIndicator = false;
+            this.gvwUpperFS_Set.RowHeight = 30;
+            // 
+            // gridColumn21
+            // 
+            this.gridColumn21.Caption = "FA_WC_CD";
+            this.gridColumn21.FieldName = "FA_WC_CD";
+            this.gridColumn21.Name = "gridColumn21";
+            // 
+            // gridColumn22
+            // 
+            this.gridColumn22.Caption = "ERP_FA_WC_CD";
+            this.gridColumn22.FieldName = "ERP_FA_WC_CD";
+            this.gridColumn22.Name = "gridColumn22";
+            // 
+            // gridColumn23
+            // 
+            this.gridColumn23.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn23.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn23.AppearanceHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn23.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn23.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn23.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn23.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn23.Caption = "Plant";
+            this.gridColumn23.FieldName = "PLANT_NM";
+            this.gridColumn23.Name = "gridColumn23";
+            this.gridColumn23.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn23.Visible = true;
+            this.gridColumn23.VisibleIndex = 0;
+            this.gridColumn23.Width = 261;
+            // 
+            // gridColumn24
+            // 
+            this.gridColumn24.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn24.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.gridColumn24.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn24.AppearanceHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn24.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn24.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn24.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn24.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn24.Caption = "Style Name";
+            this.gridColumn24.FieldName = "STYLE_NAME";
+            this.gridColumn24.Name = "gridColumn24";
+            this.gridColumn24.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn24.Visible = true;
+            this.gridColumn24.VisibleIndex = 1;
+            this.gridColumn24.Width = 322;
+            // 
+            // gridColumn25
+            // 
+            this.gridColumn25.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn25.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn25.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn25.AppearanceHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn25.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn25.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn25.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn25.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn25.Caption = "Style Code";
+            this.gridColumn25.FieldName = "STYLE_CD";
+            this.gridColumn25.Name = "gridColumn25";
+            this.gridColumn25.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn25.Visible = true;
+            this.gridColumn25.VisibleIndex = 2;
+            this.gridColumn25.Width = 183;
+            // 
+            // gridColumn26
+            // 
+            this.gridColumn26.AppearanceHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumn26.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn26.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn26.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn26.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn26.Caption = "Items";
+            this.gridColumn26.FieldName = "ITEM_CLASS";
+            this.gridColumn26.Name = "gridColumn26";
+            this.gridColumn26.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn26.Visible = true;
+            this.gridColumn26.VisibleIndex = 3;
+            this.gridColumn26.Width = 203;
+            // 
+            // gridColumn27
+            // 
+            this.gridColumn27.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn27.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.gridColumn27.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn27.AppearanceHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn27.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn27.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn27.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn27.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn27.Caption = "Quantity (Prs)";
+            this.gridColumn27.DisplayFormat.FormatString = "{0:n0}";
+            this.gridColumn27.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn27.FieldName = "QTY";
+            this.gridColumn27.Name = "gridColumn27";
+            this.gridColumn27.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn27.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "QTY", "Total: {0:n0} Prs")});
+            this.gridColumn27.Visible = true;
+            this.gridColumn27.VisibleIndex = 4;
+            this.gridColumn27.Width = 140;
+            // 
+            // gridColumn28
+            // 
+            this.gridColumn28.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn28.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.gridColumn28.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn28.AppearanceHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumn28.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.gridColumn28.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn28.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn28.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn28.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn28.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn28.Caption = "Set Ratio";
+            this.gridColumn28.DisplayFormat.FormatString = "{0:n1}";
+            this.gridColumn28.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn28.FieldName = "SET_RATIO";
+            this.gridColumn28.Name = "gridColumn28";
+            this.gridColumn28.Visible = true;
+            this.gridColumn28.VisibleIndex = 5;
+            this.gridColumn28.Width = 115;
+            // 
             // FRM_TMS_VJ3
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
+            this.Controls.Add(this.flyoutPanel1);
             this.Controls.Add(this.tblMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FRM_TMS_VJ3";
@@ -1784,6 +2039,13 @@ namespace FORM
             this.tabNavigationPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.grdUpperFS_VJ1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwUpperFSVJ1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flyoutPanel1)).EndInit();
+            this.flyoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelControl1)).EndInit();
+            this.flyoutPanelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdUpperFS_Set)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvwUpperFS_Set)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1846,28 +2108,9 @@ namespace FORM
         private System.Windows.Forms.TableLayoutPanel tblGrid;
         private System.Windows.Forms.Panel pnRight;
         private System.Windows.Forms.Panel pnLeft;
-        private DevExpress.XtraBars.Navigation.TabPane tabPane1;
-        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage1;
-        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage2;
         private DevExpress.XtraBars.Navigation.TabPane tabPane2;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage4;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage5;
-        private DevExpress.XtraGrid.GridControl grdUpperVJ1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvwUpperVJ1;
-        private DevExpress.XtraGrid.Columns.GridColumn FA_WC_CD;
-        private DevExpress.XtraGrid.Columns.GridColumn ERP_FA_WC_CD;
-        private DevExpress.XtraGrid.Columns.GridColumn PLANT_NM;
-        private DevExpress.XtraGrid.Columns.GridColumn STYLE_NAME;
-        private DevExpress.XtraGrid.Columns.GridColumn STYLE_CD;
-        private DevExpress.XtraGrid.Columns.GridColumn QTY;
-        private DevExpress.XtraGrid.GridControl grdUpperVJ2;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvwUpperVJ2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label4;
@@ -1875,16 +2118,6 @@ namespace FORM
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label lblVersion;
-        private DevExpress.XtraGrid.GridControl grdUpperFS_VJ1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvwUpperFSVJ1;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
-        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
-        private DevExpress.XtraGrid.Columns.GridColumn ITEMS;
-        private DevExpress.XtraGrid.Columns.GridColumn SET_RATIO;
         private DevExpress.XtraGrid.GridControl grdUpperFSVJ2;
         private DevExpress.XtraGrid.Views.Grid.GridView gvwUpperFSVJ2;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn13;
@@ -1897,5 +2130,47 @@ namespace FORM
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
         private System.Windows.Forms.Button btnVJ3VJ1Set;
         private System.Windows.Forms.Button btnVJ3VJ2Set;
+        private DevExpress.XtraGrid.GridControl grdUpperVJ2;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvwUpperVJ2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn2;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn3;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn4;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn5;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn6;
+        private DevExpress.XtraBars.Navigation.TabPane tabPane1;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage1;
+        private DevExpress.XtraGrid.GridControl grdUpperVJ1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvwUpperVJ1;
+        private DevExpress.XtraGrid.Columns.GridColumn FA_WC_CD;
+        private DevExpress.XtraGrid.Columns.GridColumn ERP_FA_WC_CD;
+        private DevExpress.XtraGrid.Columns.GridColumn PLANT_NM;
+        private DevExpress.XtraGrid.Columns.GridColumn STYLE_NAME;
+        private DevExpress.XtraGrid.Columns.GridColumn STYLE_CD;
+        private DevExpress.XtraGrid.Columns.GridColumn QTY;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage2;
+        private DevExpress.XtraGrid.GridControl grdUpperFS_VJ1;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvwUpperFSVJ1;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn7;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn8;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn9;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn10;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn11;
+        private DevExpress.XtraGrid.Columns.GridColumn ITEMS;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn12;
+        private DevExpress.XtraGrid.Columns.GridColumn SET_RATIO;
+        private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
+        private DevExpress.Utils.FlyoutPanel flyoutPanel1;
+        private DevExpress.Utils.FlyoutPanelControl flyoutPanelControl1;
+        private DevExpress.XtraGrid.GridControl grdUpperFS_Set;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvwUpperFS_Set;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn21;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn22;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn23;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn24;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn25;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn26;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn27;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn28;
     }
 }

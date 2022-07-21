@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DevExpress.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -62,6 +63,43 @@ namespace FORM
                 return null;
             }
         }
+        private DataTable SELECT_TMS_SET_DATA(string ARG_PROC_NAME, string ARG_QTYPE,string ARG_PLANT_CD, string ARG_DATE)
+        {
+            try
+            {
+                COM.OraDB MyOraDB = new COM.OraDB();
+                MyOraDB.ConnectName = COM.OraDB.ConnectDB.LMES;
+                System.Data.DataSet ds_ret;
+
+                string process_name = string.Format("PKG_TMS_TANPHU.{0}", ARG_PROC_NAME);
+                MyOraDB.ReDim_Parameter(4);
+                MyOraDB.Process_Name = process_name;
+                MyOraDB.Parameter_Name[0] = "ARG_QTYPE";
+                MyOraDB.Parameter_Name[1] = "ARG_PLANT_CD";
+                MyOraDB.Parameter_Name[2] = "ARG_DATE";
+                MyOraDB.Parameter_Name[3] = "OUT_CURSOR";
+
+                MyOraDB.Parameter_Type[0] = (char)OracleType.VarChar;
+                MyOraDB.Parameter_Type[1] = (char)OracleType.VarChar;
+                MyOraDB.Parameter_Type[2] = (char)OracleType.VarChar;
+                MyOraDB.Parameter_Type[3] = (char)OracleType.Cursor;
+
+                MyOraDB.Parameter_Values[0] = ARG_QTYPE;
+                MyOraDB.Parameter_Values[1] = ARG_PLANT_CD;
+                MyOraDB.Parameter_Values[2] = ARG_DATE;
+                MyOraDB.Parameter_Values[3] = "";
+
+                MyOraDB.Add_Select_Parameter(true);
+                ds_ret = MyOraDB.Exe_Select_Procedure();
+
+                if (ds_ret == null) return null;
+                return ds_ret.Tables[0];
+            }
+            catch
+            {
+                return null;
+            }
+        }
         #endregion
 
         private void FRM_TMS_VJ3_VisibleChanged(object sender, EventArgs e)
@@ -78,7 +116,9 @@ namespace FORM
             BindingCarTripWithOutQty();
             BindingOutgoingQtyByAssDate();
             BindingUpperOutgoingGrid();
-            BindingUpperFSGrid();
+            BindingUpperFSTotal("2110");
+            BindingUpperFSTotal("2120");
+            // BindingUpperFSGrid();
 
         }
 
@@ -254,6 +294,32 @@ namespace FORM
 
         }
 
+        private void btnVJ3VJ1Set_Click(object sender, EventArgs e)
+        {
+            BindingUpperFSGrid("2110");
+            flyoutPanel1.OptionsButtonPanel.Buttons[1].Properties.Caption = "Upper & Finish sole Set Tân Phú - Vĩnh Cửu";
+            flyoutPanel1.ShowPopup();
+        }
+
+        private void btnVJ3VJ2Set_Click(object sender, EventArgs e)
+        {
+            BindingUpperFSGrid("2120");
+            flyoutPanel1.OptionsButtonPanel.Buttons[1].Properties.Caption = "Upper & Finish sole Set Tân Phú - Long Thành";
+            flyoutPanel1.ShowPopup();
+        }
+
+        private void flyoutPanel1_ButtonClick(object sender, DevExpress.Utils.FlyoutPanelButtonClickEventArgs e)
+        {
+            string tag = e.Button.Tag.ToString();
+            switch (tag)
+            {
+                case "close":
+                    (sender as FlyoutPanel).HidePopup();
+                    break;
+                
+            }
+        }
+
         private void ClearControls()
         {
             lb_total.Text = "";
@@ -292,31 +358,70 @@ namespace FORM
 
             }
         }
-        private void BindingUpperFSGrid()
+        private void BindingUpperFSGrid(string ARG_PLANT_CD)
         {
             try
             {
-                DataTable dt = SELECT_TMS_DATA("SELECT_OUTGOING_SET_FSS_LIST", "", "");
+                DataTable dt = SELECT_TMS_SET_DATA("SELECT_OUTGOING_SET_FSS_LIST", "", ARG_PLANT_CD, "");
                     if (dt != null && dt.Rows.Count > 1)
                 {
-                    if (dt.Select("FA_PLANT_CD = '2110'").Count() > 0)
+                    var average = dt.AsEnumerable().Average(x => x.Field<decimal>("SET_RATIO"));
+                    switch (ARG_PLANT_CD)
                     {
-                        DataTable dtTemp = dt.Select("FA_PLANT_CD = '2110'", "FA_WC_CD,ERP_FA_WC_CD").CopyToDataTable();
-                        var average = dtTemp.AsEnumerable().Average(x => x.Field<decimal>("SET_RATIO"));
-                        tabPane1.Pages[1].Caption = btnVJ3VJ1Set.Text = "Upper & Finish Sole Set (Ratio: " + Math.Round(average, 1) + "%)";
-                        grdUpperFS_VJ1.DataSource = dtTemp;
+                        case "2110":
+                            btnVJ3VJ1Set.Text = "Set Ratio: " + Math.Round(average, 1) + "%";
+                            break;
+                        case "2120":
+                            btnVJ3VJ2Set.Text = "Set Ratio: " + Math.Round(average, 1) + "%";
+                            break;
                     }
-                    if (dt.Select("FA_PLANT_CD = '2120'").Count() > 0)
-                    {
-                        DataTable dtTemp = dt.Select("FA_PLANT_CD = '2120'", "FA_WC_CD,ERP_FA_WC_CD").CopyToDataTable();
-                        var average = dtTemp.AsEnumerable().Average(x => x.Field<decimal>("SET_RATIO"));
-                        tabPane2.Pages[1].Caption = btnVJ3VJ2Set.Text =  "Upper & Finish Sole Set (Ratio: " + Math.Round(average, 1) + "%)";
+                    grdUpperFS_Set.DataSource = dt;
+                    //if (dt.Select("FA_PLANT_CD = '2110'").Count() > 0)
+                    //{
+                    //    DataTable dtTemp = dt.Select("FA_PLANT_CD = '2110'", "FA_WC_CD,ERP_FA_WC_CD").CopyToDataTable();
+                    //    var average = dtTemp.AsEnumerable().Average(x => x.Field<decimal>("SET_RATIO"));
+                    //    tabPane1.Pages[1].Caption = btnVJ3VJ1Set.Text = "Upper & Finish Sole Set (Ratio: " + Math.Round(average, 1) + "%)";
+                    //    grdUpperFS_VJ1.DataSource = dtTemp;
+                    //}
+                    //if (dt.Select("FA_PLANT_CD = '2120'").Count() > 0)
+                    //{
+                    //    DataTable dtTemp = dt.Select("FA_PLANT_CD = '2120'", "FA_WC_CD,ERP_FA_WC_CD").CopyToDataTable();
+                    //    var average = dtTemp.AsEnumerable().Average(x => x.Field<decimal>("SET_RATIO"));
+                    //    tabPane2.Pages[1].Caption = btnVJ3VJ2Set.Text =  "Upper & Finish Sole Set (Ratio: " + Math.Round(average, 1) + "%)";
 
-                        grdUpperFSVJ2.DataSource = dtTemp;
-                    }
+                    //    grdUpperFSVJ2.DataSource = dtTemp;
+                    //}
                 }
             }
             catch(Exception ex)
+            {
+
+            }
+        }
+
+
+        private void BindingUpperFSTotal(string ARG_PLANT_CD)
+        {
+            try
+            {
+                DataTable dt = SELECT_TMS_SET_DATA("SELECT_OUTGOING_SET_FSS_LIST", "", ARG_PLANT_CD, "");
+                if (dt != null && dt.Rows.Count > 1)
+                {
+                    var average = dt.AsEnumerable().Average(x => x.Field<decimal>("SET_RATIO"));
+                    switch (ARG_PLANT_CD)
+                    {
+                        case "2110":
+                            btnVJ3VJ1Set.Text = "Set Ratio: " + Math.Round(average, 1) + "%";
+                            flyoutPanel1.OptionsButtonPanel.Buttons[1].Properties.Caption = "Vĩnh Cửu";
+                            break;
+                        case "2120":
+                            btnVJ3VJ2Set.Text = "Set Ratio: " + Math.Round(average, 1) + "%";
+                            flyoutPanel1.OptionsButtonPanel.Buttons[1].Properties.Caption = "Long Thành";
+                            break;
+                    }
+                }
+            }
+            catch (Exception ex)
             {
 
             }

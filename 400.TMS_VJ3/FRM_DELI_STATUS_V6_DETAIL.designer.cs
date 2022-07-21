@@ -140,7 +140,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(1572, 82);
             this.lblTitle.TabIndex = 36;
-            this.lblTitle.Text = "DELIVERY DETAIL";
+            this.lblTitle.Text = "Upper VJ3 (Tân Phú) - VJ1 (Vĩnh Cửu) Delivery Detail";
             this.lblTitle.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
             // 
             // lblOutgoing
