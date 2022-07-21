@@ -15,8 +15,11 @@ namespace FORM
     {
         public FRM_TMS_VJ3()
         {
+
             InitializeComponent();
+            lblVersion.Text = "2022.07.20.1";
             CheckForIllegalCrossThreadCalls = false;//tránh việc đụng độ khi sử dụng tài nguyên giữa các thread
+
         }
         int iUpdateCar = 0;
         public delegate void InvokeDelegate();
@@ -72,14 +75,10 @@ namespace FORM
 
         private void BindingData()
         {
-            ClearControls();
-            DataTable dt = SELECT_TMS_DATA("SELECT_OUTGOING_BY_ASY_DATE", "", ""); //Get Outgoing Quantity by Assembly Date
-            if (dt != null && dt.Rows.Count > 1)
-            {
-                BindingOutgoingQtyByAssDate(dt);
-            }
-
-
+            BindingCarTripWithOutQty();
+            BindingOutgoingQtyByAssDate();
+            BindingUpperOutgoingGrid();
+            BindingUpperFSGrid();
 
         }
 
@@ -93,26 +92,68 @@ namespace FORM
             Application.Exit();
         }
 
-        private void BindingOutgoingQtyByAssDate(DataTable dt)
+        private void BindingCarTripWithOutQty()
         {
             try
             {
-                if (dt.Select("FA_PLANT_CD = '2110'") != null)
+                DataTable dt = SELECT_TMS_DATA("SELECT_CAR_TRIP_WITHOUT_QTY", "", ""); //Get Car Depart & Arrival Time
+                if (dt != null && dt.Rows.Count > 0)
                 {
-                    lb_total.Text = string.Format("{0:n0}", dt.Rows[0]["TOTAL"]);
-                    lb_DD.Text = string.Format("{0:n0}", dt.Rows[0]["DD"]);
-                    lb_D1.Text = string.Format("{0:n0}", dt.Rows[0]["D1"]);
-                    lb_D2.Text = string.Format("{0:n0}", dt.Rows[0]["D2"]);
-                    lb_D3.Text = string.Format("{0:n0}", dt.Rows[0]["D3"]);
-                }
+                    if (dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ1_NEW' AND ORD_TRIP = 1").Count() > 0)
+                    {
+                        DataTable dtTmp = dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ1_NEW' AND ORD_TRIP = 1").CopyToDataTable();
+                        lblVJ3_VJ1_ARR_Trip1.Text = dtTmp.Rows[0]["ARR_HMS"].ToString();
+                        lblVJ3_VJ1_DPT_Trip1.Text = dtTmp.Rows[0]["DPT_HMS"].ToString();
+                    }
 
-                if (dt.Select("FA_PLANT_CD = '2120'") != null)
+                    if (dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ2_LE' AND ORD_TRIP = 1").Count() > 0)
+                    {
+                        DataTable dtTmp = dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ2_LE' AND ORD_TRIP = 1").CopyToDataTable();
+                        lblVJ3_VJ2_ARR_Trip1.Text = dtTmp.Rows[0]["ARR_HMS"].ToString();
+                        lblVJ3_VJ2_DPT_Trip1.Text = dtTmp.Rows[0]["DPT_HMS"].ToString();
+                    }
+
+                    if (dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ2_LE' AND ORD_TRIP = 2").Count() > 0)
+                    {
+                        DataTable dtTmp = dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ2_LE' AND ORD_TRIP = 2").CopyToDataTable();
+                        lblVJ3_VJ2_ARR_Trip2.Text = dtTmp.Rows[0]["ARR_HMS"].ToString();
+                        lblVJ3_VJ2_DPT_Trip2.Text = dtTmp.Rows[0]["DPT_HMS"].ToString();
+                    }
+                }
+            }
+            catch
+            {
+              
+            }
+            
+        }
+        private void BindingOutgoingQtyByAssDate()
+        {
+            try
+            {
+                ClearControls();
+                DataTable dt = SELECT_TMS_DATA("SELECT_OUTGOING_BY_ASY_DATE", "", ""); //Get Outgoing Quantity by Assembly Date
+                if (dt != null && dt.Rows.Count > 1)
                 {
-                    lb_total2.Text = string.Format("{0:n0}", dt.Rows[0]["TOTAL"]);
-                    lb_DD_2.Text = string.Format("{0:n0}", dt.Rows[0]["DD"]);
-                    lb_D1_2.Text = string.Format("{0:n0}", dt.Rows[0]["D1"]);
-                    lb_D2_2.Text = string.Format("{0:n0}", dt.Rows[0]["D2"]);
-                    lb_D3_2.Text = string.Format("{0:n0}", dt.Rows[0]["D3"]);
+                    if (dt.Select("FA_PLANT_CD = '2110'").Count() > 0)
+                    {
+                        DataTable dtTemp = dt.Select("FA_PLANT_CD = '2110'").CopyToDataTable();
+                        lb_total.Text = string.Format("{0:n0}", dtTemp.Rows[0]["TOTAL"]);
+                        lb_DD.Text = string.Format("{0:n0}", dtTemp.Rows[0]["DD"]);
+                        lb_D1.Text = string.Format("{0:n0}", dtTemp.Rows[0]["D1"]);
+                        lb_D2.Text = string.Format("{0:n0}", dtTemp.Rows[0]["D2"]);
+                        lb_D3.Text = string.Format("{0:n0}", dtTemp.Rows[0]["D3"]);
+                    }
+
+                    if (dt.Select("FA_PLANT_CD = '2120'").Count() > 0)
+                    {
+                        DataTable dtTemp = dt.Select("FA_PLANT_CD = '2120'").CopyToDataTable();
+                        lb_total2.Text = string.Format("{0:n0}", dtTemp.Rows[0]["TOTAL"]);
+                        lb_DD_2.Text = string.Format("{0:n0}", dtTemp.Rows[0]["DD"]);
+                        lb_D1_2.Text = string.Format("{0:n0}", dtTemp.Rows[0]["D1"]);
+                        lb_D2_2.Text = string.Format("{0:n0}", dtTemp.Rows[0]["D2"]);
+                        lb_D3_2.Text = string.Format("{0:n0}", dtTemp.Rows[0]["D3"]);
+                    }
                 }
             }
             catch
@@ -125,20 +166,21 @@ namespace FORM
             try
             {
                 DataTable dt = SELECT_TMS_DATA("SELECT_CAR_TRIP_TIME", "", ""); //Get Car Depart & Arrival Time
-                lblTimeLapseVJ3_VJ1.Text = lblTimeLapseVJ3_VJ2.Text ="Not Yet Depart";
+                lblTimeLapseVJ3_VJ1.Text = lblTimeLapseVJ3_VJ2.Text = "Not Yet Depart";
                 if (dt != null && dt.Rows.Count > 0)
                 {
 
-                    if (dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ1_NEW'").Count()> 0)
+                    if (dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ1_NEW'").Count() > 0)
                     {
                         DataTable dtTmp = dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ1_NEW'").CopyToDataTable();
                         lblBT_Current_Qty.Text = string.Concat("Upper Current Trip: ", string.Format("{0:n0}", dtTmp.Rows[0]["QTY"]), " Prs");
-                        if (string.IsNullOrEmpty(dtTmp.Rows[0]["ARR_HMS"].ToString())){
+                        if (string.IsNullOrEmpty(dtTmp.Rows[0]["ARR_HMS"].ToString()))
+                        {
                             int EndlapseMinutes = 180;
                             XCar1 = Car1_XStart - Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"]) * 2;
                             lblTimeLapseVJ3_VJ1.Text = "Remain: " + (EndlapseMinutes - Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"])) + " Minutes";
                             btnCar.Location = new Point(XCar1 < Car1_XEnd ? Car1_XEnd : XCar1, Car1_Yoriginal);
-                            btnCar.Text = XCar1.ToString();
+                           
                         }
                         else
                         {
@@ -159,7 +201,6 @@ namespace FORM
                             XCar2 = Car2_XStart + Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"]) * 5;
                             lblTimeLapseVJ3_VJ2.Text = "Remain: " + (EndlapseMinutes - Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"])) + " Minutes";
                             btnCar2.Location = new Point(XCar2 > Car2_XEnd ? Car2_XEnd : XCar2, Car2_Yoriginal);
-                            btnCar2.Text = XCar2.ToString();
                         }
                         else
                         {
@@ -173,6 +214,30 @@ namespace FORM
 
 
             }
+        }
+
+        private void btnCar_Click(object sender, EventArgs e)
+        {
+            FRM_VJ3_VJ1_MAPS maps = new FRM_VJ3_VJ1_MAPS();
+            maps.ShowDialog();
+        }
+
+        private void btnCar2_Click(object sender, EventArgs e)
+        {
+            FRM_VJ3_VJ2_MAPS maps = new FRM_VJ3_VJ2_MAPS();
+            maps.ShowDialog();
+        }
+
+        private void btnS_VJ3VJ1_Time_Click(object sender, EventArgs e)
+        {
+            ComVar.Var.callForm = "402";
+            ComVar.Var._strValue1 = "2110";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ComVar.Var.callForm = "402";
+            ComVar.Var._strValue1 = "2120";
         }
 
         private void ClearControls()
@@ -189,6 +254,58 @@ namespace FORM
             lb_D2_2.Text = "";
             lb_D3_2.Text = "";
         }
+        private void BindingUpperOutgoingGrid()
+        {
+            try
+            {
+                DataTable dt = SELECT_TMS_DATA("SELECT_OUTGOING_LIST", "", "");
+                if (dt != null && dt.Rows.Count > 1)
+                {
+                    if (dt.Select("FA_PLANT_CD = '2110'").Count() > 0)
+                    {
+                        DataTable dtTemp = dt.Select("FA_PLANT_CD = '2110'","FA_WC_CD,ERP_FA_WC_CD").CopyToDataTable();
+                        grdUpperVJ1.DataSource = dtTemp;
+                    }
+                    if (dt.Select("FA_PLANT_CD = '2120'").Count() > 0)
+                    {
+                        DataTable dtTemp = dt.Select("FA_PLANT_CD = '2120'", "FA_WC_CD,ERP_FA_WC_CD").CopyToDataTable();
+                        grdUpperVJ2.DataSource = dtTemp;
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
+        private void BindingUpperFSGrid()
+        {
+            try
+            {
+                DataTable dt = SELECT_TMS_DATA("SELECT_OUTGOING_SET_FSS_LIST", "", "");
+                    if (dt != null && dt.Rows.Count > 1)
+                {
+                    if (dt.Select("FA_PLANT_CD = '2110'").Count() > 0)
+                    {
+                        DataTable dtTemp = dt.Select("FA_PLANT_CD = '2110'", "FA_WC_CD,ERP_FA_WC_CD").CopyToDataTable();
+                        var average = dtTemp.AsEnumerable().Average(x => x.Field<decimal>("SET_RATIO"));
+                        tabPane1.Pages[1].Caption = "Upper & Finish Sole Set (Ratio: " + Math.Round(average, 1) + "%)";
+                        grdUpperFS_VJ1.DataSource = dtTemp;
+                    }
+                    if (dt.Select("FA_PLANT_CD = '2120'").Count() > 0)
+                    {
+                        DataTable dtTemp = dt.Select("FA_PLANT_CD = '2120'", "FA_WC_CD,ERP_FA_WC_CD").CopyToDataTable();
+                        var average = dtTemp.AsEnumerable().Average(x => x.Field<decimal>("SET_RATIO"));
+                        tabPane2.Pages[1].Caption = "Upper & Finish Sole Set (Ratio: " + Math.Round(average, 1) + "%)";
+                        grdUpperFSVJ2.DataSource = dtTemp;
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+
+            }
+        }
 
         private void tmrCarRun_Tick(object sender, EventArgs e)
         {
@@ -198,7 +315,7 @@ namespace FORM
             {
                 iUpdateCar = 0;
                 BindingOutgoingCarTime();
-               
+
                 //Thread t = new Thread(() =>
                 // {
                 //     btnCar.BeginInvoke(new InvokeDelegate(Xe1Chay));

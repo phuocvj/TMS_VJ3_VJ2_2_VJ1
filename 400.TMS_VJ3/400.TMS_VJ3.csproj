@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FORM</RootNamespace>
     <AssemblyName>TMS_VJ3</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -23,6 +24,7 @@
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>
     </DocumentationFile>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AxInterop.FPSpreadADO, Version=8.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -147,6 +150,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="DifferentRepositoriesProgressBar.cs" />
+    <Compile Include="FRM_DELI_STATUS_V6_DETAIL.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_DELI_STATUS_V6_DETAIL.designer.cs">
+      <DependentUpon>FRM_DELI_STATUS_V6_DETAIL.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRM_POPUP_SQM_TRACKING.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -176,6 +185,18 @@
     </Compile>
     <Compile Include="FRM_TMS_VJ3.Designer.cs">
       <DependentUpon>FRM_TMS_VJ3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRM_VJ3_VJ1_MAPS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_VJ3_VJ1_MAPS.designer.cs">
+      <DependentUpon>FRM_VJ3_VJ1_MAPS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRM_VJ3_VJ2_MAPS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_VJ3_VJ2_MAPS.designer.cs">
+      <DependentUpon>FRM_VJ3_VJ2_MAPS.cs</DependentUpon>
     </Compile>
     <Compile Include="init.cs" />
     <Compile Include="Location_grp.cs" />
@@ -211,6 +232,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="FRM_DELI_STATUS_V6_DETAIL.resx">
+      <DependentUpon>FRM_DELI_STATUS_V6_DETAIL.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FRM_POPUP_SQM_TRACKING.resx">
       <DependentUpon>FRM_POPUP_SQM_TRACKING.cs</DependentUpon>
     </EmbeddedResource>
@@ -225,6 +249,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_TMS_VJ3.resx">
       <DependentUpon>FRM_TMS_VJ3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_VJ3_VJ1_MAPS.resx">
+      <DependentUpon>FRM_VJ3_VJ1_MAPS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_VJ3_VJ2_MAPS.resx">
+      <DependentUpon>FRM_VJ3_VJ2_MAPS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -301,6 +331,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\car2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VJ3_VJ2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\VJ3_VJ1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
