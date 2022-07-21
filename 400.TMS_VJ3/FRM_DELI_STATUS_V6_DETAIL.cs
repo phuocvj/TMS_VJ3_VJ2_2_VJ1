@@ -364,7 +364,6 @@ namespace FORM
             return result;
         }
 
-
         private void tmrDate_Tick(object sender, EventArgs e)
         {
             cCount++;

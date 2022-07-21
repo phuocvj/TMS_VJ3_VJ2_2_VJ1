@@ -168,7 +168,7 @@ namespace FORM
                 LTDepartTime = dt.Rows[0]["DP_TIME"].ToString();
             if (dtQua.Rows.Count > 0 && dtQua != null && !dtQua.Rows[0]["CUR_TRIP"].Equals("0"))
             {
-                string Qty = string.Concat("Trip: 1", "\n", string.Format("{0:n0}", dtQua.Rows[0]["QTY"]), " Prs");
+                string Qty = string.Concat(string.Format("{0:n0}", dtQua.Rows[0]["QTY"]), " Prs");
                 btnCar.Text = Qty;
             }
             else

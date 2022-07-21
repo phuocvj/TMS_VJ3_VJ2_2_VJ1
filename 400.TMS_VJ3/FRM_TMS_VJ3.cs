@@ -96,28 +96,28 @@ namespace FORM
         {
             try
             {
-                DataTable dt = SELECT_TMS_DATA("SELECT_CAR_TRIP_WITHOUT_QTY", "", ""); //Get Car Depart & Arrival Time
+                DataTable dt = SELECT_TMS_DATA("SELECT_CAR_TRIP_WITH_OQTY", "", ""); //Get Car Depart & Arrival Time
                 if (dt != null && dt.Rows.Count > 0)
                 {
                     if (dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ1_NEW' AND ORD_TRIP = 1").Count() > 0)
                     {
                         DataTable dtTmp = dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ1_NEW' AND ORD_TRIP = 1").CopyToDataTable();
                         lblVJ3_VJ1_ARR_Trip1.Text = dtTmp.Rows[0]["ARR_HMS"].ToString();
-                        lblVJ3_VJ1_DPT_Trip1.Text = dtTmp.Rows[0]["DPT_HMS"].ToString();
+                        lblVJ3_VJ1_DPT_Trip1.Text =string.Concat( dtTmp.Rows[0]["DPT_HMS"].ToString()," (",string.Format("{0:n0}", dtTmp.Rows[0]["O_QTY"])," Prs)");
                     }
 
                     if (dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ2_LE' AND ORD_TRIP = 1").Count() > 0)
                     {
                         DataTable dtTmp = dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ2_LE' AND ORD_TRIP = 1").CopyToDataTable();
                         lblVJ3_VJ2_ARR_Trip1.Text = dtTmp.Rows[0]["ARR_HMS"].ToString();
-                        lblVJ3_VJ2_DPT_Trip1.Text = dtTmp.Rows[0]["DPT_HMS"].ToString();
+                        lblVJ3_VJ2_DPT_Trip1.Text = string.Concat(dtTmp.Rows[0]["DPT_HMS"].ToString(), " (", string.Format("{0:n0}", dtTmp.Rows[0]["O_QTY"]), " Prs)");
                     }
 
                     if (dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ2_LE' AND ORD_TRIP = 2").Count() > 0)
                     {
                         DataTable dtTmp = dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ2_LE' AND ORD_TRIP = 2").CopyToDataTable();
                         lblVJ3_VJ2_ARR_Trip2.Text = dtTmp.Rows[0]["ARR_HMS"].ToString();
-                        lblVJ3_VJ2_DPT_Trip2.Text = dtTmp.Rows[0]["DPT_HMS"].ToString();
+                        lblVJ3_VJ2_DPT_Trip2.Text = string.Concat(dtTmp.Rows[0]["DPT_HMS"].ToString(), " (", string.Format("{0:n0}", dtTmp.Rows[0]["O_QTY"]), " Prs)");
                     }
                 }
             }
@@ -178,13 +178,15 @@ namespace FORM
                         {
                             int EndlapseMinutes = 180;
                             XCar1 = Car1_XStart - Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"]) * 2;
-                            lblTimeLapseVJ3_VJ1.Text = "Remain: " + (EndlapseMinutes - Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"])) + " Minutes";
+                            lblTimeLapseVJ3_VJ1.Text = "Remain: " + ((EndlapseMinutes - Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"]))<=0?0: (EndlapseMinutes - Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"]))) + " Minutes";
                             btnCar.Location = new Point(XCar1 < Car1_XEnd ? Car1_XEnd : XCar1, Car1_Yoriginal);
                            
                         }
                         else
                         {
-                            lblTimeLapseVJ3_VJ1.Text = "Depart Already!";
+                            lblTimeLapseVJ3_VJ1.Text = "Arrival Already!";
+                            btnCar.Location = new Point(Car2_XEnd, Car2_Yoriginal);
+                            lblBT_Current_Qty.Text = "";
                         }
                     }
                 }
@@ -199,12 +201,14 @@ namespace FORM
                         {
                             int EndlapseMinutes = 60;
                             XCar2 = Car2_XStart + Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"]) * 5;
-                            lblTimeLapseVJ3_VJ2.Text = "Remain: " + (EndlapseMinutes - Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"])) + " Minutes";
+                            lblTimeLapseVJ3_VJ2.Text = "Remain: " + ((EndlapseMinutes - Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"])) <= 0 ? 0 : (EndlapseMinutes - Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"]))) + " Minutes";
                             btnCar2.Location = new Point(XCar2 > Car2_XEnd ? Car2_XEnd : XCar2, Car2_Yoriginal);
                         }
                         else
                         {
-                            lblTimeLapseVJ3_VJ2.Text = "Depart Already!";
+                            lblTimeLapseVJ3_VJ2.Text = "Arrival Already!";
+                            btnCar2.Location = new Point(Car2_XEnd,Car2_Yoriginal);
+                            lblUpper_Current_Qty.Text = " ";
                         }
                     }
                 }
@@ -238,6 +242,16 @@ namespace FORM
         {
             ComVar.Var.callForm = "402";
             ComVar.Var._strValue1 = "2120";
+        }
+
+        private void lblVJ3_VJ2_DPT_Trip2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblVJ3_VJ2_DPT_Trip1_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void ClearControls()
@@ -289,14 +303,15 @@ namespace FORM
                     {
                         DataTable dtTemp = dt.Select("FA_PLANT_CD = '2110'", "FA_WC_CD,ERP_FA_WC_CD").CopyToDataTable();
                         var average = dtTemp.AsEnumerable().Average(x => x.Field<decimal>("SET_RATIO"));
-                        tabPane1.Pages[1].Caption = "Upper & Finish Sole Set (Ratio: " + Math.Round(average, 1) + "%)";
+                        tabPane1.Pages[1].Caption = btnVJ3VJ1Set.Text = "Upper & Finish Sole Set (Ratio: " + Math.Round(average, 1) + "%)";
                         grdUpperFS_VJ1.DataSource = dtTemp;
                     }
                     if (dt.Select("FA_PLANT_CD = '2120'").Count() > 0)
                     {
                         DataTable dtTemp = dt.Select("FA_PLANT_CD = '2120'", "FA_WC_CD,ERP_FA_WC_CD").CopyToDataTable();
                         var average = dtTemp.AsEnumerable().Average(x => x.Field<decimal>("SET_RATIO"));
-                        tabPane2.Pages[1].Caption = "Upper & Finish Sole Set (Ratio: " + Math.Round(average, 1) + "%)";
+                        tabPane2.Pages[1].Caption = btnVJ3VJ2Set.Text =  "Upper & Finish Sole Set (Ratio: " + Math.Round(average, 1) + "%)";
+
                         grdUpperFSVJ2.DataSource = dtTemp;
                     }
                 }

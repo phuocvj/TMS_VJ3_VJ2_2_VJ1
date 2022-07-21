@@ -162,6 +162,12 @@
     <Compile Include="FRM_POPUP_SQM_TRACKING.Designer.cs">
       <DependentUpon>FRM_POPUP_SQM_TRACKING.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRM_SET_POPUP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_SET_POPUP.Designer.cs">
+      <DependentUpon>FRM_SET_POPUP.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRM_TMS_CAR_LT_POP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -237,6 +243,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_POPUP_SQM_TRACKING.resx">
       <DependentUpon>FRM_POPUP_SQM_TRACKING.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_SET_POPUP.resx">
+      <DependentUpon>FRM_SET_POPUP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_TMS_CAR_LT_POP.resx">
       <DependentUpon>FRM_TMS_CAR_LT_POP.cs</DependentUpon>

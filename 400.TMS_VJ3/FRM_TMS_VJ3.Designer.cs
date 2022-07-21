@@ -29,6 +29,7 @@ namespace FORM
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_TMS_VJ3));
             this.tblMain = new System.Windows.Forms.TableLayoutPanel();
             this.pnHeader = new System.Windows.Forms.Panel();
@@ -80,12 +81,14 @@ namespace FORM
             this.button1 = new System.Windows.Forms.Button();
             this.lblVJ3_VJ1_DPT_Trip1 = new System.Windows.Forms.Label();
             this.groupBoxEx3 = new FORM.GroupBoxEx();
+            this.btnVJ3VJ2Set = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.lblVJ3_VJ2_ARR_Trip2 = new System.Windows.Forms.Label();
             this.lblVJ3_VJ2_ARR_Trip1 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBoxEx2 = new FORM.GroupBoxEx();
+            this.btnVJ3VJ1Set = new System.Windows.Forms.Button();
             this.lblVJ3_VJ1_ARR_Trip1 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.btnS_VJ3VJ1_Time = new System.Windows.Forms.Button();
@@ -134,7 +137,7 @@ namespace FORM
             this.ITEMS = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SET_RATIO = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.tmrCarRun = new System.Windows.Forms.Timer();
+            this.tmrCarRun = new System.Windows.Forms.Timer(this.components);
             this.tblMain.SuspendLayout();
             this.pnHeader.SuspendLayout();
             this.pnInfomation.SuspendLayout();
@@ -761,7 +764,7 @@ namespace FORM
             // 
             this.lblVJ3_VJ2_DPT_Trip2.BackColor = System.Drawing.Color.White;
             this.lblVJ3_VJ2_DPT_Trip2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblVJ3_VJ2_DPT_Trip2.Font = new System.Drawing.Font("Calibri", 15F, System.Drawing.FontStyle.Bold);
+            this.lblVJ3_VJ2_DPT_Trip2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.lblVJ3_VJ2_DPT_Trip2.ForeColor = System.Drawing.Color.Blue;
             this.lblVJ3_VJ2_DPT_Trip2.Location = new System.Drawing.Point(348, 71);
             this.lblVJ3_VJ2_DPT_Trip2.Name = "lblVJ3_VJ2_DPT_Trip2";
@@ -769,12 +772,13 @@ namespace FORM
             this.lblVJ3_VJ2_DPT_Trip2.TabIndex = 198;
             this.lblVJ3_VJ2_DPT_Trip2.Tag = "1";
             this.lblVJ3_VJ2_DPT_Trip2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVJ3_VJ2_DPT_Trip2.Click += new System.EventHandler(this.lblVJ3_VJ2_DPT_Trip2_Click);
             // 
             // lblVJ3_VJ2_DPT_Trip1
             // 
             this.lblVJ3_VJ2_DPT_Trip1.BackColor = System.Drawing.Color.White;
             this.lblVJ3_VJ2_DPT_Trip1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblVJ3_VJ2_DPT_Trip1.Font = new System.Drawing.Font("Calibri", 15F, System.Drawing.FontStyle.Bold);
+            this.lblVJ3_VJ2_DPT_Trip1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.lblVJ3_VJ2_DPT_Trip1.ForeColor = System.Drawing.Color.Blue;
             this.lblVJ3_VJ2_DPT_Trip1.Location = new System.Drawing.Point(348, 43);
             this.lblVJ3_VJ2_DPT_Trip1.Name = "lblVJ3_VJ2_DPT_Trip1";
@@ -782,6 +786,7 @@ namespace FORM
             this.lblVJ3_VJ2_DPT_Trip1.TabIndex = 198;
             this.lblVJ3_VJ2_DPT_Trip1.Tag = "1";
             this.lblVJ3_VJ2_DPT_Trip1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVJ3_VJ2_DPT_Trip1.Click += new System.EventHandler(this.lblVJ3_VJ2_DPT_Trip1_Click);
             // 
             // button1
             // 
@@ -803,7 +808,7 @@ namespace FORM
             // 
             this.lblVJ3_VJ1_DPT_Trip1.BackColor = System.Drawing.Color.White;
             this.lblVJ3_VJ1_DPT_Trip1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblVJ3_VJ1_DPT_Trip1.Font = new System.Drawing.Font("Calibri", 15F, System.Drawing.FontStyle.Bold);
+            this.lblVJ3_VJ1_DPT_Trip1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.lblVJ3_VJ1_DPT_Trip1.ForeColor = System.Drawing.Color.Blue;
             this.lblVJ3_VJ1_DPT_Trip1.Location = new System.Drawing.Point(6, 43);
             this.lblVJ3_VJ1_DPT_Trip1.Name = "lblVJ3_VJ1_DPT_Trip1";
@@ -815,6 +820,7 @@ namespace FORM
             // groupBoxEx3
             // 
             this.groupBoxEx3.BackgroundPanelImage = null;
+            this.groupBoxEx3.Controls.Add(this.btnVJ3VJ2Set);
             this.groupBoxEx3.Controls.Add(this.label20);
             this.groupBoxEx3.Controls.Add(this.lblVJ3_VJ2_ARR_Trip2);
             this.groupBoxEx3.Controls.Add(this.lblVJ3_VJ2_ARR_Trip1);
@@ -837,6 +843,20 @@ namespace FORM
             this.groupBoxEx3.TextBorderColor = System.Drawing.Color.OliveDrab;
             this.groupBoxEx3.TextBorderWith = 1F;
             // 
+            // btnVJ3VJ2Set
+            // 
+            this.btnVJ3VJ2Set.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnVJ3VJ2Set.FlatAppearance.BorderSize = 0;
+            this.btnVJ3VJ2Set.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVJ3VJ2Set.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVJ3VJ2Set.ForeColor = System.Drawing.Color.Black;
+            this.btnVJ3VJ2Set.Location = new System.Drawing.Point(6, 123);
+            this.btnVJ3VJ2Set.Name = "btnVJ3VJ2Set";
+            this.btnVJ3VJ2Set.Size = new System.Drawing.Size(156, 35);
+            this.btnVJ3VJ2Set.TabIndex = 201;
+            this.btnVJ3VJ2Set.Text = "Set: 0%";
+            this.btnVJ3VJ2Set.UseVisualStyleBackColor = false;
+            // 
             // label20
             // 
             this.label20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
@@ -853,7 +873,7 @@ namespace FORM
             // 
             this.lblVJ3_VJ2_ARR_Trip2.BackColor = System.Drawing.Color.White;
             this.lblVJ3_VJ2_ARR_Trip2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblVJ3_VJ2_ARR_Trip2.Font = new System.Drawing.Font("Calibri", 15F, System.Drawing.FontStyle.Bold);
+            this.lblVJ3_VJ2_ARR_Trip2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.lblVJ3_VJ2_ARR_Trip2.ForeColor = System.Drawing.Color.Blue;
             this.lblVJ3_VJ2_ARR_Trip2.Location = new System.Drawing.Point(6, 71);
             this.lblVJ3_VJ2_ARR_Trip2.Name = "lblVJ3_VJ2_ARR_Trip2";
@@ -866,7 +886,7 @@ namespace FORM
             // 
             this.lblVJ3_VJ2_ARR_Trip1.BackColor = System.Drawing.Color.White;
             this.lblVJ3_VJ2_ARR_Trip1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblVJ3_VJ2_ARR_Trip1.Font = new System.Drawing.Font("Calibri", 15F, System.Drawing.FontStyle.Bold);
+            this.lblVJ3_VJ2_ARR_Trip1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.lblVJ3_VJ2_ARR_Trip1.ForeColor = System.Drawing.Color.Blue;
             this.lblVJ3_VJ2_ARR_Trip1.Location = new System.Drawing.Point(6, 43);
             this.lblVJ3_VJ2_ARR_Trip1.Name = "lblVJ3_VJ2_ARR_Trip1";
@@ -907,6 +927,7 @@ namespace FORM
             // groupBoxEx2
             // 
             this.groupBoxEx2.BackgroundPanelImage = null;
+            this.groupBoxEx2.Controls.Add(this.btnVJ3VJ1Set);
             this.groupBoxEx2.Controls.Add(this.lblVJ3_VJ1_ARR_Trip1);
             this.groupBoxEx2.Controls.Add(this.label14);
             this.groupBoxEx2.Controls.Add(this.btnS_VJ3VJ1_Time);
@@ -927,11 +948,25 @@ namespace FORM
             this.groupBoxEx2.TextBorderColor = System.Drawing.Color.MediumTurquoise;
             this.groupBoxEx2.TextBorderWith = 1F;
             // 
+            // btnVJ3VJ1Set
+            // 
+            this.btnVJ3VJ1Set.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnVJ3VJ1Set.FlatAppearance.BorderSize = 0;
+            this.btnVJ3VJ1Set.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVJ3VJ1Set.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVJ3VJ1Set.ForeColor = System.Drawing.Color.Black;
+            this.btnVJ3VJ1Set.Location = new System.Drawing.Point(161, 123);
+            this.btnVJ3VJ1Set.Name = "btnVJ3VJ1Set";
+            this.btnVJ3VJ1Set.Size = new System.Drawing.Size(156, 35);
+            this.btnVJ3VJ1Set.TabIndex = 200;
+            this.btnVJ3VJ1Set.Text = "Set: 0%";
+            this.btnVJ3VJ1Set.UseVisualStyleBackColor = false;
+            // 
             // lblVJ3_VJ1_ARR_Trip1
             // 
             this.lblVJ3_VJ1_ARR_Trip1.BackColor = System.Drawing.Color.White;
             this.lblVJ3_VJ1_ARR_Trip1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lblVJ3_VJ1_ARR_Trip1.Font = new System.Drawing.Font("Calibri", 15F, System.Drawing.FontStyle.Bold);
+            this.lblVJ3_VJ1_ARR_Trip1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.lblVJ3_VJ1_ARR_Trip1.ForeColor = System.Drawing.Color.Blue;
             this.lblVJ3_VJ1_ARR_Trip1.Location = new System.Drawing.Point(185, 43);
             this.lblVJ3_VJ1_ARR_Trip1.Name = "lblVJ3_VJ1_ARR_Trip1";
@@ -1860,5 +1895,7 @@ namespace FORM
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn18;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn19;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn20;
+        private System.Windows.Forms.Button btnVJ3VJ1Set;
+        private System.Windows.Forms.Button btnVJ3VJ2Set;
     }
 }
