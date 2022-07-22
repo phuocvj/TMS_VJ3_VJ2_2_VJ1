@@ -1934,7 +1934,7 @@ namespace FORM
             this.gridColumn25.Caption = "Style Code";
             this.gridColumn25.FieldName = "STYLE_CD";
             this.gridColumn25.Name = "gridColumn25";
-            this.gridColumn25.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn25.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.gridColumn25.Visible = true;
             this.gridColumn25.VisibleIndex = 2;
             this.gridColumn25.Width = 183;

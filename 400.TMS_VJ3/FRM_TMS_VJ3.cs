@@ -340,10 +340,13 @@ namespace FORM
             try
             {
                 string ItemClassVal = gvwUpperFS_Set.GetRowCellValue(e.RowHandle, gvwUpperFS_Set.Columns["ITEM_CLASS"]).ToString();
-                if (e.Column.FieldName.Equals("ITEM_CLASS") && ItemClassVal.Equals("Upper Inventory"))
+                if (e.Column.FieldName.Equals("ITEM_CLASS") || e.Column.FieldName.Equals("QTY"))
                 {
-                    e.Appearance.BackColor = Color.FromArgb(15, 238, 242);
-                    e.Appearance.ForeColor = Color.Black;
+                    if (ItemClassVal.Equals("Upper Inventory"))
+                    {
+                        e.Appearance.BackColor = Color.FromArgb(15, 238, 242);
+                        e.Appearance.ForeColor = Color.White;
+                    }
                 }
             }
             catch
@@ -359,14 +362,14 @@ namespace FORM
                 DataTable dt = SELECT_TMS_DATA("SELECT_OUTGOING_LIST", "", "");
                 if (dt != null && dt.Rows.Count > 1)
                 {
-                    if (dt.Select("FA_PLANT_CD = '2110'").Count() > 0)
+                    if (dt.Select("FA_PLANT_CD = '2110' AND FA_WC_CD IS NOT NULL").Count() > 0)
                     {
-                        DataTable dtTemp = dt.Select("FA_PLANT_CD = '2110'","FA_WC_CD,ERP_FA_WC_CD").CopyToDataTable();
+                        DataTable dtTemp = dt.Select("FA_PLANT_CD = '2110' AND FA_WC_CD IS NOT NULL","FA_WC_CD,ERP_FA_WC_CD").CopyToDataTable();
                         grdUpperVJ1.DataSource = dtTemp;
                     }
-                    if (dt.Select("FA_PLANT_CD = '2120'").Count() > 0)
+                    if (dt.Select("FA_PLANT_CD = '2120' AND FA_WC_CD IS NOT NULL").Count() > 0)
                     {
-                        DataTable dtTemp = dt.Select("FA_PLANT_CD = '2120'", "FA_WC_CD,ERP_FA_WC_CD").CopyToDataTable();
+                        DataTable dtTemp = dt.Select("FA_PLANT_CD = '2120'  AND FA_WC_CD IS NOT NULL", "FA_WC_CD,ERP_FA_WC_CD").CopyToDataTable();
                         grdUpperVJ2.DataSource = dtTemp;
                     }
                 }
