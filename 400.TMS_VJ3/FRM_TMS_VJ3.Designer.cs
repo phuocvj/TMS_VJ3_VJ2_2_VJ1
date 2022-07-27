@@ -871,7 +871,7 @@ namespace FORM
             this.btnVJ3VJ2Set.FlatAppearance.BorderSize = 0;
             this.btnVJ3VJ2Set.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVJ3VJ2Set.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVJ3VJ2Set.ForeColor = System.Drawing.Color.Black;
+            this.btnVJ3VJ2Set.ForeColor = System.Drawing.Color.White;
             this.btnVJ3VJ2Set.Location = new System.Drawing.Point(6, 123);
             this.btnVJ3VJ2Set.Name = "btnVJ3VJ2Set";
             this.btnVJ3VJ2Set.Size = new System.Drawing.Size(156, 35);
@@ -977,7 +977,7 @@ namespace FORM
             this.btnVJ3VJ1Set.FlatAppearance.BorderSize = 0;
             this.btnVJ3VJ1Set.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVJ3VJ1Set.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVJ3VJ1Set.ForeColor = System.Drawing.Color.Black;
+            this.btnVJ3VJ1Set.ForeColor = System.Drawing.Color.White;
             this.btnVJ3VJ1Set.Location = new System.Drawing.Point(161, 123);
             this.btnVJ3VJ1Set.Name = "btnVJ3VJ1Set";
             this.btnVJ3VJ1Set.Size = new System.Drawing.Size(156, 35);

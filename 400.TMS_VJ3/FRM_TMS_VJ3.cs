@@ -100,6 +100,44 @@ namespace FORM
                 return null;
             }
         }
+
+        private DataTable SELECT_TMS_BOTTOM_OUTGOING(string ARG_PROC_NAME, string ARG_QTYPE, string ARG_DATE, string ARG_PLANT_CD)
+        {
+            try
+            {
+                COM.OraDB MyOraDB = new COM.OraDB();
+                MyOraDB.ConnectName = COM.OraDB.ConnectDB.LMES;
+                System.Data.DataSet ds_ret;
+
+                string process_name = string.Format("PKG_TMS_LONGTHANH.{0}", ARG_PROC_NAME);
+                MyOraDB.ReDim_Parameter(4);
+                MyOraDB.Process_Name = process_name;
+                MyOraDB.Parameter_Name[0] = "ARG_QTYPE";
+                MyOraDB.Parameter_Name[1] = "ARG_DATE";
+                MyOraDB.Parameter_Name[2] = "ARG_PLANT_CD";
+                MyOraDB.Parameter_Name[3] = "OUT_CURSOR";
+
+                MyOraDB.Parameter_Type[0] = (char)OracleType.VarChar;
+                MyOraDB.Parameter_Type[1] = (char)OracleType.VarChar;
+                MyOraDB.Parameter_Type[2] = (char)OracleType.VarChar;
+                MyOraDB.Parameter_Type[3] = (char)OracleType.Cursor;
+
+                MyOraDB.Parameter_Values[0] = ARG_QTYPE;
+                MyOraDB.Parameter_Values[1] = ARG_DATE;
+                MyOraDB.Parameter_Values[2] = ARG_PLANT_CD;
+                MyOraDB.Parameter_Values[3] = "";
+
+                MyOraDB.Add_Select_Parameter(true);
+                ds_ret = MyOraDB.Exe_Select_Procedure();
+
+                if (ds_ret == null) return null;
+                return ds_ret.Tables[0];
+            }
+            catch
+            {
+                return null;
+            }
+        }
         #endregion
 
         private void FRM_TMS_VJ3_VisibleChanged(object sender, EventArgs e)
@@ -342,10 +380,10 @@ namespace FORM
                 string ItemClassVal = gvwUpperFS_Set.GetRowCellValue(e.RowHandle, gvwUpperFS_Set.Columns["ITEM_CLASS"]).ToString();
                 if (e.Column.FieldName.Equals("ITEM_CLASS") || e.Column.FieldName.Equals("QTY"))
                 {
-                    if (ItemClassVal.Equals("Upper Inventory"))
+                    if (ItemClassVal.Equals("Assembly Set"))
                     {
-                        e.Appearance.BackColor = Color.FromArgb(15, 238, 242);
-                        e.Appearance.ForeColor = Color.White;
+                        e.Appearance.BackColor = Color.FromArgb(40, 95, 158);
+                        e.Appearance.ForeColor = Color.Yellow;
                     }
                 }
             }
