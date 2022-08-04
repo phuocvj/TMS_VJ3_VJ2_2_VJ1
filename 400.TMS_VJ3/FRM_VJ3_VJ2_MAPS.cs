@@ -15,18 +15,20 @@ namespace FORM
         public FRM_VJ3_VJ2_MAPS()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;//tránh việc đụng độ khi sử dụng tài nguyên giữa các thread
         }
         int iCount = 0;
         int distance = 1;
         int angle = 0;
         int rotSpeed = 1;
         string LTDepartTime = "";
+        string arrYN = "0";
         int minutes = 0;
         Point A = new Point(82, 322);  // my origin
         Point B = new Point(1250, 322);  // my origin
         int xMove = 0;
 
-        private DataTable Select_Train_Time(string Qtype,string Factory)
+        private DataTable Select_Train_Time(string Qtype, string Factory)
         {
             try
             {
@@ -141,7 +143,7 @@ namespace FORM
             TimeSpan span = endTime.Subtract(startTime);
             minutes = Convert.ToInt32(span.TotalMinutes);
             xMove = A.X + minutes * 6;
-            if (xMove >= B.X || minutes >= 180)
+            if (xMove >= B.X || minutes >= 180 || arrYN.Equals("1"))
             {
                 btnCar.Location = new Point(B.X, B.Y);
                 xMove = 0;
@@ -160,14 +162,24 @@ namespace FORM
             dt = Select_Train_Time("Q", ButtonCode);
             dtQua = Select_qty_Trip();
             if (dt.Rows.Count > 0 && dt != null)
-                LTDepartTime = dt.Rows[0]["DP_TIME"].ToString();
-            if (dtQua.Rows.Count > 0 && dtQua != null)
             {
-                string Qty = string.Concat(string.Format("{0:n0}", dtQua.Rows[0]["QTY"]), " Prs");
-                btnCar.Text = Qty;
+                LTDepartTime = dt.Rows[0]["DP_TIME"].ToString();
+                arrYN = dt.Rows[0]["ARR_YN"].ToString();
+                if (!dt.Rows[0]["ARR_YN"].ToString().Equals("1"))
+                {
+                    if (dtQua.Rows.Count > 0 && dtQua != null)
+                    {
+                        string Qty = string.Concat(string.Format("{0:n0}", dtQua.Rows[0]["QTY"]), " Prs");
+                        btnCar.Text = Qty;
+                    }
+                    else
+                        btnCar.Text = "";
+                }
+                else
+                {
+                    btnCar.Text = "";
+                }
             }
-            else
-                btnCar.Text = "";
         }
         private void tmrGetDepart_Tick(object sender, EventArgs e)
         {
@@ -185,13 +197,11 @@ namespace FORM
         }
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            
+
         }
         private void btnCar_Click(object sender, EventArgs e)
         {
-           
+
         }
-
-
     }
 }

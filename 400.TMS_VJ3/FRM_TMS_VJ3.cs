@@ -142,9 +142,11 @@ namespace FORM
 
         private void FRM_TMS_VJ3_VisibleChanged(object sender, EventArgs e)
         {
+            lblVersion.Text = "version: 2022.08.04.1";
             if (this.Visible)
             {
                 iUpdateCar = 60;
+                cCount = 60;
                 BindingData();
             }
         }
@@ -278,7 +280,7 @@ namespace FORM
                         if (string.IsNullOrEmpty(dtTmp.Rows[0]["ARR_HMS"].ToString()))
                         {
                             int EndlapseMinutes = 60;
-                            XCar2 = Car2_XStart + Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"]) * 5;
+                            XCar2 = Car2_XStart + Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"]) * 2;
                             lblTimeLapseVJ3_VJ2.Text = "Remain: " + ((EndlapseMinutes - Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"])) <= 0 ? 0 : (EndlapseMinutes - Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"]))) + " Minutes";
                             btnCar2.Location = new Point(XCar2 > Car2_XEnd ? Car2_XEnd : XCar2, Car2_Yoriginal);
                         }
@@ -392,6 +394,16 @@ namespace FORM
 
             }
         }
+        int cCount = 0;
+        private void tmr_Tick(object sender, EventArgs e)
+        {
+            if (cCount >=60)
+            {
+                cCount = 0;
+                BindingData();
+            }
+           
+        }
 
         private void BindingUpperOutgoingGrid()
         {
@@ -494,7 +506,7 @@ namespace FORM
             {
                 iUpdateCar = 0;
                 BindingOutgoingCarTime();
-
+                BindingData();
                 //Thread t = new Thread(() =>
                 // {
                 //     btnCar.BeginInvoke(new InvokeDelegate(Xe1Chay));
