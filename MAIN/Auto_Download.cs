@@ -172,6 +172,7 @@ namespace MAIN
             catch (Exception ex)
             { ComVar.Var.writeToLog(this.GetType().Name + "/DownloadFTP /" + arg_file_name + "    :    " + ex.ToString()); }
         }
-
+       
     }
+
 }
