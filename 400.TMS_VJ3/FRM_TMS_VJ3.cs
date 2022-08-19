@@ -405,6 +405,11 @@ namespace FORM
            
         }
 
+        private void cmdBack_Click(object sender, EventArgs e)
+        {
+            ComVar.Var.callForm = "back";
+        }
+
         private void BindingUpperOutgoingGrid()
         {
             try
