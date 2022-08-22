@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace MAIN
@@ -15,6 +16,12 @@ namespace MAIN
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            int height = System.Windows.Forms.SystemInformation.PrimaryMonitorSize.Height;
+            int width = System.Windows.Forms.SystemInformation.PrimaryMonitorSize.Width;
+            while(width!=1920 && height != 1080)
+            {
+                Thread.Sleep(1000);
+            }
             Application.Run(new RunINE());
          //   Application.Run(new FormFlash());
         }

@@ -29,7 +29,6 @@ namespace FORM
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_TMS_VJ3));
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
@@ -141,7 +140,7 @@ namespace FORM
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SET_RATIO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.tmrCarRun = new System.Windows.Forms.Timer(this.components);
+            this.tmrCarRun = new System.Windows.Forms.Timer();
             this.flyoutPanel1 = new DevExpress.Utils.FlyoutPanel();
             this.flyoutPanelControl1 = new DevExpress.Utils.FlyoutPanelControl();
             this.grdUpperFS_Set = new DevExpress.XtraGrid.GridControl();
@@ -224,12 +223,12 @@ namespace FORM
             // lblVersion
             // 
             this.lblVersion.AutoSize = true;
-            this.lblVersion.ForeColor = System.Drawing.Color.Cyan;
+            this.lblVersion.ForeColor = System.Drawing.Color.Turquoise;
             this.lblVersion.Location = new System.Drawing.Point(0, 92);
             this.lblVersion.Name = "lblVersion";
-            this.lblVersion.Size = new System.Drawing.Size(41, 13);
+            this.lblVersion.Size = new System.Drawing.Size(68, 13);
             this.lblVersion.TabIndex = 707;
-            this.lblVersion.Text = "label22";
+            this.lblVersion.Text = "Build Version";
             // 
             // cmdBack
             // 
@@ -1538,7 +1537,7 @@ namespace FORM
             this.PLANT_NM.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.PLANT_NM.Visible = true;
             this.PLANT_NM.VisibleIndex = 0;
-            this.PLANT_NM.Width = 232;
+            this.PLANT_NM.Width = 214;
             // 
             // STYLE_NAME
             // 
@@ -1556,7 +1555,7 @@ namespace FORM
             this.STYLE_NAME.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.STYLE_NAME.Visible = true;
             this.STYLE_NAME.VisibleIndex = 1;
-            this.STYLE_NAME.Width = 232;
+            this.STYLE_NAME.Width = 214;
             // 
             // STYLE_CD
             // 
@@ -1574,7 +1573,7 @@ namespace FORM
             this.STYLE_CD.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.STYLE_CD.Visible = true;
             this.STYLE_CD.VisibleIndex = 2;
-            this.STYLE_CD.Width = 270;
+            this.STYLE_CD.Width = 249;
             // 
             // QTY
             // 
@@ -1596,7 +1595,7 @@ namespace FORM
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "QTY", "Total: {0:n0} Prs")});
             this.QTY.Visible = true;
             this.QTY.VisibleIndex = 3;
-            this.QTY.Width = 197;
+            this.QTY.Width = 137;
             // 
             // tabNavigationPage2
             // 
@@ -2016,8 +2015,8 @@ namespace FORM
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1920, 1080);
-            this.Controls.Add(this.flyoutPanel1);
             this.Controls.Add(this.tblMain);
+            this.Controls.Add(this.flyoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FRM_TMS_VJ3";
             this.Text = "FRM_TMS_VJ3_V2";

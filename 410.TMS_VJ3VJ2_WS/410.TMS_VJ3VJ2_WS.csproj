@@ -177,6 +177,12 @@
     <Compile Include="FRM_TMS_VJ3VJ2_WS.Designer.cs">
       <DependentUpon>FRM_TMS_VJ3VJ2_WS.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRM_TMS_VJ3VJ2_WS_20220822.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_TMS_VJ3VJ2_WS_20220822.Designer.cs">
+      <DependentUpon>FRM_TMS_VJ3VJ2_WS_20220822.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRM_WS_OUT_BY_TRIP.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +237,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_TMS_VJ3VJ2_WS.resx">
       <DependentUpon>FRM_TMS_VJ3VJ2_WS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRM_TMS_VJ3VJ2_WS_20220822.resx">
+      <DependentUpon>FRM_TMS_VJ3VJ2_WS_20220822.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_WS_OUT_BY_TRIP.resx">
       <DependentUpon>FRM_WS_OUT_BY_TRIP.cs</DependentUpon>
@@ -307,6 +316,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\vj2_b.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\car2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
