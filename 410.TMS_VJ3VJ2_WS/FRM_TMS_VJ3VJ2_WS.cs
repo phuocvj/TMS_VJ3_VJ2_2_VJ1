@@ -1,4 +1,5 @@
 ﻿using DevExpress.Data;
+using DevExpress.Utils;
 using DevExpress.XtraGrid;
 using DevExpress.XtraGrid.Views.Grid;
 using System;
@@ -56,6 +57,81 @@ namespace FORM
 
                 if (ds_ret == null) return null;
                 return ds_ret;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+        private DataTable SELECT_TMS_DATA_RATIO_LT_SET(string ARG_PROC_NAME, string ARG_QTYPE, string ARG_PLANT_CD, string ARG_DATE)
+        {
+            try
+            {
+                COM.OraDB MyOraDB = new COM.OraDB();
+                MyOraDB.ConnectName = COM.OraDB.ConnectDB.LMES;
+                System.Data.DataSet ds_ret;
+
+                string process_name = string.Format("PKG_TMS_LONGTHANH.{0}", ARG_PROC_NAME);
+                MyOraDB.ReDim_Parameter(4);
+                MyOraDB.Process_Name = process_name;
+                MyOraDB.Parameter_Name[0] = "ARG_QTYPE";
+                MyOraDB.Parameter_Name[1] = "ARG_PLANT_CD";
+                MyOraDB.Parameter_Name[2] = "ARG_DATE";
+                MyOraDB.Parameter_Name[3] = "OUT_CURSOR";
+
+                MyOraDB.Parameter_Type[0] = (char)OracleType.VarChar;
+                MyOraDB.Parameter_Type[1] = (char)OracleType.VarChar;
+                MyOraDB.Parameter_Type[2] = (char)OracleType.VarChar;
+                MyOraDB.Parameter_Type[3] = (char)OracleType.Cursor;
+
+                MyOraDB.Parameter_Values[0] = ARG_QTYPE;
+                MyOraDB.Parameter_Values[1] = ARG_PLANT_CD;
+                MyOraDB.Parameter_Values[2] = ARG_DATE;
+                MyOraDB.Parameter_Values[3] = "";
+
+                MyOraDB.Add_Select_Parameter(true);
+                ds_ret = MyOraDB.Exe_Select_Procedure();
+
+                if (ds_ret == null) return null;
+                return ds_ret.Tables[0];
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        private DataTable SELECT_TMS_DATA_RATIO_TP_SET(string ARG_PROC_NAME, string ARG_QTYPE, string ARG_PLANT_CD, string ARG_DATE)
+        {
+            try
+            {
+                COM.OraDB MyOraDB = new COM.OraDB();
+                MyOraDB.ConnectName = COM.OraDB.ConnectDB.LMES;
+                System.Data.DataSet ds_ret;
+
+                string process_name = string.Format("PKG_TMS_TANPHU.{0}", ARG_PROC_NAME);
+                MyOraDB.ReDim_Parameter(4);
+                MyOraDB.Process_Name = process_name;
+                MyOraDB.Parameter_Name[0] = "ARG_QTYPE";
+                MyOraDB.Parameter_Name[1] = "ARG_PLANT_CD";
+                MyOraDB.Parameter_Name[2] = "ARG_DATE";
+                MyOraDB.Parameter_Name[3] = "OUT_CURSOR";
+
+                MyOraDB.Parameter_Type[0] = (char)OracleType.VarChar;
+                MyOraDB.Parameter_Type[1] = (char)OracleType.VarChar;
+                MyOraDB.Parameter_Type[2] = (char)OracleType.VarChar;
+                MyOraDB.Parameter_Type[3] = (char)OracleType.Cursor;
+
+                MyOraDB.Parameter_Values[0] = ARG_QTYPE;
+                MyOraDB.Parameter_Values[1] = ARG_PLANT_CD;
+                MyOraDB.Parameter_Values[2] = ARG_DATE;
+                MyOraDB.Parameter_Values[3] = "";
+
+                MyOraDB.Add_Select_Parameter(true);
+                ds_ret = MyOraDB.Exe_Select_Procedure();
+
+                if (ds_ret == null) return null;
+                return ds_ret.Tables[0];
             }
             catch
             {
@@ -530,12 +606,32 @@ namespace FORM
 
         private void tmr_Tick(object sender, EventArgs e)
         {
+            lblDate.Text = string.Format(DateTime.Now.ToString("yyyy-MM-dd\nHH:mm:ss"));
             iCount++;
             if (iCount >= 60)
             {
-                iCount = 0;
-                BindingCarRun();
-                BindingCarRun2();
+                try
+                {
+                    splashScreenManager1.ShowWaitForm();
+                    iCount = 0;
+                    BindingCarRun();
+                    BindingCarRun2();
+
+                    ClearControls();
+                    BindingUpperLTFSTotal();
+                    BindingUpperTPFSTotal();
+                    BingdingCarFromVJ2_VJ1();
+                    BingdingCarFromVJ3_VJ1();
+                    BindingBottomToPlantList();
+                    BindingGridVJ2UpperData();
+                    BindingGridVJ3UpperData();
+                    BingdingVJ2OutByAsyDate();
+                    BingdingVJ3OutByAsyDate();
+                }
+                finally
+                {
+                    splashScreenManager1.CloseWaitForm();
+                }
             }
         }
 
@@ -546,20 +642,29 @@ namespace FORM
                 DataTable dt = SELECT_TMS_DATA("PKG_TMS_VINHCUU.SELECT_CAR_VJ2_DPT", "", "", "", _dtXML.Rows[0]["LOC_CD"].ToString());
                 if (dt != null && dt.Rows.Count > 0)
                 {
-                    int Minutes = Convert.ToInt32(dt.Rows[0]["DPT_MINUTES"]);
-                    if (Minutes >= 60)
+                    string HasRun = dt.Rows[0]["HAS_RUN"].ToString();
+                    switch (HasRun)
                     {
-                        lblTimeLapseVJ2_VJ1.Text = string.Format("Allready Arrived To Vinh Cuu");
-                        btnCar.Location = new Point(656, btnCar.Location.Y);
+                        case "NOT_YET_RUN":
+                            btnCar.Location = new Point(335, btnCar.Location.Y);
+                            break;
+                        default:
+                            int Minutes = Convert.ToInt32(dt.Rows[0]["DPT_MINUTES"]);
+                            if (Minutes >= 60)
+                            {
+                                lblTimeLapseVJ2_VJ1.Text = string.Format("Allready Arrived To Vinh Cuu");
+                                btnCar.Location = new Point(656, btnCar.Location.Y);
 
+                            }
+                            else
+                            {
+                                lblTimeLapseVJ2_VJ1.Text = string.Format("Remain: {0} minutes to arrival", (60 - Minutes));
+                                btnCar.Location = new Point(335 + (Minutes * 5), btnCar.Location.Y);
+                            }
+                            break;
                     }
-                    else
-                    {
-                        lblTimeLapseVJ2_VJ1.Text = string.Format("Remain: {0} minutes to arrival", (60 - Minutes));
-                        btnCar.Location = new Point(335 + (Minutes * 5), btnCar.Location.Y);
-                    }
-
                 }
+
                 else
                 {
                     btnCar.Location = new Point(656, btnCar.Location.Y);
@@ -578,18 +683,28 @@ namespace FORM
                 DataTable dt = SELECT_TMS_DATA("PKG_TMS_VINHCUU.SELECT_CAR_VJ3_DPT", "", "", "", _dtXML.Rows[0]["LOC_CD"].ToString());
                 if (dt != null && dt.Rows.Count > 0)
                 {
-                    int Minutes = Convert.ToInt32(dt.Rows[0]["DPT_MINUTES"]);
-                    if (Minutes >= 180)
+                    string HasRun = dt.Rows[0]["HAS_RUN"].ToString();
+                    switch (HasRun)
                     {
-                        lblTimeLapseVJ3_VJ1.Text = string.Format("Allready Arrived To Vinh Cuu");
-                        btnCar2.Location = new Point(1220, btnCar2.Location.Y);
+                        case "NOT_YET_RUN":
+                            btnCar2.Location = new Point(1499, btnCar.Location.Y);
+                            break;
+                        default:
+                            int Minutes = Convert.ToInt32(dt.Rows[0]["DPT_MINUTES"]);
+                            if (Minutes >= 180)
+                            {
+                                lblTimeLapseVJ3_VJ1.Text = string.Format("Allready Arrived To Vinh Cuu");
+                                btnCar2.Location = new Point(1220, btnCar2.Location.Y);
 
+                            }
+                            else
+                            {
+                                lblTimeLapseVJ3_VJ1.Text = string.Format("Remain: {0} minutes to arrival", (180 - Minutes));
+                                btnCar2.Location = new Point(1499 - (Minutes * 2), btnCar2.Location.Y);
+                            }
+                            break;
                     }
-                    else
-                    {
-                        lblTimeLapseVJ3_VJ1.Text = string.Format("Remain: {0} minutes to arrival", (180 - Minutes));
-                        btnCar2.Location = new Point(1499 - (Minutes * 2), btnCar2.Location.Y);
-                    }
+
 
                 }
                 else
@@ -603,6 +718,154 @@ namespace FORM
             }
         }
 
+        private void BindingUpperLTFSTotal()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                string LineCode = _dtXML.Rows[0]["LOC_CD"].ToString();
+                btnVJ2VJ1Set.Text = "Set: 0%";
+                switch (LineCode)
+                {
+                    case "VJ1":
+                        dt = SELECT_TMS_DATA_RATIO_LT_SET("SELECT_LT_OUT_SET_FSS_LIST", "", "2110", "");
+                        break;
+                    case "FTY01":
+                        if (SELECT_TMS_DATA_RATIO_LT_SET("SELECT_LT_OUT_SET_FSS_LIST", "", "2110", "").Select("FA_WC_CD IN ('FGA01','FGA02','FGA03','FGA04','FGA05','FGA06')", "FA_WC_CD,ERP_fA_WC_CD,STYLE_CD").Count() > 0)
+                            dt = SELECT_TMS_DATA_RATIO_LT_SET("SELECT_LT_OUT_SET_FSS_LIST", "", "2110", "").Select("FA_WC_CD IN ('FGA01','FGA02','FGA03','FGA04','FGA05','FGA06')", "FA_WC_CD,ERP_fA_WC_CD,STYLE_CD").CopyToDataTable();
+                        break;
+                    case "099":
+                        if (SELECT_TMS_DATA_RATIO_LT_SET("SELECT_LT_OUT_SET_FSS_LIST", "", "2110", "").Select("FA_WC_CD ='FGA3N'", "FA_WC_CD,ERP_fA_WC_CD,STYLE_CD").Count() > 0)
+                            dt = SELECT_TMS_DATA_RATIO_LT_SET("SELECT_LT_OUT_SET_FSS_LIST", "", "2110", "").Select("FA_WC_CD ='FGA3N'", "FA_WC_CD,ERP_fA_WC_CD,STYLE_CD").CopyToDataTable();
+                        break;
+                }
+                if (dt != null && dt.Rows.Count > 1)
+                {
+                    var average = dt.AsEnumerable().Average(x => x.Field<decimal>("SET_RATIO"));
+                    btnVJ2VJ1Set.Text = "Set: " + Math.Round(average) + "%";
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+        private void BindingUpperTPFSTotal()
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                string LineCode = _dtXML.Rows[0]["LOC_CD"].ToString();
+                btnVJ3VJ1Set.Text = "Set: 0%";
+                switch (LineCode)
+                {
+                    case "VJ1":
+                        dt = SELECT_TMS_DATA_RATIO_TP_SET("SELECT_OUTGOING_SET_FSS_LIST", "", "2110", "");
+                        break;
+                    case "FTY01":
+                        if (SELECT_TMS_DATA_RATIO_TP_SET("SELECT_OUTGOING_SET_FSS_LIST", "", "2110", "").Select("FA_WC_CD IN ('FGA01','FGA02','FGA03','FGA04','FGA05','FGA06')", "FA_WC_CD,ERP_fA_WC_CD,STYLE_CD").Count() > 0)
+                            dt = SELECT_TMS_DATA_RATIO_TP_SET("SELECT_OUTGOING_SET_FSS_LIST", "", "2110", "").Select("FA_WC_CD IN ('FGA01','FGA02','FGA03','FGA04','FGA05','FGA06')", "FA_WC_CD,ERP_fA_WC_CD,STYLE_CD").CopyToDataTable();
+                        break;
+                    case "099":
+                        if (SELECT_TMS_DATA_RATIO_TP_SET("SELECT_OUTGOING_SET_FSS_LIST", "", "2110", "").Select("FA_WC_CD ='FGA3N'", "FA_WC_CD,ERP_fA_WC_CD,STYLE_CD").Count() > 0)
+                            dt = SELECT_TMS_DATA_RATIO_TP_SET("SELECT_OUTGOING_SET_FSS_LIST", "", "2110", "").Select("FA_WC_CD ='FGA3N'", "FA_WC_CD,ERP_fA_WC_CD,STYLE_CD").CopyToDataTable();
+                        break;
+                }
+                var average = dt.AsEnumerable().Average(x => x.Field<decimal>("SET_RATIO"));
+                btnVJ3VJ1Set.Text = "Set Ratio: " + Math.Round(average, 1) + "%";
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private void BindingUpperFSGrid(string ARG_PLANT_CD)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                string LineCode = _dtXML.Rows[0]["LOC_CD"].ToString();
+                switch (LineCode)
+                {
+                    case "VJ1":
+                        dt = SELECT_TMS_DATA_RATIO_LT_SET("SELECT_LT_OUT_SET_FSS_LIST", "", ARG_PLANT_CD, "");
+                        break;
+                    case "FTY01":
+                        if (SELECT_TMS_DATA_RATIO_LT_SET("SELECT_LT_OUT_SET_FSS_LIST", "", ARG_PLANT_CD, "").Select("FA_WC_CD IN ('FGA01','FGA02','FGA03','FGA04','FGA05','FGA06')", "FA_WC_CD,ERP_fA_WC_CD,STYLE_CD").Count() > 0)
+                            dt = SELECT_TMS_DATA_RATIO_LT_SET("SELECT_LT_OUT_SET_FSS_LIST", "", ARG_PLANT_CD, "").Select("FA_WC_CD IN ('FGA01','FGA02','FGA03','FGA04','FGA05','FGA06')", "FA_WC_CD,ERP_fA_WC_CD,STYLE_CD").CopyToDataTable();
+                        break;
+                    case "099":
+                        if (SELECT_TMS_DATA_RATIO_LT_SET("SELECT_LT_OUT_SET_FSS_LIST", "", ARG_PLANT_CD, "").Select("FA_WC_CD ='FGA3N'", "FA_WC_CD,ERP_fA_WC_CD,STYLE_CD").Count() > 0)
+                            dt = SELECT_TMS_DATA_RATIO_LT_SET("SELECT_LT_OUT_SET_FSS_LIST", "", ARG_PLANT_CD, "").Select("FA_WC_CD ='FGA3N'", "FA_WC_CD,ERP_fA_WC_CD,STYLE_CD").CopyToDataTable();
+                        break;
+                }
+
+                if (dt != null && dt.Rows.Count > 1)
+                {
+                    var average = dt.AsEnumerable().Average(x => x.Field<decimal>("SET_RATIO"));
+                    switch (ARG_PLANT_CD)
+                    {
+                        case "2110":
+                            btnVJ2VJ1Set.Text = Math.Round(average) + "%";
+                            break;
+                    }
+                    if (gvw_Set.Columns.Contains(gvw_Set.Columns["MODEL_NAME"]))
+                        gvw_Set.Columns["MODEL_NAME"].FieldName = "STYLE_NAME";
+                    if (gvw_Set.Columns.Contains(gvw_Set.Columns["ITEM_CLASS_NM"]))
+                        gvw_Set.Columns["ITEM_CLASS_NM"].FieldName = "ITEM_CLASS";
+                    grd_Set.DataSource = dt;
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+        private void BindingTPUpperFSGrid(string ARG_PLANT_CD)
+        {
+
+            try
+            {
+                DataTable dt = new DataTable();
+                string LineCode = _dtXML.Rows[0]["LOC_CD"].ToString();
+                switch (LineCode)
+                {
+                    case "VJ1":
+                        dt = SELECT_TMS_DATA_RATIO_TP_SET("SELECT_OUTGOING_SET_FSS_LIST", "", ARG_PLANT_CD, "");
+                        break;
+                    case "FTY01":
+                        if (SELECT_TMS_DATA_RATIO_TP_SET("SELECT_OUTGOING_SET_FSS_LIST", "", ARG_PLANT_CD, "").Select("FA_WC_CD IN ('FGA01','FGA02','FGA03','FGA04','FGA05','FGA06')", "FA_WC_CD,ERP_fA_WC_CD,STYLE_CD").Count() > 0)
+                            dt = SELECT_TMS_DATA_RATIO_TP_SET("SELECT_OUTGOING_SET_FSS_LIST", "", ARG_PLANT_CD, "").Select("FA_WC_CD IN ('FGA01','FGA02','FGA03','FGA04','FGA05','FGA06')", "FA_WC_CD,ERP_fA_WC_CD,STYLE_CD").CopyToDataTable();
+                        break;
+                    case "099":
+                        if (SELECT_TMS_DATA_RATIO_TP_SET("SELECT_OUTGOING_SET_FSS_LIST", "", ARG_PLANT_CD, "").Select("FA_WC_CD ='FGA3N'", "FA_WC_CD,ERP_fA_WC_CD,STYLE_CD").Count() > 0)
+                            dt = SELECT_TMS_DATA_RATIO_TP_SET("SELECT_OUTGOING_SET_FSS_LIST", "", ARG_PLANT_CD, "").Select("FA_WC_CD ='FGA3N'", "FA_WC_CD,ERP_fA_WC_CD,STYLE_CD").CopyToDataTable();
+                        break;
+                }
+
+                if (dt != null && dt.Rows.Count > 1)
+                {
+                    var average = dt.AsEnumerable().Average(x => x.Field<decimal>("SET_RATIO"));
+                    switch (ARG_PLANT_CD)
+                    {
+                        case "2110":
+                            btnVJ3VJ1Set.Text = "Set Ratio: " + Math.Round(average, 1) + "%";
+                            break;
+                   
+                    }
+                    grd_Set.DataSource = dt;
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
         private void FRM_TMS_VJ3VJ2_WS_VisibleChanged(object sender, EventArgs e)
         {
             if (this.Visible)
@@ -610,17 +873,10 @@ namespace FORM
 
                 try
                 {
-                    splashScreenManager1.ShowWaitForm();
-                    label22.Text = "2022.08.22.1";
+                    
+                    lblVersion.Text = "2022.08.22.1";
                     iCount = 60;
-                    ClearControls();
-                    BingdingCarFromVJ2_VJ1();
-                    BingdingCarFromVJ3_VJ1();
-                    BindingBottomToPlantList();
-                    BindingGridVJ2UpperData();
-                    BindingGridVJ3UpperData();
-                    BingdingVJ2OutByAsyDate();
-                    BingdingVJ3OutByAsyDate();
+                   
 
                 }
                 catch
@@ -629,9 +885,78 @@ namespace FORM
                 }
                 finally
                 {
-                    splashScreenManager1.CloseWaitForm();
+                    
                 }
             }
         }
+
+        private void btnS_VJ2VJ1_Click(object sender, EventArgs e)
+        {
+            ComVar.Var._Area = "2120";
+            ComVar.Var._strValue1 = _dtXML.Rows[0]["LOC_CD"].ToString();
+            ComVar.Var._strValue2 = _dtXML.Rows[0]["LOC_NM"].ToString();
+            ComVar.Var.callForm = "411";
+        }
+
+        private void btnS_VJ3VJ1_Click(object sender, EventArgs e)
+        {
+            ComVar.Var._Area = "2210";
+            ComVar.Var._strValue1 = _dtXML.Rows[0]["LOC_CD"].ToString();
+            ComVar.Var._strValue2 = _dtXML.Rows[0]["LOC_NM"].ToString();
+            ComVar.Var.callForm = "411";
+        }
+
+        private void btnVJ2VJ1Set_Click(object sender, EventArgs e)
+        {
+            BindingUpperFSGrid("2110");
+            flyoutPanel1.OptionsButtonPanel.Buttons[1].Properties.Caption = "Upper & Finish sole Set Long Thành - " + ComVar.Var._strValue2;
+            flyoutPanel1.ShowPopup();
+        }
+
+        private void btnVJ3VJ1Set_Click(object sender, EventArgs e)
+        {
+            BindingTPUpperFSGrid("2110");
+            flyoutPanel1.OptionsButtonPanel.Buttons[1].Properties.Caption = "Upper & Finish sole Set Tân Phú - " + ComVar.Var._strValue2;
+            flyoutPanel1.ShowPopup();
+        }
+
+       
+
+        private void flyoutPanel1_ButtonClick(object sender, DevExpress.Utils.FlyoutPanelButtonClickEventArgs e)
+        {
+            string tag = e.Button.Tag.ToString();
+            switch (tag)
+            {
+                case "close":
+                    (sender as FlyoutPanel).HidePopup();
+                    break;
+
+            }
+        }
+
+        private void gvw_Set_RowCellStyle(object sender, RowCellStyleEventArgs e)
+        {
+            try
+            {
+                if (gvw_Set.Columns.Contains(gvw_Set.Columns["ITEM_CLASS"]))
+                {
+                    string ItemClassVal = gvw_Set.GetRowCellValue(e.RowHandle, gvw_Set.Columns["ITEM_CLASS"]).ToString();
+                    if (e.Column.FieldName.Equals("ITEM_CLASS") || e.Column.FieldName.Equals("QTY"))
+                    {
+                        if (ItemClassVal.Equals("Assembly Set"))
+                        {
+                            e.Appearance.BackColor = Color.FromArgb(40, 95, 158);
+                            e.Appearance.ForeColor = Color.Yellow;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+
+            }
+        }
+
+
     }
 }

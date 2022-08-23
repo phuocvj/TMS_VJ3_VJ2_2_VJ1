@@ -397,6 +397,7 @@ namespace FORM
         int cCount = 0;
         private void tmr_Tick(object sender, EventArgs e)
         {
+            lblDate.Text = string.Format(DateTime.Now.ToString("yyyy-MM-dd\nHH:mm:ss"));
             if (cCount >=60)
             {
                 cCount = 0;

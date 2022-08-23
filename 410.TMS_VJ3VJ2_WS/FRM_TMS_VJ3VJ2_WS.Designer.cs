@@ -29,8 +29,9 @@ namespace FORM
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_TMS_VJ3VJ2_WS));
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
+            DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             this.pnHeader = new System.Windows.Forms.Panel();
             this.lblVersion = new System.Windows.Forms.Label();
             this.cmdBack = new System.Windows.Forms.Button();
@@ -38,6 +39,8 @@ namespace FORM
             this.lblTitle = new DevExpress.XtraEditors.LabelControl();
             this.pnInfomation = new System.Windows.Forms.Panel();
             this.splMain = new System.Windows.Forms.SplitContainer();
+            this.btnVJ3VJ1Set = new System.Windows.Forms.Button();
+            this.btnVJ2VJ1Set = new System.Windows.Forms.Button();
             this.separatorControl2 = new DevExpress.XtraEditors.SeparatorControl();
             this.lb_D3_2 = new System.Windows.Forms.Label();
             this.lb_D2_2 = new System.Windows.Forms.Label();
@@ -86,12 +89,11 @@ namespace FORM
             this.lblVJ1_arr_trip2 = new System.Windows.Forms.Label();
             this.lblVJ1_arr_trip3 = new System.Windows.Forms.Label();
             this.groupBoxEx3 = new FORM.GroupBoxEx();
-            this.btnVJ3VJ2Set = new System.Windows.Forms.Button();
             this.label20 = new System.Windows.Forms.Label();
             this.lblVJ3_dpt_trip2 = new System.Windows.Forms.Label();
             this.lblVJ3_dpt_trip1 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnS_VJ3VJ1 = new System.Windows.Forms.Button();
             this.groupBoxEx2 = new FORM.GroupBoxEx();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -103,7 +105,7 @@ namespace FORM
             this.lblVJ2_dpt_trip3 = new System.Windows.Forms.Label();
             this.lblVJ2_dpt_trip2 = new System.Windows.Forms.Label();
             this.lblVJ2_dpt_trip1 = new System.Windows.Forms.Label();
-            this.btnS_VJ3VJ1_Time = new System.Windows.Forms.Button();
+            this.btnS_VJ2VJ1 = new System.Windows.Forms.Button();
             this.tblData = new System.Windows.Forms.TableLayoutPanel();
             this.tabPane3 = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPage5 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
@@ -176,10 +178,20 @@ namespace FORM
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SET_RATIO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.tmr = new System.Windows.Forms.Timer(this.components);
+            this.tmr = new System.Windows.Forms.Timer();
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FORM.WaitForm1), true, true);
-            this.btnVJ2VJ1Set = new System.Windows.Forms.Button();
-            this.btnVJ3VJ1Set = new System.Windows.Forms.Button();
+            this.flyoutPanel1 = new DevExpress.Utils.FlyoutPanel();
+            this.flyoutPanelControl1 = new DevExpress.Utils.FlyoutPanelControl();
+            this.grd_Set = new DevExpress.XtraGrid.GridControl();
+            this.gvw_Set = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gridColumn40 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn41 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn42 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn43 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn44 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn45 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn46 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn47 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.pnHeader.SuspendLayout();
             this.pnInfomation.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splMain)).BeginInit();
@@ -220,6 +232,12 @@ namespace FORM
             ((System.ComponentModel.ISupportInitialize)(this.grdUpperFS_VJ1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwUpperFSVJ1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flyoutPanel1)).BeginInit();
+            this.flyoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelControl1)).BeginInit();
+            this.flyoutPanelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grd_Set)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvw_Set)).BeginInit();
             this.SuspendLayout();
             // 
             // pnHeader
@@ -349,6 +367,36 @@ namespace FORM
             this.splMain.Size = new System.Drawing.Size(1904, 936);
             this.splMain.SplitterDistance = 249;
             this.splMain.TabIndex = 0;
+            // 
+            // btnVJ3VJ1Set
+            // 
+            this.btnVJ3VJ1Set.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnVJ3VJ1Set.FlatAppearance.BorderSize = 0;
+            this.btnVJ3VJ1Set.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVJ3VJ1Set.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVJ3VJ1Set.ForeColor = System.Drawing.Color.White;
+            this.btnVJ3VJ1Set.Location = new System.Drawing.Point(1319, 126);
+            this.btnVJ3VJ1Set.Name = "btnVJ3VJ1Set";
+            this.btnVJ3VJ1Set.Size = new System.Drawing.Size(156, 35);
+            this.btnVJ3VJ1Set.TabIndex = 259;
+            this.btnVJ3VJ1Set.Text = "Set: 0%";
+            this.btnVJ3VJ1Set.UseVisualStyleBackColor = false;
+            this.btnVJ3VJ1Set.Click += new System.EventHandler(this.btnVJ3VJ1Set_Click);
+            // 
+            // btnVJ2VJ1Set
+            // 
+            this.btnVJ2VJ1Set.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.btnVJ2VJ1Set.FlatAppearance.BorderSize = 0;
+            this.btnVJ2VJ1Set.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVJ2VJ1Set.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVJ2VJ1Set.ForeColor = System.Drawing.Color.White;
+            this.btnVJ2VJ1Set.Location = new System.Drawing.Point(447, 123);
+            this.btnVJ2VJ1Set.Name = "btnVJ2VJ1Set";
+            this.btnVJ2VJ1Set.Size = new System.Drawing.Size(156, 35);
+            this.btnVJ2VJ1Set.TabIndex = 259;
+            this.btnVJ2VJ1Set.Text = "Set: 0%";
+            this.btnVJ2VJ1Set.UseVisualStyleBackColor = false;
+            this.btnVJ2VJ1Set.Click += new System.EventHandler(this.btnVJ2VJ1Set_Click);
             // 
             // separatorControl2
             // 
@@ -934,12 +982,11 @@ namespace FORM
             // groupBoxEx3
             // 
             this.groupBoxEx3.BackgroundPanelImage = null;
-            this.groupBoxEx3.Controls.Add(this.btnVJ3VJ2Set);
             this.groupBoxEx3.Controls.Add(this.label20);
             this.groupBoxEx3.Controls.Add(this.lblVJ3_dpt_trip2);
             this.groupBoxEx3.Controls.Add(this.lblVJ3_dpt_trip1);
             this.groupBoxEx3.Controls.Add(this.label18);
-            this.groupBoxEx3.Controls.Add(this.button2);
+            this.groupBoxEx3.Controls.Add(this.btnS_VJ3VJ1);
             this.groupBoxEx3.DrawGroupBorder = true;
             this.groupBoxEx3.Font = new System.Drawing.Font("Times New Roman", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.groupBoxEx3.ForeColor = System.Drawing.Color.White;
@@ -956,20 +1003,6 @@ namespace FORM
             this.groupBoxEx3.TextBackColor = System.Drawing.Color.OliveDrab;
             this.groupBoxEx3.TextBorderColor = System.Drawing.Color.OliveDrab;
             this.groupBoxEx3.TextBorderWith = 1F;
-            // 
-            // btnVJ3VJ2Set
-            // 
-            this.btnVJ3VJ2Set.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnVJ3VJ2Set.FlatAppearance.BorderSize = 0;
-            this.btnVJ3VJ2Set.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVJ3VJ2Set.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVJ3VJ2Set.ForeColor = System.Drawing.Color.White;
-            this.btnVJ3VJ2Set.Location = new System.Drawing.Point(6, 123);
-            this.btnVJ3VJ2Set.Name = "btnVJ3VJ2Set";
-            this.btnVJ3VJ2Set.Size = new System.Drawing.Size(156, 35);
-            this.btnVJ3VJ2Set.TabIndex = 201;
-            this.btnVJ3VJ2Set.Text = "Set: 0%";
-            this.btnVJ3VJ2Set.UseVisualStyleBackColor = false;
             // 
             // label20
             // 
@@ -1021,21 +1054,22 @@ namespace FORM
             this.label18.Text = "1";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // button2
+            // btnS_VJ3VJ1
             // 
-            this.button2.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.button2.BackgroundImage = global::FORM.Properties.Resources.VJ2;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("DS-Digital", 40F, System.Drawing.FontStyle.Bold);
-            this.button2.ForeColor = System.Drawing.Color.Yellow;
-            this.button2.Location = new System.Drawing.Point(167, 43);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(149, 111);
-            this.button2.TabIndex = 197;
-            this.button2.UseVisualStyleBackColor = false;
+            this.btnS_VJ3VJ1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnS_VJ3VJ1.BackgroundImage = global::FORM.Properties.Resources.VJ2;
+            this.btnS_VJ3VJ1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnS_VJ3VJ1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnS_VJ3VJ1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnS_VJ3VJ1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnS_VJ3VJ1.Font = new System.Drawing.Font("DS-Digital", 40F, System.Drawing.FontStyle.Bold);
+            this.btnS_VJ3VJ1.ForeColor = System.Drawing.Color.Yellow;
+            this.btnS_VJ3VJ1.Location = new System.Drawing.Point(167, 43);
+            this.btnS_VJ3VJ1.Name = "btnS_VJ3VJ1";
+            this.btnS_VJ3VJ1.Size = new System.Drawing.Size(149, 111);
+            this.btnS_VJ3VJ1.TabIndex = 197;
+            this.btnS_VJ3VJ1.UseVisualStyleBackColor = false;
+            this.btnS_VJ3VJ1.Click += new System.EventHandler(this.btnS_VJ3VJ1_Click);
             // 
             // groupBoxEx2
             // 
@@ -1050,7 +1084,7 @@ namespace FORM
             this.groupBoxEx2.Controls.Add(this.lblVJ2_dpt_trip3);
             this.groupBoxEx2.Controls.Add(this.lblVJ2_dpt_trip2);
             this.groupBoxEx2.Controls.Add(this.lblVJ2_dpt_trip1);
-            this.groupBoxEx2.Controls.Add(this.btnS_VJ3VJ1_Time);
+            this.groupBoxEx2.Controls.Add(this.btnS_VJ2VJ1);
             this.groupBoxEx2.DrawGroupBorder = true;
             this.groupBoxEx2.Font = new System.Drawing.Font("Times New Roman", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.groupBoxEx2.ForeColor = System.Drawing.Color.White;
@@ -1188,21 +1222,22 @@ namespace FORM
             this.lblVJ2_dpt_trip1.Tag = "1";
             this.lblVJ2_dpt_trip1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnS_VJ3VJ1_Time
+            // btnS_VJ2VJ1
             // 
-            this.btnS_VJ3VJ1_Time.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnS_VJ3VJ1_Time.BackgroundImage = global::FORM.Properties.Resources.VJ2;
-            this.btnS_VJ3VJ1_Time.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnS_VJ3VJ1_Time.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnS_VJ3VJ1_Time.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnS_VJ3VJ1_Time.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnS_VJ3VJ1_Time.Font = new System.Drawing.Font("DS-Digital", 40F, System.Drawing.FontStyle.Bold);
-            this.btnS_VJ3VJ1_Time.ForeColor = System.Drawing.Color.Yellow;
-            this.btnS_VJ3VJ1_Time.Location = new System.Drawing.Point(7, 43);
-            this.btnS_VJ3VJ1_Time.Name = "btnS_VJ3VJ1_Time";
-            this.btnS_VJ3VJ1_Time.Size = new System.Drawing.Size(149, 111);
-            this.btnS_VJ3VJ1_Time.TabIndex = 197;
-            this.btnS_VJ3VJ1_Time.UseVisualStyleBackColor = false;
+            this.btnS_VJ2VJ1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnS_VJ2VJ1.BackgroundImage = global::FORM.Properties.Resources.VJ2;
+            this.btnS_VJ2VJ1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnS_VJ2VJ1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnS_VJ2VJ1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnS_VJ2VJ1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnS_VJ2VJ1.Font = new System.Drawing.Font("DS-Digital", 40F, System.Drawing.FontStyle.Bold);
+            this.btnS_VJ2VJ1.ForeColor = System.Drawing.Color.Yellow;
+            this.btnS_VJ2VJ1.Location = new System.Drawing.Point(7, 43);
+            this.btnS_VJ2VJ1.Name = "btnS_VJ2VJ1";
+            this.btnS_VJ2VJ1.Size = new System.Drawing.Size(149, 111);
+            this.btnS_VJ2VJ1.TabIndex = 197;
+            this.btnS_VJ2VJ1.UseVisualStyleBackColor = false;
+            this.btnS_VJ2VJ1.Click += new System.EventHandler(this.btnS_VJ2VJ1_Click);
             // 
             // tblData
             // 
@@ -1218,7 +1253,7 @@ namespace FORM
             this.tblData.Name = "tblData";
             this.tblData.RowCount = 1;
             this.tblData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tblData.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 683F));
             this.tblData.Size = new System.Drawing.Size(1904, 683);
             this.tblData.TabIndex = 0;
             // 
@@ -2375,39 +2410,236 @@ namespace FORM
             // 
             this.splashScreenManager1.ClosingDelay = 500;
             // 
-            // btnVJ2VJ1Set
+            // flyoutPanel1
             // 
-            this.btnVJ2VJ1Set.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnVJ2VJ1Set.FlatAppearance.BorderSize = 0;
-            this.btnVJ2VJ1Set.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVJ2VJ1Set.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVJ2VJ1Set.ForeColor = System.Drawing.Color.White;
-            this.btnVJ2VJ1Set.Location = new System.Drawing.Point(447, 123);
-            this.btnVJ2VJ1Set.Name = "btnVJ2VJ1Set";
-            this.btnVJ2VJ1Set.Size = new System.Drawing.Size(156, 35);
-            this.btnVJ2VJ1Set.TabIndex = 259;
-            this.btnVJ2VJ1Set.Text = "Set: 0%";
-            this.btnVJ2VJ1Set.UseVisualStyleBackColor = false;
+            this.flyoutPanel1.Appearance.BackColor = System.Drawing.SystemColors.Highlight;
+            this.flyoutPanel1.Appearance.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flyoutPanel1.Appearance.Options.UseBackColor = true;
+            this.flyoutPanel1.Appearance.Options.UseFont = true;
+            this.flyoutPanel1.Controls.Add(this.flyoutPanelControl1);
+            this.flyoutPanel1.Location = new System.Drawing.Point(252, 256);
+            this.flyoutPanel1.LookAndFeel.SkinName = "Office 2013";
+            this.flyoutPanel1.Name = "flyoutPanel1";
+            this.flyoutPanel1.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.Manual;
+            this.flyoutPanel1.Options.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Fade;
+            this.flyoutPanel1.Options.CloseOnOuterClick = true;
+            this.flyoutPanel1.Options.Location = new System.Drawing.Point(300, 200);
+            this.flyoutPanel1.OptionsBeakPanel.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Slide;
+            this.flyoutPanel1.OptionsBeakPanel.BackColor = System.Drawing.SystemColors.Highlight;
+            this.flyoutPanel1.OptionsBeakPanel.BeakLocation = DevExpress.Utils.BeakPanelBeakLocation.Bottom;
+            this.flyoutPanel1.OptionsBeakPanel.BorderColor = System.Drawing.Color.Blue;
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Hovered.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Hovered.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Hovered.Options.UseFont = true;
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Hovered.Options.UseForeColor = true;
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Normal.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Normal.ForeColor = System.Drawing.Color.White;
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Normal.Options.UseFont = true;
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Normal.Options.UseForeColor = true;
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Pressed.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Pressed.ForeColor = System.Drawing.Color.Blue;
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Pressed.Options.UseFont = true;
+            this.flyoutPanel1.OptionsButtonPanel.AppearanceButton.Pressed.Options.UseForeColor = true;
+            this.flyoutPanel1.OptionsButtonPanel.ButtonPanelContentAlignment = System.Drawing.ContentAlignment.BottomRight;
+            this.flyoutPanel1.OptionsButtonPanel.ButtonPanelHeight = 40;
+            this.flyoutPanel1.OptionsButtonPanel.ButtonPanelLocation = DevExpress.Utils.FlyoutPanelButtonPanelLocation.Top;
+            buttonImageOptions1.Image = ((System.Drawing.Image)(resources.GetObject("buttonImageOptions1.Image")));
+            this.flyoutPanel1.OptionsButtonPanel.Buttons.AddRange(new DevExpress.XtraEditors.ButtonPanel.IBaseButton[] {
+            new DevExpress.Utils.PeekFormButton("Close", true, buttonImageOptions1, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, "close", -1, false),
+            new DevExpress.Utils.PeekFormButton("Label", true, buttonImageOptions2, DevExpress.XtraBars.Docking2010.ButtonStyle.PushButton, "", -1, true, null, true, false, true, "--", -1, true)});
+            this.flyoutPanel1.OptionsButtonPanel.ShowButtonPanel = true;
+            this.flyoutPanel1.OwnerControl = this;
+            this.flyoutPanel1.Padding = new System.Windows.Forms.Padding(0, 40, 0, 0);
+            this.flyoutPanel1.Size = new System.Drawing.Size(1230, 529);
+            this.flyoutPanel1.TabIndex = 234;
+            this.flyoutPanel1.ButtonClick += new DevExpress.Utils.FlyoutPanelButtonClickEventHandler(this.flyoutPanel1_ButtonClick);
             // 
-            // btnVJ3VJ1Set
+            // flyoutPanelControl1
             // 
-            this.btnVJ3VJ1Set.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.btnVJ3VJ1Set.FlatAppearance.BorderSize = 0;
-            this.btnVJ3VJ1Set.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVJ3VJ1Set.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVJ3VJ1Set.ForeColor = System.Drawing.Color.White;
-            this.btnVJ3VJ1Set.Location = new System.Drawing.Point(1319, 126);
-            this.btnVJ3VJ1Set.Name = "btnVJ3VJ1Set";
-            this.btnVJ3VJ1Set.Size = new System.Drawing.Size(156, 35);
-            this.btnVJ3VJ1Set.TabIndex = 259;
-            this.btnVJ3VJ1Set.Text = "Set: 0%";
-            this.btnVJ3VJ1Set.UseVisualStyleBackColor = false;
+            this.flyoutPanelControl1.Controls.Add(this.grd_Set);
+            this.flyoutPanelControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flyoutPanelControl1.FlyoutPanel = this.flyoutPanel1;
+            this.flyoutPanelControl1.Location = new System.Drawing.Point(0, 40);
+            this.flyoutPanelControl1.Name = "flyoutPanelControl1";
+            this.flyoutPanelControl1.Size = new System.Drawing.Size(1230, 489);
+            this.flyoutPanelControl1.TabIndex = 0;
+            // 
+            // grd_Set
+            // 
+            this.grd_Set.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grd_Set.Font = new System.Drawing.Font("Calibri", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grd_Set.Location = new System.Drawing.Point(2, 2);
+            this.grd_Set.MainView = this.gvw_Set;
+            this.grd_Set.Name = "grd_Set";
+            this.grd_Set.Size = new System.Drawing.Size(1226, 485);
+            this.grd_Set.TabIndex = 2;
+            this.grd_Set.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvw_Set});
+            // 
+            // gvw_Set
+            // 
+            this.gvw_Set.Appearance.FooterPanel.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
+            this.gvw_Set.Appearance.FooterPanel.ForeColor = System.Drawing.Color.Blue;
+            this.gvw_Set.Appearance.FooterPanel.Options.UseFont = true;
+            this.gvw_Set.Appearance.FooterPanel.Options.UseForeColor = true;
+            this.gvw_Set.Appearance.Row.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gvw_Set.Appearance.Row.Options.UseFont = true;
+            this.gvw_Set.ColumnPanelRowHeight = 35;
+            this.gvw_Set.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gridColumn40,
+            this.gridColumn41,
+            this.gridColumn42,
+            this.gridColumn43,
+            this.gridColumn44,
+            this.gridColumn45,
+            this.gridColumn46,
+            this.gridColumn47});
+            this.gvw_Set.GridControl = this.grd_Set;
+            this.gvw_Set.Name = "gvw_Set";
+            this.gvw_Set.OptionsBehavior.AllowPixelScrolling = DevExpress.Utils.DefaultBoolean.True;
+            this.gvw_Set.OptionsBehavior.AllowSortAnimation = DevExpress.Utils.DefaultBoolean.True;
+            this.gvw_Set.OptionsBehavior.Editable = false;
+            this.gvw_Set.OptionsBehavior.ReadOnly = true;
+            this.gvw_Set.OptionsCustomization.AllowColumnMoving = false;
+            this.gvw_Set.OptionsCustomization.AllowFilter = false;
+            this.gvw_Set.OptionsCustomization.AllowGroup = false;
+            this.gvw_Set.OptionsCustomization.AllowSort = false;
+            this.gvw_Set.OptionsDetail.EnableMasterViewMode = false;
+            this.gvw_Set.OptionsView.AllowCellMerge = true;
+            this.gvw_Set.OptionsView.ShowGroupPanel = false;
+            this.gvw_Set.OptionsView.ShowIndicator = false;
+            this.gvw_Set.RowHeight = 30;
+            this.gvw_Set.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gvw_Set_RowCellStyle);
+            // 
+            // gridColumn40
+            // 
+            this.gridColumn40.Caption = "FA_WC_CD";
+            this.gridColumn40.FieldName = "FA_WC_CD";
+            this.gridColumn40.Name = "gridColumn40";
+            // 
+            // gridColumn41
+            // 
+            this.gridColumn41.Caption = "ERP_FA_WC_CD";
+            this.gridColumn41.FieldName = "ERP_FA_WC_CD";
+            this.gridColumn41.Name = "gridColumn41";
+            // 
+            // gridColumn42
+            // 
+            this.gridColumn42.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn42.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn42.AppearanceHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn42.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn42.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn42.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn42.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn42.Caption = "Plant";
+            this.gridColumn42.FieldName = "PLANT_NM";
+            this.gridColumn42.Name = "gridColumn42";
+            this.gridColumn42.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn42.Visible = true;
+            this.gridColumn42.VisibleIndex = 0;
+            this.gridColumn42.Width = 261;
+            // 
+            // gridColumn43
+            // 
+            this.gridColumn43.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn43.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
+            this.gridColumn43.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn43.AppearanceHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn43.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn43.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn43.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn43.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn43.Caption = "Style Name";
+            this.gridColumn43.FieldName = "STYLE_NAME";
+            this.gridColumn43.Name = "gridColumn43";
+            this.gridColumn43.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn43.Visible = true;
+            this.gridColumn43.VisibleIndex = 1;
+            this.gridColumn43.Width = 322;
+            // 
+            // gridColumn44
+            // 
+            this.gridColumn44.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn44.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn44.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn44.AppearanceHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn44.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn44.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn44.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn44.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn44.Caption = "Style Code";
+            this.gridColumn44.FieldName = "STYLE_CD";
+            this.gridColumn44.Name = "gridColumn44";
+            this.gridColumn44.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
+            this.gridColumn44.Visible = true;
+            this.gridColumn44.VisibleIndex = 2;
+            this.gridColumn44.Width = 183;
+            // 
+            // gridColumn45
+            // 
+            this.gridColumn45.AppearanceHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumn45.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn45.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn45.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn45.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn45.Caption = "Items";
+            this.gridColumn45.FieldName = "ITEM_CLASS";
+            this.gridColumn45.Name = "gridColumn45";
+            this.gridColumn45.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn45.Visible = true;
+            this.gridColumn45.VisibleIndex = 3;
+            this.gridColumn45.Width = 203;
+            // 
+            // gridColumn46
+            // 
+            this.gridColumn46.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn46.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.gridColumn46.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn46.AppearanceHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gridColumn46.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn46.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn46.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn46.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn46.Caption = "Quantity (Prs)";
+            this.gridColumn46.DisplayFormat.FormatString = "{0:n0}";
+            this.gridColumn46.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn46.FieldName = "QTY";
+            this.gridColumn46.Name = "gridColumn46";
+            this.gridColumn46.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
+            this.gridColumn46.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "QTY", "Total: {0:n0} Prs")});
+            this.gridColumn46.Visible = true;
+            this.gridColumn46.VisibleIndex = 4;
+            this.gridColumn46.Width = 140;
+            // 
+            // gridColumn47
+            // 
+            this.gridColumn47.AppearanceCell.Options.UseTextOptions = true;
+            this.gridColumn47.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
+            this.gridColumn47.AppearanceCell.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn47.AppearanceHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold);
+            this.gridColumn47.AppearanceHeader.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.gridColumn47.AppearanceHeader.Options.UseFont = true;
+            this.gridColumn47.AppearanceHeader.Options.UseForeColor = true;
+            this.gridColumn47.AppearanceHeader.Options.UseTextOptions = true;
+            this.gridColumn47.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gridColumn47.AppearanceHeader.TextOptions.VAlignment = DevExpress.Utils.VertAlignment.Center;
+            this.gridColumn47.Caption = "Set Ratio";
+            this.gridColumn47.DisplayFormat.FormatString = "{0:n1}";
+            this.gridColumn47.DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            this.gridColumn47.FieldName = "SET_RATIO";
+            this.gridColumn47.Name = "gridColumn47";
+            this.gridColumn47.Visible = true;
+            this.gridColumn47.VisibleIndex = 5;
+            this.gridColumn47.Width = 115;
             // 
             // FRM_TMS_VJ3VJ2_WS
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.Controls.Add(this.flyoutPanel1);
             this.Controls.Add(this.pnInfomation);
             this.Controls.Add(this.pnHeader);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -2459,6 +2691,12 @@ namespace FORM
             ((System.ComponentModel.ISupportInitialize)(this.grdUpperFS_VJ1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvwUpperFSVJ1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.flyoutPanel1)).EndInit();
+            this.flyoutPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.flyoutPanelControl1)).EndInit();
+            this.flyoutPanelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grd_Set)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvw_Set)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -2516,12 +2754,11 @@ namespace FORM
         private System.Windows.Forms.Label lblVJ1_arr_trip2;
         private System.Windows.Forms.Label lblVJ1_arr_trip3;
         private GroupBoxEx groupBoxEx3;
-        private System.Windows.Forms.Button btnVJ3VJ2Set;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label lblVJ3_dpt_trip2;
         private System.Windows.Forms.Label lblVJ3_dpt_trip1;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnS_VJ3VJ1;
         private GroupBoxEx groupBoxEx2;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
@@ -2533,7 +2770,7 @@ namespace FORM
         private System.Windows.Forms.Label lblVJ2_dpt_trip3;
         private System.Windows.Forms.Label lblVJ2_dpt_trip2;
         private System.Windows.Forms.Label lblVJ2_dpt_trip1;
-        private System.Windows.Forms.Button btnS_VJ3VJ1_Time;
+        private System.Windows.Forms.Button btnS_VJ2VJ1;
         private System.Windows.Forms.TableLayoutPanel tblData;
         private DevExpress.XtraBars.Navigation.TabPane tabPane3;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage5;
@@ -2614,5 +2851,17 @@ namespace FORM
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Button btnVJ3VJ1Set;
         private System.Windows.Forms.Button btnVJ2VJ1Set;
+        private DevExpress.Utils.FlyoutPanel flyoutPanel1;
+        private DevExpress.Utils.FlyoutPanelControl flyoutPanelControl1;
+        private DevExpress.XtraGrid.GridControl grd_Set;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvw_Set;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn40;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn41;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn42;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn43;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn44;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn45;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn46;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn47;
     }
 }
