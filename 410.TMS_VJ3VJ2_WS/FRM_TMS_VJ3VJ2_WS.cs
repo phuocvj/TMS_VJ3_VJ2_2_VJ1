@@ -412,7 +412,6 @@ namespace FORM
                 DataTable dt = SELECT_TMS_DATA("PKG_TMS_LONGTHANH.SELECT_LT_UPPER_OUT_LIST", _dtXML.Rows[0]["LOC_CD"].ToString(), "");
                 if (dt != null && dt.Rows.Count > 1)
                 {
-
                     grdVJ2Upper.DataSource = dt;
                     GridColumnSummaryItem siRecordDate = new GridColumnSummaryItem();
                     siRecordDate.SummaryType = SummaryItemType.Custom;
@@ -647,12 +646,13 @@ namespace FORM
                     {
                         case "NOT_YET_RUN":
                             btnCar.Location = new Point(335, btnCar.Location.Y);
+                            lblTimeLapseVJ2_VJ1.Text = "Not Yet Depart";
                             break;
                         default:
                             int Minutes = Convert.ToInt32(dt.Rows[0]["DPT_MINUTES"]);
                             if (Minutes >= 60)
                             {
-                                lblTimeLapseVJ2_VJ1.Text = string.Format("Allready Arrived To Vinh Cuu");
+                                lblTimeLapseVJ2_VJ1.Text = string.Format("Allready Arrived");
                                 btnCar.Location = new Point(656, btnCar.Location.Y);
 
                             }
@@ -668,6 +668,7 @@ namespace FORM
                 else
                 {
                     btnCar.Location = new Point(656, btnCar.Location.Y);
+                    lblTimeLapseVJ2_VJ1.Text = "Already Arrived";
                 }
             }
             catch (Exception ex)
@@ -688,12 +689,13 @@ namespace FORM
                     {
                         case "NOT_YET_RUN":
                             btnCar2.Location = new Point(1499, btnCar.Location.Y);
+                            lblTimeLapseVJ3_VJ1.Text = "Not Yet Depart";
                             break;
                         default:
                             int Minutes = Convert.ToInt32(dt.Rows[0]["DPT_MINUTES"]);
                             if (Minutes >= 180)
                             {
-                                lblTimeLapseVJ3_VJ1.Text = string.Format("Allready Arrived To Vinh Cuu");
+                                lblTimeLapseVJ3_VJ1.Text = string.Format("Allready Arrived");
                                 btnCar2.Location = new Point(1220, btnCar2.Location.Y);
 
                             }
@@ -710,6 +712,7 @@ namespace FORM
                 else
                 {
                     btnCar2.Location = new Point(1220, btnCar.Location.Y);
+                    lblTimeLapseVJ3_VJ1.Text = "Already Arrived";
                 }
             }
             catch (Exception ex)
@@ -957,6 +960,14 @@ namespace FORM
             }
         }
 
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+            ComVar.Var.callForm = "minimized";
+        }
 
+        private void lblDate_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

@@ -29,6 +29,7 @@ namespace FORM
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_TMS_VJ3VJ2_WS));
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
@@ -178,7 +179,7 @@ namespace FORM
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SET_RATIO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.tmr = new System.Windows.Forms.Timer();
+            this.tmr = new System.Windows.Forms.Timer(this.components);
             this.splashScreenManager1 = new DevExpress.XtraSplashScreen.SplashScreenManager(this, typeof(global::FORM.WaitForm1), true, true);
             this.flyoutPanel1 = new DevExpress.Utils.FlyoutPanel();
             this.flyoutPanelControl1 = new DevExpress.Utils.FlyoutPanelControl();
@@ -290,6 +291,7 @@ namespace FORM
             this.lblDate.Size = new System.Drawing.Size(281, 105);
             this.lblDate.TabIndex = 49;
             this.lblDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lblDate.Click += new System.EventHandler(this.lblDate_Click);
             // 
             // lblTitle
             // 
@@ -308,6 +310,7 @@ namespace FORM
             this.lblTitle.Size = new System.Drawing.Size(804, 105);
             this.lblTitle.TabIndex = 2;
             this.lblTitle.Text = "Transportation Board";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // pnInfomation
             // 
