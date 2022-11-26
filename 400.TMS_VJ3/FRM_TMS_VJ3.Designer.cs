@@ -29,6 +29,7 @@ namespace FORM
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_TMS_VJ3));
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions1 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
             DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions buttonImageOptions2 = new DevExpress.XtraEditors.ButtonsPanelControl.ButtonImageOptions();
@@ -140,7 +141,7 @@ namespace FORM
             this.gridColumn12 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SET_RATIO = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.tmrCarRun = new System.Windows.Forms.Timer();
+            this.tmrCarRun = new System.Windows.Forms.Timer(this.components);
             this.flyoutPanel1 = new DevExpress.Utils.FlyoutPanel();
             this.flyoutPanelControl1 = new DevExpress.Utils.FlyoutPanelControl();
             this.grdUpperFS_Set = new DevExpress.XtraGrid.GridControl();
@@ -572,6 +573,7 @@ namespace FORM
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(349, 10);
             this.panel1.TabIndex = 205;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label9
             // 

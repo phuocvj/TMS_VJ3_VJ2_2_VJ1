@@ -202,7 +202,15 @@ namespace FORM
                 lblPlan.Text = "TOTAL PLAN";
                 lblInventory.Text = "INVENTORY";
                 lblShortage.Text = "TOTAL SHORTAGE";
-
+                switch (ComVar.Var._strValue1)
+                {
+                    case "2110":
+                        lblTitle.Text = "Upper VJ3 (Tân Phú) - VJ1 (Vĩnh Cửu) Delivery Detail";
+                        break;
+                    case "2120":
+                        lblTitle.Text = "Upper VJ3 (Tân Phú) - VJ2 (Long Thành) Delivery Detail";
+                        break;
+                }
                 DataSet ds = SELECT_TMS_DATA("SELECT_UPPER_STATUS", "", "", ComVar.Var._strValue1);
                 dt = ds.Tables[0];
                 lblOutgoing_Total.Text = "0"; chartOutgoing.DataSource = null;
@@ -395,7 +403,7 @@ namespace FORM
                         lblTitle.Text = "Upper VJ3 (Tân Phú) - VJ2 (Long Thành) Delivery Detail";
                         break;
                 }
-                lblDate.Text = string.Format(DateTime.Now.ToString("yyyy-MM-dd\nHH:mm:ss")); //Gán dữ liệu giờ cho label ngày giờ
+                              lblDate.Text = string.Format(DateTime.Now.ToString("yyyy-MM-dd\nHH:mm:ss")); //Gán dữ liệu giờ cho label ngày giờ
                 cCount = 60;
                 tmrDate.Start();
             }

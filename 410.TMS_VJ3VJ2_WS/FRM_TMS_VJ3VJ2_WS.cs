@@ -288,6 +288,39 @@ namespace FORM
                 return null;
             }
         }
+
+        private DataTable SELECT_TRIP_TIME(string ARG_DATE, string ARG_PLANT)
+        {
+            try
+            {
+                COM.OraDB MyOraDB = new COM.OraDB();
+                System.Data.DataSet ds_ret;
+
+                string process_name = "MES.PKG_TMS_BT_WS.SELECT_TRIP_TIME";
+                MyOraDB.ReDim_Parameter(3);
+                MyOraDB.Process_Name = process_name;
+                MyOraDB.Parameter_Name[0] = "ARG_DATE";
+                MyOraDB.Parameter_Name[1] = "ARG_PLANT";
+                MyOraDB.Parameter_Name[2] = "OUT_CURSOR";
+
+                MyOraDB.Parameter_Type[0] = (char)OracleType.VarChar;
+                MyOraDB.Parameter_Type[1] = (char)OracleType.VarChar;
+                MyOraDB.Parameter_Type[2] = (char)OracleType.Cursor;
+
+                MyOraDB.Parameter_Values[0] = ARG_DATE;
+                MyOraDB.Parameter_Values[1] = ARG_PLANT;
+                MyOraDB.Parameter_Values[2] = "";
+
+                MyOraDB.Add_Select_Parameter(true);
+                ds_ret = MyOraDB.Exe_Select_Procedure();
+                if (ds_ret == null) return null;
+                return ds_ret.Tables[0];
+            }
+            catch
+            {
+                return null;
+            }
+        }
         #endregion
 
         #region CAR + OUTGOING QUANTITY
@@ -589,6 +622,8 @@ namespace FORM
         }
 
         #endregion
+
+      
 
         private void FRM_TMS_VJ3VJ2_WS_Load(object sender, EventArgs e)
         {

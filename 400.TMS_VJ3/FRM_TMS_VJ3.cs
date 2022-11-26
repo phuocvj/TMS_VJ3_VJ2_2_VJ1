@@ -411,6 +411,11 @@ namespace FORM
             ComVar.Var.callForm = "back";
         }
 
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void BindingUpperOutgoingGrid()
         {
             try
