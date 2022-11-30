@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<db>
+  <Main>
+	<grpForm>TMS_VJ3</grpForm>
+	<FlashScreen>true</FlashScreen>
+	<Auto_Download>false</Auto_Download>
+	<Monitor>1</Monitor>
+	<LOC_CD>VJ3</LOC_CD>
+	<LOC_NM>VJ3</LOC_NM>	
+	<THREAD>NOUSE</THREAD>
+  </Main>
+  <Auto_Download>
+	<grpForm>TMS_VJ3</grpForm>
+  </Auto_Download>
+</db>
