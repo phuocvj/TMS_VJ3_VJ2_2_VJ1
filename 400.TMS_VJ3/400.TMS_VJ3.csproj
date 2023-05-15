@@ -180,17 +180,23 @@
     <Compile Include="FRM_TMS_DASH_V4.Designer.cs">
       <DependentUpon>FRM_TMS_DASH_V4.cs</DependentUpon>
     </Compile>
+    <Compile Include="FRM_TMS_VJ3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRM_TMS_VJ3.Designer.cs">
+      <DependentUpon>FRM_TMS_VJ3.cs</DependentUpon>
+    </Compile>
     <Compile Include="FRM_TMS_VJ3_old_20220719.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FRM_TMS_VJ3_old_20220719.Designer.cs">
       <DependentUpon>FRM_TMS_VJ3_old_20220719.cs</DependentUpon>
     </Compile>
-    <Compile Include="FRM_TMS_VJ3.cs">
+    <Compile Include="FRM_TMS_VJ3_OLD.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FRM_TMS_VJ3.Designer.cs">
-      <DependentUpon>FRM_TMS_VJ3.cs</DependentUpon>
+    <Compile Include="FRM_TMS_VJ3_OLD.Designer.cs">
+      <DependentUpon>FRM_TMS_VJ3_OLD.cs</DependentUpon>
     </Compile>
     <Compile Include="FRM_VJ3_VJ1_MAPS.cs">
       <SubType>Form</SubType>
@@ -253,11 +259,14 @@
     <EmbeddedResource Include="FRM_TMS_DASH_V4.resx">
       <DependentUpon>FRM_TMS_DASH_V4.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FRM_TMS_VJ3.resx">
+      <DependentUpon>FRM_TMS_VJ3.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FRM_TMS_VJ3_old_20220719.resx">
       <DependentUpon>FRM_TMS_VJ3_old_20220719.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FRM_TMS_VJ3.resx">
-      <DependentUpon>FRM_TMS_VJ3.cs</DependentUpon>
+    <EmbeddedResource Include="FRM_TMS_VJ3_OLD.resx">
+      <DependentUpon>FRM_TMS_VJ3_OLD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FRM_VJ3_VJ1_MAPS.resx">
       <DependentUpon>FRM_VJ3_VJ1_MAPS.cs</DependentUpon>

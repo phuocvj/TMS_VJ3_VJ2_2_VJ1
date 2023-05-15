@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace FORM
 {
-    public partial class FRM_TMS_VJ3 : Form
+    public partial class FRM_TMS_VJ3_OLD : Form
     {
-        public FRM_TMS_VJ3()
+        public FRM_TMS_VJ3_OLD()
         {
 
             InitializeComponent();
@@ -24,7 +24,7 @@ namespace FORM
         }
         int iUpdateCar = 0;
         public delegate void InvokeDelegate();
-        int Car1_XStart = 1485, Car1_Yoriginal = 40, Car1_XEnd = 338,
+        int Car1_XStart = 659, Car1_Yoriginal = 40, Car1_XEnd = 338,
            Car2_XStart = 1233, Car2_Yoriginal = 40, Car2_XEnd = 1500;
         int XCar1 = 659, XCar2 = 1233; //Di chuyen X khong di chuyen Y.
 
@@ -186,6 +186,19 @@ namespace FORM
                         lblVJ3_VJ1_DPT_Trip1.Text =string.Concat( dtTmp.Rows[0]["DPT_HMS"].ToString()," (",string.Format("{0:n0}", dtTmp.Rows[0]["O_QTY"])," Prs)");
                     }
 
+                    if (dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ2_LE' AND ORD_TRIP = 1").Count() > 0)
+                    {
+                        DataTable dtTmp = dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ2_LE' AND ORD_TRIP = 1").CopyToDataTable();
+                        lblVJ3_VJ2_ARR_Trip1.Text = dtTmp.Rows[0]["ARR_HMS"].ToString();
+                        lblVJ3_VJ2_DPT_Trip1.Text = string.Concat(dtTmp.Rows[0]["DPT_HMS"].ToString(), " (", string.Format("{0:n0}", dtTmp.Rows[0]["O_QTY"]), " Prs)");
+                    }
+
+                    if (dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ2_LE' AND ORD_TRIP = 2").Count() > 0)
+                    {
+                        DataTable dtTmp = dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ2_LE' AND ORD_TRIP = 2").CopyToDataTable();
+                        lblVJ3_VJ2_ARR_Trip2.Text = dtTmp.Rows[0]["ARR_HMS"].ToString();
+                        lblVJ3_VJ2_DPT_Trip2.Text = string.Concat(dtTmp.Rows[0]["DPT_HMS"].ToString(), " (", string.Format("{0:n0}", dtTmp.Rows[0]["O_QTY"]), " Prs)");
+                    }
                 }
             }
             catch
@@ -212,15 +225,15 @@ namespace FORM
                         lb_D3.Text = string.Format("{0:n0}", dtTemp.Rows[0]["D3"]);
                     }
 
-                    //if (dt.Select("FA_PLANT_CD = '2120'").Count() > 0)
-                    //{
-                    //    DataTable dtTemp = dt.Select("FA_PLANT_CD = '2120'").CopyToDataTable();
-                    //    lb_total2.Text = string.Format("{0:n0}", dtTemp.Rows[0]["TOTAL"]);
-                    //    lb_DD_2.Text = string.Format("{0:n0}", dtTemp.Rows[0]["DD"]);
-                    //    lb_D1_2.Text = string.Format("{0:n0}", dtTemp.Rows[0]["D1"]);
-                    //    lb_D2_2.Text = string.Format("{0:n0}", dtTemp.Rows[0]["D2"]);
-                    //    lb_D3_2.Text = string.Format("{0:n0}", dtTemp.Rows[0]["D3"]);
-                    //}
+                    if (dt.Select("FA_PLANT_CD = '2120'").Count() > 0)
+                    {
+                        DataTable dtTemp = dt.Select("FA_PLANT_CD = '2120'").CopyToDataTable();
+                        lb_total2.Text = string.Format("{0:n0}", dtTemp.Rows[0]["TOTAL"]);
+                        lb_DD_2.Text = string.Format("{0:n0}", dtTemp.Rows[0]["DD"]);
+                        lb_D1_2.Text = string.Format("{0:n0}", dtTemp.Rows[0]["D1"]);
+                        lb_D2_2.Text = string.Format("{0:n0}", dtTemp.Rows[0]["D2"]);
+                        lb_D3_2.Text = string.Format("{0:n0}", dtTemp.Rows[0]["D3"]);
+                    }
                 }
             }
             catch
@@ -233,7 +246,7 @@ namespace FORM
             try
             {
                 DataTable dt = SELECT_TMS_DATA("SELECT_CAR_TRIP_TIME", "", ""); //Get Car Depart & Arrival Time
-                lblTimeLapseVJ3_VJ1.Text =  "Not Yet Depart";
+                lblTimeLapseVJ3_VJ1.Text = lblTimeLapseVJ3_VJ2.Text = "Not Yet Depart";
                 if (dt != null && dt.Rows.Count > 0)
                 {
 
@@ -254,6 +267,28 @@ namespace FORM
                             lblTimeLapseVJ3_VJ1.Text = "Arrival Already!";
                             btnCar.Location = new Point(Car1_XEnd, Car1_Yoriginal);
                             lblBT_Current_Qty.Text = "";
+                        }
+                    }
+                }
+
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    if (dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ2_LE'").Count() > 0)
+                    {
+                        DataTable dtTmp = dt.Select("GATE_DPT = 'VJ3' AND GATE_ARR = 'VJ2_LE'").CopyToDataTable();
+                        lblUpper_Current_Qty.Text = string.Concat("Upper Current Trip: ", string.Format("{0:n0}", dtTmp.Rows[0]["QTY"]), " Prs");
+                        if (string.IsNullOrEmpty(dtTmp.Rows[0]["ARR_HMS"].ToString()))
+                        {
+                            int EndlapseMinutes = 60;
+                            XCar2 = Car2_XStart + Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"]) * 2;
+                            lblTimeLapseVJ3_VJ2.Text = "Remain: " + ((EndlapseMinutes - Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"])) <= 0 ? 0 : (EndlapseMinutes - Convert.ToInt32(dtTmp.Rows[0]["DPT_MIN"]))) + " Minutes";
+                            btnCar2.Location = new Point(XCar2 > Car2_XEnd ? Car2_XEnd : XCar2, Car2_Yoriginal);
+                        }
+                        else
+                        {
+                            lblTimeLapseVJ3_VJ2.Text = "Arrival Already!";
+                            btnCar2.Location = new Point(Car2_XEnd,Car2_Yoriginal);
+                            lblUpper_Current_Qty.Text = " ";
                         }
                     }
                 }
@@ -333,11 +368,11 @@ namespace FORM
             lb_D2.Text = "";
             lb_D3.Text = "";
 
-            //lb_total2.Text = "";
-            //lb_DD_2.Text = "";
-            //lb_D1_2.Text = "";
-            //lb_D2_2.Text = "";
-            //lb_D3_2.Text = "";
+            lb_total2.Text = "";
+            lb_DD_2.Text = "";
+            lb_D1_2.Text = "";
+            lb_D2_2.Text = "";
+            lb_D3_2.Text = "";
         }
 
         private void gvwUpperFS_Set_RowCellStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowCellStyleEventArgs e)
@@ -393,6 +428,11 @@ namespace FORM
                         DataTable dtTemp = dt.Select("FA_PLANT_CD = '2110' AND FA_WC_CD IS NOT NULL","FA_WC_CD,ERP_FA_WC_CD").CopyToDataTable();
                         grdUpperVJ1.DataSource = dtTemp;
                     }
+                    if (dt.Select("FA_PLANT_CD = '2120' AND FA_WC_CD IS NOT NULL").Count() > 0)
+                    {
+                        DataTable dtTemp = dt.Select("FA_PLANT_CD = '2120'  AND FA_WC_CD IS NOT NULL", "FA_WC_CD,ERP_FA_WC_CD").CopyToDataTable();
+                        grdUpperVJ2.DataSource = dtTemp;
+                    }
                 }
             }
             catch
@@ -412,6 +452,9 @@ namespace FORM
                     {
                         case "2110":
                             btnVJ3VJ1Set.Text = "Set Ratio: " + Math.Round(average, 1) + "%";
+                            break;
+                        case "2120":
+                            btnVJ3VJ2Set.Text = "Set Ratio: " + Math.Round(average, 1) + "%";
                             break;
                     }
                     grdUpperFS_Set.DataSource = dt;
@@ -453,6 +496,10 @@ namespace FORM
                             btnVJ3VJ1Set.Text = "Set Ratio: " + Math.Round(average, 1) + "%";
                             flyoutPanel1.OptionsButtonPanel.Buttons[1].Properties.Caption = "Vĩnh Cửu";
                             break;
+                        case "2120":
+                            btnVJ3VJ2Set.Text = "Set Ratio: " + Math.Round(average, 1) + "%";
+                            flyoutPanel1.OptionsButtonPanel.Buttons[1].Properties.Caption = "Long Thành";
+                            break;
                     }
                 }
             }
@@ -489,5 +536,15 @@ namespace FORM
             btnCar.Location = new Point(XCar1, Car1_Yoriginal);
             btnCar.Text = XCar1.ToString();
         }
+
+        public void Xe2Chay()
+        {
+            if (XCar2 > Car2_XEnd)
+                XCar2 = Car2_XStart;
+            btnCar2.Location = new Point(XCar2, Car2_Yoriginal);
+            btnCar2.Text = XCar2.ToString();
+        }
+
+
     }
 }
