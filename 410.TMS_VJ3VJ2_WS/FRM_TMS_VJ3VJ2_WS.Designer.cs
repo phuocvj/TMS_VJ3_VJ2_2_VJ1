@@ -791,7 +791,7 @@ namespace FORM
             this.gbbVJ2.Size = new System.Drawing.Size(482, 167);
             this.gbbVJ2.TabIndex = 228;
             this.gbbVJ2.TabStop = false;
-            this.gbbVJ2.Text = "PLANT N";
+            this.gbbVJ2.Text = "Plant N";
             this.gbbVJ2.TextBackColor = System.Drawing.SystemColors.MenuHighlight;
             this.gbbVJ2.TextBorderColor = System.Drawing.Color.MediumTurquoise;
             this.gbbVJ2.TextBorderWith = 1F;
@@ -1002,7 +1002,7 @@ namespace FORM
             this.groupBoxEx3.Size = new System.Drawing.Size(323, 164);
             this.groupBoxEx3.TabIndex = 229;
             this.groupBoxEx3.TabStop = false;
-            this.groupBoxEx3.Text = "VJ3 (TAN PHU)";
+            this.groupBoxEx3.Text = "VJ3(Tân Phú)";
             this.groupBoxEx3.TextBackColor = System.Drawing.Color.OliveDrab;
             this.groupBoxEx3.TextBorderColor = System.Drawing.Color.OliveDrab;
             this.groupBoxEx3.TextBorderWith = 1F;
@@ -1100,7 +1100,7 @@ namespace FORM
             this.groupBoxEx2.Size = new System.Drawing.Size(323, 164);
             this.groupBoxEx2.TabIndex = 227;
             this.groupBoxEx2.TabStop = false;
-            this.groupBoxEx2.Text = "VJ2 (LONG THANH) ";
+            this.groupBoxEx2.Text = "VJ2 (Long Thành)";
             this.groupBoxEx2.TextBackColor = System.Drawing.Color.ForestGreen;
             this.groupBoxEx2.TextBorderColor = System.Drawing.Color.MediumTurquoise;
             this.groupBoxEx2.TextBorderWith = 1F;

@@ -38,6 +38,7 @@ namespace FORM
             this.gvwUpperVJ1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.FA_WC_CD = new DevExpress.XtraGrid.Columns.GridColumn();
             this.ERP_FA_WC_CD = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.ORD_TRIP = new DevExpress.XtraGrid.Columns.GridColumn();
             this.PLANT_NM = new DevExpress.XtraGrid.Columns.GridColumn();
             this.STYLE_NAME = new DevExpress.XtraGrid.Columns.GridColumn();
             this.STYLE_CD = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -66,11 +67,19 @@ namespace FORM
             this.lblBT_Current_Qty = new System.Windows.Forms.Label();
             this.lblTimeLapseVJ3_VJ1 = new System.Windows.Forms.Label();
             this.gbbVJ2 = new FORM.GroupBoxEx();
-            this.label13 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.lblVJ3_VJ1_DPT_Trip1 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblVJ3_VJ1_DPT_Trip2 = new System.Windows.Forms.Label();
+            this.lblVJ3_VJ1_DPT_Trip3 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.groupBoxEx2 = new FORM.GroupBoxEx();
             this.btnVJ3VJ1Set = new System.Windows.Forms.Button();
+            this.lblVJ3_VJ1_ARR_Trip3 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.lblVJ3_VJ1_ARR_Trip2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.lblVJ3_VJ1_ARR_Trip1 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.btnS_VJ3VJ1_Time = new System.Windows.Forms.Button();
@@ -131,6 +140,7 @@ namespace FORM
             this.grdUpperVJ1.TabIndex = 0;
             this.grdUpperVJ1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvwUpperVJ1});
+            this.grdUpperVJ1.Click += new System.EventHandler(this.grdUpperVJ1_Click);
             // 
             // gvwUpperVJ1
             // 
@@ -144,6 +154,7 @@ namespace FORM
             this.gvwUpperVJ1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.FA_WC_CD,
             this.ERP_FA_WC_CD,
+            this.ORD_TRIP,
             this.PLANT_NM,
             this.STYLE_NAME,
             this.STYLE_CD,
@@ -160,10 +171,10 @@ namespace FORM
             this.gvwUpperVJ1.OptionsCustomization.AllowSort = false;
             this.gvwUpperVJ1.OptionsDetail.EnableMasterViewMode = false;
             this.gvwUpperVJ1.OptionsView.AllowCellMerge = true;
-            this.gvwUpperVJ1.OptionsView.ShowFooter = true;
             this.gvwUpperVJ1.OptionsView.ShowGroupPanel = false;
             this.gvwUpperVJ1.OptionsView.ShowIndicator = false;
             this.gvwUpperVJ1.RowHeight = 40;
+            this.gvwUpperVJ1.RowCellStyle += new DevExpress.XtraGrid.Views.Grid.RowCellStyleEventHandler(this.gvwUpperVJ1_RowCellStyle);
             // 
             // FA_WC_CD
             // 
@@ -177,11 +188,26 @@ namespace FORM
             this.ERP_FA_WC_CD.FieldName = "ERP_FA_WC_CD";
             this.ERP_FA_WC_CD.Name = "ERP_FA_WC_CD";
             // 
+            // ORD_TRIP
+            // 
+            this.ORD_TRIP.AppearanceCell.Options.UseTextOptions = true;
+            this.ORD_TRIP.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.ORD_TRIP.AppearanceHeader.Font = new System.Drawing.Font("Calibri", 20F, System.Drawing.FontStyle.Bold);
+            this.ORD_TRIP.AppearanceHeader.Options.UseFont = true;
+            this.ORD_TRIP.AppearanceHeader.Options.UseTextOptions = true;
+            this.ORD_TRIP.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.ORD_TRIP.Caption = "Trip";
+            this.ORD_TRIP.FieldName = "ORD_TRIP";
+            this.ORD_TRIP.Name = "ORD_TRIP";
+            this.ORD_TRIP.Visible = true;
+            this.ORD_TRIP.VisibleIndex = 0;
+            this.ORD_TRIP.Width = 195;
+            // 
             // PLANT_NM
             // 
             this.PLANT_NM.AppearanceCell.Options.UseTextOptions = true;
             this.PLANT_NM.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.PLANT_NM.AppearanceHeader.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PLANT_NM.AppearanceHeader.Font = new System.Drawing.Font("Calibri", 20F, System.Drawing.FontStyle.Bold);
             this.PLANT_NM.AppearanceHeader.Options.UseFont = true;
             this.PLANT_NM.AppearanceHeader.Options.UseTextOptions = true;
             this.PLANT_NM.AppearanceHeader.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
@@ -190,7 +216,9 @@ namespace FORM
             this.PLANT_NM.FieldName = "PLANT_NM";
             this.PLANT_NM.Name = "PLANT_NM";
             this.PLANT_NM.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
-            this.PLANT_NM.Width = 214;
+            this.PLANT_NM.Visible = true;
+            this.PLANT_NM.VisibleIndex = 1;
+            this.PLANT_NM.Width = 171;
             // 
             // STYLE_NAME
             // 
@@ -207,8 +235,8 @@ namespace FORM
             this.STYLE_NAME.Name = "STYLE_NAME";
             this.STYLE_NAME.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.True;
             this.STYLE_NAME.Visible = true;
-            this.STYLE_NAME.VisibleIndex = 0;
-            this.STYLE_NAME.Width = 815;
+            this.STYLE_NAME.VisibleIndex = 2;
+            this.STYLE_NAME.Width = 657;
             // 
             // STYLE_CD
             // 
@@ -225,8 +253,8 @@ namespace FORM
             this.STYLE_CD.Name = "STYLE_CD";
             this.STYLE_CD.OptionsColumn.AllowMerge = DevExpress.Utils.DefaultBoolean.False;
             this.STYLE_CD.Visible = true;
-            this.STYLE_CD.VisibleIndex = 1;
-            this.STYLE_CD.Width = 613;
+            this.STYLE_CD.VisibleIndex = 3;
+            this.STYLE_CD.Width = 493;
             // 
             // QTY
             // 
@@ -247,8 +275,8 @@ namespace FORM
             this.QTY.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
             new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "QTY", "Total: {0:n0} Prs")});
             this.QTY.Visible = true;
-            this.QTY.VisibleIndex = 2;
-            this.QTY.Width = 484;
+            this.QTY.VisibleIndex = 4;
+            this.QTY.Width = 396;
             // 
             // pnHeader
             // 
@@ -352,7 +380,7 @@ namespace FORM
             this.lb_D3.BackColor = System.Drawing.Color.Silver;
             this.lb_D3.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
             this.lb_D3.ForeColor = System.Drawing.Color.Black;
-            this.lb_D3.Location = new System.Drawing.Point(1152, 212);
+            this.lb_D3.Location = new System.Drawing.Point(1165, 212);
             this.lb_D3.Name = "lb_D3";
             this.lb_D3.Size = new System.Drawing.Size(160, 30);
             this.lb_D3.TabIndex = 215;
@@ -363,7 +391,7 @@ namespace FORM
             this.lb_D2.BackColor = System.Drawing.Color.Silver;
             this.lb_D2.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
             this.lb_D2.ForeColor = System.Drawing.Color.Black;
-            this.lb_D2.Location = new System.Drawing.Point(989, 212);
+            this.lb_D2.Location = new System.Drawing.Point(1002, 212);
             this.lb_D2.Name = "lb_D2";
             this.lb_D2.Size = new System.Drawing.Size(160, 30);
             this.lb_D2.TabIndex = 214;
@@ -374,7 +402,7 @@ namespace FORM
             this.lb_D1.BackColor = System.Drawing.Color.Silver;
             this.lb_D1.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
             this.lb_D1.ForeColor = System.Drawing.Color.Black;
-            this.lb_D1.Location = new System.Drawing.Point(825, 212);
+            this.lb_D1.Location = new System.Drawing.Point(838, 212);
             this.lb_D1.Name = "lb_D1";
             this.lb_D1.Size = new System.Drawing.Size(160, 30);
             this.lb_D1.TabIndex = 213;
@@ -385,7 +413,7 @@ namespace FORM
             this.label1.BackColor = System.Drawing.Color.Black;
             this.label1.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(1152, 181);
+            this.label1.Location = new System.Drawing.Point(1165, 181);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(160, 30);
             this.label1.TabIndex = 212;
@@ -397,7 +425,7 @@ namespace FORM
             this.label2.BackColor = System.Drawing.Color.Red;
             this.label2.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(989, 181);
+            this.label2.Location = new System.Drawing.Point(1002, 181);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(160, 30);
             this.label2.TabIndex = 211;
@@ -409,7 +437,7 @@ namespace FORM
             this.label3.BackColor = System.Drawing.Color.Yellow;
             this.label3.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(825, 181);
+            this.label3.Location = new System.Drawing.Point(838, 181);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(160, 30);
             this.label3.TabIndex = 210;
@@ -421,7 +449,7 @@ namespace FORM
             this.lb_DD.BackColor = System.Drawing.Color.Silver;
             this.lb_DD.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
             this.lb_DD.ForeColor = System.Drawing.Color.Black;
-            this.lb_DD.Location = new System.Drawing.Point(662, 212);
+            this.lb_DD.Location = new System.Drawing.Point(675, 212);
             this.lb_DD.Name = "lb_DD";
             this.lb_DD.Size = new System.Drawing.Size(160, 30);
             this.lb_DD.TabIndex = 209;
@@ -432,7 +460,7 @@ namespace FORM
             this.label8.BackColor = System.Drawing.Color.Lime;
             this.label8.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(662, 181);
+            this.label8.Location = new System.Drawing.Point(675, 181);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(160, 30);
             this.label8.TabIndex = 208;
@@ -444,7 +472,7 @@ namespace FORM
             this.lb_total.BackColor = System.Drawing.Color.Silver;
             this.lb_total.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
             this.lb_total.ForeColor = System.Drawing.Color.Black;
-            this.lb_total.Location = new System.Drawing.Point(510, 212);
+            this.lb_total.Location = new System.Drawing.Point(523, 212);
             this.lb_total.Name = "lb_total";
             this.lb_total.Size = new System.Drawing.Size(150, 30);
             this.lb_total.TabIndex = 207;
@@ -455,7 +483,7 @@ namespace FORM
             this.label5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.label5.Font = new System.Drawing.Font("Calibri", 14F, System.Drawing.FontStyle.Bold);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(510, 181);
+            this.label5.Location = new System.Drawing.Point(523, 181);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(150, 30);
             this.label5.TabIndex = 206;
@@ -468,7 +496,7 @@ namespace FORM
             this.pnColorTrip1.Controls.Add(this.label7);
             this.pnColorTrip1.Controls.Add(this.label12);
             this.pnColorTrip1.Controls.Add(this.label6);
-            this.pnColorTrip1.Location = new System.Drawing.Point(338, 91);
+            this.pnColorTrip1.Location = new System.Drawing.Point(351, 91);
             this.pnColorTrip1.Name = "pnColorTrip1";
             this.pnColorTrip1.Size = new System.Drawing.Size(1217, 10);
             this.pnColorTrip1.TabIndex = 205;
@@ -478,7 +506,7 @@ namespace FORM
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label7.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(787, -4);
+            this.label7.Location = new System.Drawing.Point(221, -2);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(45, 15);
             this.label7.TabIndex = 206;
@@ -489,7 +517,7 @@ namespace FORM
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.label12.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(1, -3);
+            this.label12.Location = new System.Drawing.Point(1168, -2);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(52, 15);
             this.label12.TabIndex = 206;
@@ -509,13 +537,13 @@ namespace FORM
             // btnCar
             // 
             this.btnCar.BackColor = System.Drawing.Color.Transparent;
-            this.btnCar.BackgroundImage = global::FORM.Properties.Resources.car2;
+            this.btnCar.BackgroundImage = global::FORM.Properties.Resources.car1;
             this.btnCar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnCar.FlatAppearance.BorderSize = 0;
             this.btnCar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCar.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Bold);
             this.btnCar.ForeColor = System.Drawing.Color.Red;
-            this.btnCar.Location = new System.Drawing.Point(1485, 40);
+            this.btnCar.Location = new System.Drawing.Point(351, 40);
             this.btnCar.Name = "btnCar";
             this.btnCar.Size = new System.Drawing.Size(70, 45);
             this.btnCar.TabIndex = 204;
@@ -529,7 +557,7 @@ namespace FORM
             this.lblBT_Current_Qty.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.lblBT_Current_Qty.Font = new System.Drawing.Font("Times New Roman", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBT_Current_Qty.ForeColor = System.Drawing.Color.White;
-            this.lblBT_Current_Qty.Location = new System.Drawing.Point(338, 130);
+            this.lblBT_Current_Qty.Location = new System.Drawing.Point(351, 130);
             this.lblBT_Current_Qty.Name = "lblBT_Current_Qty";
             this.lblBT_Current_Qty.Size = new System.Drawing.Size(1217, 36);
             this.lblBT_Current_Qty.TabIndex = 174;
@@ -540,7 +568,7 @@ namespace FORM
             // 
             this.lblTimeLapseVJ3_VJ1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.lblTimeLapseVJ3_VJ1.Font = new System.Drawing.Font("Times New Roman", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTimeLapseVJ3_VJ1.Location = new System.Drawing.Point(338, 104);
+            this.lblTimeLapseVJ3_VJ1.Location = new System.Drawing.Point(351, 104);
             this.lblTimeLapseVJ3_VJ1.Name = "lblTimeLapseVJ3_VJ1";
             this.lblTimeLapseVJ3_VJ1.Size = new System.Drawing.Size(1217, 23);
             this.lblTimeLapseVJ3_VJ1.TabIndex = 174;
@@ -550,9 +578,13 @@ namespace FORM
             // gbbVJ2
             // 
             this.gbbVJ2.BackgroundPanelImage = null;
-            this.gbbVJ2.Controls.Add(this.label13);
+            this.gbbVJ2.Controls.Add(this.label11);
             this.gbbVJ2.Controls.Add(this.button1);
             this.gbbVJ2.Controls.Add(this.lblVJ3_VJ1_DPT_Trip1);
+            this.gbbVJ2.Controls.Add(this.label9);
+            this.gbbVJ2.Controls.Add(this.lblVJ3_VJ1_DPT_Trip2);
+            this.gbbVJ2.Controls.Add(this.lblVJ3_VJ1_DPT_Trip3);
+            this.gbbVJ2.Controls.Add(this.label13);
             this.gbbVJ2.DrawGroupBorder = true;
             this.gbbVJ2.Font = new System.Drawing.Font("Times New Roman", 20F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.gbbVJ2.ForeColor = System.Drawing.Color.White;
@@ -560,9 +592,9 @@ namespace FORM
             this.gbbVJ2.GroupPanelColor = System.Drawing.Color.White;
             this.gbbVJ2.GroupPanelShape = FORM.GroupBoxEx.PanelType.Rounded;
             this.gbbVJ2.GroupPanelWith = 1F;
-            this.gbbVJ2.Location = new System.Drawing.Point(1561, 10);
+            this.gbbVJ2.Location = new System.Drawing.Point(22, 44);
             this.gbbVJ2.Name = "gbbVJ2";
-            this.gbbVJ2.Size = new System.Drawing.Size(344, 167);
+            this.gbbVJ2.Size = new System.Drawing.Size(327, 167);
             this.gbbVJ2.TabIndex = 173;
             this.gbbVJ2.TabStop = false;
             this.gbbVJ2.Text = "VJ3 (TAN PHU) DEPART";
@@ -570,17 +602,17 @@ namespace FORM
             this.gbbVJ2.TextBorderColor = System.Drawing.Color.MediumTurquoise;
             this.gbbVJ2.TextBorderWith = 1F;
             // 
-            // label13
+            // label11
             // 
-            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.label13.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label13.Location = new System.Drawing.Point(140, 43);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(26, 25);
-            this.label13.TabIndex = 199;
-            this.label13.Text = "1";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label11.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label11.Location = new System.Drawing.Point(295, 104);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(26, 25);
+            this.label11.TabIndex = 199;
+            this.label11.Text = "3";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // button1
             // 
@@ -592,7 +624,7 @@ namespace FORM
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("DS-Digital", 40F, System.Drawing.FontStyle.Bold);
             this.button1.ForeColor = System.Drawing.Color.Yellow;
-            this.button1.Location = new System.Drawing.Point(167, 43);
+            this.button1.Location = new System.Drawing.Point(6, 41);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(149, 111);
             this.button1.TabIndex = 197;
@@ -604,17 +636,71 @@ namespace FORM
             this.lblVJ3_VJ1_DPT_Trip1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lblVJ3_VJ1_DPT_Trip1.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
             this.lblVJ3_VJ1_DPT_Trip1.ForeColor = System.Drawing.Color.Blue;
-            this.lblVJ3_VJ1_DPT_Trip1.Location = new System.Drawing.Point(6, 43);
+            this.lblVJ3_VJ1_DPT_Trip1.Location = new System.Drawing.Point(161, 47);
             this.lblVJ3_VJ1_DPT_Trip1.Name = "lblVJ3_VJ1_DPT_Trip1";
             this.lblVJ3_VJ1_DPT_Trip1.Size = new System.Drawing.Size(131, 25);
             this.lblVJ3_VJ1_DPT_Trip1.TabIndex = 198;
             this.lblVJ3_VJ1_DPT_Trip1.Tag = "1";
             this.lblVJ3_VJ1_DPT_Trip1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label9.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label9.Location = new System.Drawing.Point(295, 76);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(26, 25);
+            this.label9.TabIndex = 199;
+            this.label9.Text = "2";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblVJ3_VJ1_DPT_Trip2
+            // 
+            this.lblVJ3_VJ1_DPT_Trip2.BackColor = System.Drawing.Color.White;
+            this.lblVJ3_VJ1_DPT_Trip2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblVJ3_VJ1_DPT_Trip2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lblVJ3_VJ1_DPT_Trip2.ForeColor = System.Drawing.Color.Blue;
+            this.lblVJ3_VJ1_DPT_Trip2.Location = new System.Drawing.Point(161, 76);
+            this.lblVJ3_VJ1_DPT_Trip2.Name = "lblVJ3_VJ1_DPT_Trip2";
+            this.lblVJ3_VJ1_DPT_Trip2.Size = new System.Drawing.Size(131, 25);
+            this.lblVJ3_VJ1_DPT_Trip2.TabIndex = 198;
+            this.lblVJ3_VJ1_DPT_Trip2.Tag = "1";
+            this.lblVJ3_VJ1_DPT_Trip2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblVJ3_VJ1_DPT_Trip3
+            // 
+            this.lblVJ3_VJ1_DPT_Trip3.BackColor = System.Drawing.Color.White;
+            this.lblVJ3_VJ1_DPT_Trip3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblVJ3_VJ1_DPT_Trip3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lblVJ3_VJ1_DPT_Trip3.ForeColor = System.Drawing.Color.Blue;
+            this.lblVJ3_VJ1_DPT_Trip3.Location = new System.Drawing.Point(161, 104);
+            this.lblVJ3_VJ1_DPT_Trip3.Name = "lblVJ3_VJ1_DPT_Trip3";
+            this.lblVJ3_VJ1_DPT_Trip3.Size = new System.Drawing.Size(131, 25);
+            this.lblVJ3_VJ1_DPT_Trip3.TabIndex = 198;
+            this.lblVJ3_VJ1_DPT_Trip3.Tag = "1";
+            this.lblVJ3_VJ1_DPT_Trip3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label13
+            // 
+            this.label13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label13.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label13.Location = new System.Drawing.Point(295, 47);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(26, 25);
+            this.label13.TabIndex = 199;
+            this.label13.Text = "1";
+            this.label13.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // groupBoxEx2
             // 
             this.groupBoxEx2.BackgroundPanelImage = null;
             this.groupBoxEx2.Controls.Add(this.btnVJ3VJ1Set);
+            this.groupBoxEx2.Controls.Add(this.lblVJ3_VJ1_ARR_Trip3);
+            this.groupBoxEx2.Controls.Add(this.label15);
+            this.groupBoxEx2.Controls.Add(this.lblVJ3_VJ1_ARR_Trip2);
+            this.groupBoxEx2.Controls.Add(this.label4);
             this.groupBoxEx2.Controls.Add(this.lblVJ3_VJ1_ARR_Trip1);
             this.groupBoxEx2.Controls.Add(this.label14);
             this.groupBoxEx2.Controls.Add(this.btnS_VJ3VJ1_Time);
@@ -625,7 +711,7 @@ namespace FORM
             this.groupBoxEx2.GroupPanelColor = System.Drawing.Color.White;
             this.groupBoxEx2.GroupPanelShape = FORM.GroupBoxEx.PanelType.Rounded;
             this.groupBoxEx2.GroupPanelWith = 1F;
-            this.groupBoxEx2.Location = new System.Drawing.Point(9, 13);
+            this.groupBoxEx2.Location = new System.Drawing.Point(1570, 40);
             this.groupBoxEx2.Name = "groupBoxEx2";
             this.groupBoxEx2.Size = new System.Drawing.Size(323, 164);
             this.groupBoxEx2.TabIndex = 173;
@@ -642,13 +728,63 @@ namespace FORM
             this.btnVJ3VJ1Set.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVJ3VJ1Set.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVJ3VJ1Set.ForeColor = System.Drawing.Color.White;
-            this.btnVJ3VJ1Set.Location = new System.Drawing.Point(161, 123);
+            this.btnVJ3VJ1Set.Location = new System.Drawing.Point(161, 127);
             this.btnVJ3VJ1Set.Name = "btnVJ3VJ1Set";
-            this.btnVJ3VJ1Set.Size = new System.Drawing.Size(156, 35);
+            this.btnVJ3VJ1Set.Size = new System.Drawing.Size(156, 31);
             this.btnVJ3VJ1Set.TabIndex = 200;
             this.btnVJ3VJ1Set.Text = "Set: 0%";
             this.btnVJ3VJ1Set.UseVisualStyleBackColor = false;
             this.btnVJ3VJ1Set.Click += new System.EventHandler(this.btnVJ3VJ1Set_Click);
+            // 
+            // lblVJ3_VJ1_ARR_Trip3
+            // 
+            this.lblVJ3_VJ1_ARR_Trip3.BackColor = System.Drawing.Color.White;
+            this.lblVJ3_VJ1_ARR_Trip3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblVJ3_VJ1_ARR_Trip3.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lblVJ3_VJ1_ARR_Trip3.ForeColor = System.Drawing.Color.Blue;
+            this.lblVJ3_VJ1_ARR_Trip3.Location = new System.Drawing.Point(185, 99);
+            this.lblVJ3_VJ1_ARR_Trip3.Name = "lblVJ3_VJ1_ARR_Trip3";
+            this.lblVJ3_VJ1_ARR_Trip3.Size = new System.Drawing.Size(132, 25);
+            this.lblVJ3_VJ1_ARR_Trip3.TabIndex = 198;
+            this.lblVJ3_VJ1_ARR_Trip3.Tag = "001";
+            this.lblVJ3_VJ1_ARR_Trip3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label15
+            // 
+            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label15.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label15.Location = new System.Drawing.Point(157, 99);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(26, 25);
+            this.label15.TabIndex = 199;
+            this.label15.Text = "3";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblVJ3_VJ1_ARR_Trip2
+            // 
+            this.lblVJ3_VJ1_ARR_Trip2.BackColor = System.Drawing.Color.White;
+            this.lblVJ3_VJ1_ARR_Trip2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblVJ3_VJ1_ARR_Trip2.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold);
+            this.lblVJ3_VJ1_ARR_Trip2.ForeColor = System.Drawing.Color.Blue;
+            this.lblVJ3_VJ1_ARR_Trip2.Location = new System.Drawing.Point(185, 71);
+            this.lblVJ3_VJ1_ARR_Trip2.Name = "lblVJ3_VJ1_ARR_Trip2";
+            this.lblVJ3_VJ1_ARR_Trip2.Size = new System.Drawing.Size(132, 25);
+            this.lblVJ3_VJ1_ARR_Trip2.TabIndex = 198;
+            this.lblVJ3_VJ1_ARR_Trip2.Tag = "001";
+            this.lblVJ3_VJ1_ARR_Trip2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label4
+            // 
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.label4.Location = new System.Drawing.Point(157, 71);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(26, 25);
+            this.label4.TabIndex = 199;
+            this.label4.Text = "2";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblVJ3_VJ1_ARR_Trip1
             // 
@@ -1010,5 +1146,14 @@ namespace FORM
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn26;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn27;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn28;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblVJ3_VJ1_DPT_Trip3;
+        private System.Windows.Forms.Label lblVJ3_VJ1_DPT_Trip2;
+        private System.Windows.Forms.Label lblVJ3_VJ1_ARR_Trip3;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label lblVJ3_VJ1_ARR_Trip2;
+        private System.Windows.Forms.Label label4;
+        private DevExpress.XtraGrid.Columns.GridColumn ORD_TRIP;
     }
 }

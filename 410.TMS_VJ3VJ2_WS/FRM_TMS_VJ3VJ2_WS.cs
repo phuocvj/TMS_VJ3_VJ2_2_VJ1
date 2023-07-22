@@ -997,7 +997,7 @@ namespace FORM
 
         private void lblTitle_Click(object sender, EventArgs e)
         {
-            ComVar.Var.callForm = "minimized";
+            ComVar.Var.callForm = "Minimized";
         }
 
         private void lblDate_Click(object sender, EventArgs e)

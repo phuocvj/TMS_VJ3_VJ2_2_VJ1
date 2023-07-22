@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
             DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
             DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel1 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
@@ -60,8 +59,8 @@
             this.chartINV = new DevExpress.XtraCharts.ChartControl();
             this.chartOutgoing = new DevExpress.XtraCharts.ChartControl();
             this.chartShortage = new DevExpress.XtraCharts.ChartControl();
-            this.tmrDate = new System.Windows.Forms.Timer(this.components);
-            this.tmrAnimation = new System.Windows.Forms.Timer(this.components);
+            this.tmrDate = new System.Windows.Forms.Timer();
+            this.tmrAnimation = new System.Windows.Forms.Timer();
             this.lblPlan = new DevExpress.XtraEditors.LabelControl();
             this.a1Panel3 = new OS_DSF.A1Panel();
             this.label1 = new System.Windows.Forms.Label();
