@@ -914,7 +914,7 @@ namespace FORM
                     
                     lblVersion.Text = "2022.08.22.1";
                     iCount = 60;
-                   
+                    gbbVJ2.Text = _dtXML.Rows[0]["LOC_NM"].ToString();
 
                 }
                 catch
